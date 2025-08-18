@@ -9,3 +9,7 @@
 </body>
 
 </html>
+
+<?php if (isset($page_script)): ?>
+    <script src="<?php echo $page_script; ?>"></script>
+<?php endif; ?>

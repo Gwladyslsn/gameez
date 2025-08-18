@@ -143,4 +143,5 @@ require_once ROOTPATH . "src/View/template/header.php";
 </div>
 
 <?php
+$page_script = '/asset/js/register.js';
 require_once ROOTPATH . "src/View/template/footer.php"; ?>

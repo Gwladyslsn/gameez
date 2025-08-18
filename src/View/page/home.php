@@ -250,4 +250,5 @@ require_once ROOTPATH . "src/View/template/header.php";
 
 
 <?php
+$page_script = '/asset/js/header.js';
 require_once ROOTPATH . "src/View/template/footer.php"; ?>
