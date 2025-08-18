@@ -1,3 +1,8 @@
+<?php 
+require_once ROOTPATH . 'config/config.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -10,12 +15,13 @@
     <header>
         <nav class="container">
             <div class="logo">
-                🎲 Gameez
+                <a href="<?= BASE_URL ?>">🎲 Gameez</a>
+                
             </div>
             <div class="nav-links">
                 <a href="#parcourir">Parcourir</a>
                 <a href="#genres">Genres</a>
-                <a href="#top-rated">Top Rated</a>
+                <a href="#top-rated">Top jeux</a>
                 <a href="#nouveautes">Nouveautés</a>
                 <a href="#communaute">Communauté</a>
             </div>
