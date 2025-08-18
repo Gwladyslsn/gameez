@@ -10,4 +10,9 @@ class PageController extends Controller
     {
         $this->render('View/page/home', []);
     }
+
+    public function register()
+    {
+        $this->render('View/page/register', []);
+    }
 }

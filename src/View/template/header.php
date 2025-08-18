@@ -13,21 +13,27 @@ require_once ROOTPATH . 'config/config.php';
 </head>
 <body>
     <header>
-        <nav class="container">
-            <div class="logo">
-                <a href="<?= BASE_URL ?>">🎲 Gameez</a>
-                
-            </div>
-            <div class="nav-links">
-                <a href="#parcourir">Parcourir</a>
-                <a href="#genres">Genres</a>
-                <a href="#top-rated">Top jeux</a>
-                <a href="#nouveautes">Nouveautés</a>
-                <a href="#communaute">Communauté</a>
-            </div>
-            <div class="search-bar">
-                <input type="text" placeholder="Rechercher un jeu...">
-                <button>🔍</button>
-            </div>
-        </nav>
-    </header>
+    <nav class="container">
+        <div class="logo">
+            <a href="<?= BASE_URL ?>">🎲 Gameez</a>
+        </div>
+
+        <!-- Hamburger pour mobile -->
+        <button class="hamburger" aria-label="Menu">
+            ☰
+        </button>
+
+        <div class="nav-links">
+            <a href="#parcourir">Parcourir</a>
+            <a href="#genres">Genres</a>
+            <a href="#top-rated">Top jeux</a>
+            <a href="#nouveautes">Nouveautés</a>
+            <a href="#communaute">Communauté</a>
+        </div>
+
+        <div class="search-bar">
+            <input type="text" placeholder="Rechercher un jeu...">
+            <button>🔍</button>
+        </div>
+    </nav>
+</header>

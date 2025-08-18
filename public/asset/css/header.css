@@ -62,3 +62,40 @@ nav {
     padding: 0.5rem 1rem;
     cursor: pointer;
 }
+
+/* Hamburger caché par défaut */
+.hamburger {
+    display: none;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Responsive pour mobile */
+@media screen and (max-width: 768px) {
+    nav {
+        flex-wrap: wrap;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .search-bar {
+        width: 100%;
+        margin-top: 1rem;
+    }
+
+    .hamburger {
+        display: block;
+    }
+}
