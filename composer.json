@@ -1,0 +1,13 @@
+{
+    "name": "gwladyslsn/gameez",
+    "description": "bibliotheque de jeux de societe développé en PHP POO avec structure MVC et API",
+    "type": "project",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Gwladys Laisne"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}

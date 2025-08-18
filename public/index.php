@@ -1,4 +1,4 @@
 <?php
 
-echo 'Hello !';
+define("ROOTPATH", __DIR__ . '/../');
 ?>
