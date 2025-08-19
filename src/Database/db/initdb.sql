@@ -16,6 +16,10 @@ CREATE TABLE user(
 	,CONSTRAINT user_PK PRIMARY KEY (id_joueur)
 )
 
+ALTER TABLE user
+CHANGE id_joueur id_user INT AUTO_INCREMENT;
+
+
 /*TABLE ADMIN*/
 CREATE TABLE admin(
         id_admin       Int  Auto_increment  NOT NULL ,

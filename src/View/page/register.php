@@ -1,6 +1,25 @@
 <?php
 
 require_once ROOTPATH . "src/View/template/header.php";
+
+use App\Services\Auth;
+
+$auth = new Auth();
+
+$errors = [];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $formType = $_POST['form_type'] ?? '';
+
+    if ($formType === 'sign') {
+        // Inscription
+        $auth->signin();
+    } elseif ($formType === 'log') {
+        // Connexion
+        $auth->login();
+    }
+}
+
+
 ?>
 
 <div class="auth-container">
@@ -90,36 +109,36 @@ require_once ROOTPATH . "src/View/template/header.php";
                 <div class="form-row">
                     <div class="form-group">
                         <label for="firstName">Prénom</label>
-                        <input type="text" id="firstName" class="form-input" placeholder="John" required>
+                        <input type="text" id="firstName" class="form-input" placeholder="John">
                     </div>
                     <div class="form-group">
                         <label for="lastName">Nom</label>
-                        <input type="text" id="lastName" class="form-input" placeholder="Doe" required>
+                        <input type="text" id="lastName" class="form-input" placeholder="Doe">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="username">Nom d'utilisateur</label>
-                    <input type="text" id="username" class="form-input" placeholder="johndoe" required>
+                    <input type="text" id="username" class="form-input" placeholder="johndoe">
                 </div>
 
                 <div class="form-group">
                     <label for="registerEmail">Email</label>
-                    <input type="email" id="registerEmail" class="form-input" placeholder="votre@email.com" required>
+                    <input type="email" id="registerEmail" class="form-input" placeholder="votre@email.com">
                 </div>
 
                 <div class="form-group">
                     <label for="registerPassword">Mot de passe</label>
-                    <input type="password" id="registerPassword" class="form-input" placeholder="••••••••" required>
+                    <input type="password" id="registerPassword" class="form-input" placeholder="••••••••">
                 </div>
 
                 <div class="form-group">
                     <label for="confirmPassword">Confirmer le mot de passe</label>
-                    <input type="password" id="confirmPassword" class="form-input" placeholder="••••••••" required>
+                    <input type="password" id="confirmPassword" class="form-input" placeholder="••••••••">
                 </div>
 
                 <div class="checkbox-group">
-                    <input type="checkbox" id="terms" required>
+                    <input type="checkbox" id="terms">
                     <label for="terms">
                         J'accepte les <a href="#">conditions d'utilisation</a> et la <a href="#">politique de confidentialité</a>
                     </label>
