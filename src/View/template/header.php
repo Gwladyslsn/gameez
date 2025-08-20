@@ -9,7 +9,7 @@ require_once ROOTPATH . 'config/config.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="asset/css/main.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"  crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Gameez - Votre bibliothèque de jeux de société</title>
 </head>
 
@@ -17,7 +17,9 @@ require_once ROOTPATH . 'config/config.php';
     <header>
         <nav class="container">
             <div class="logo">
-                <a href="<?= BASE_URL ?>">🎲 Gameez</a>
+                <a href="<?= BASE_URL ?>">
+                    <img src="/asset/image/logo.jpg" alt="Logo Gameez" class="logo">
+                </a>
             </div>
 
             <!-- Hamburger pour mobile -->

@@ -66,10 +66,15 @@ nav {
 /* Hamburger caché par défaut */
 .hamburger {
     display: none;
-    font-size: 2rem;
+    font-size: 4rem;
     background: none;
     border: none;
     cursor: pointer;
+}
+
+.logo{
+    width:35%;
+    border-radius: 50%;
 }
 
 /* Responsive pour mobile */
@@ -100,4 +105,10 @@ nav {
         margin-right: 10px;
         color: var(--purple);
     }
+
+    .logo{
+    width:50%;
+    border-radius: 50%;
+    justify-content:center;
+}
 }
