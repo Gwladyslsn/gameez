@@ -18,7 +18,7 @@ require_once ROOTPATH . 'config/config.php';
         <nav class="container">
             <div class="logo">
                 <a href="<?= BASE_URL ?>">
-                    <img src="/asset/image/logo.jpg" alt="Logo Gameez" class="logo">
+                    <img src="asset/image/logo.jpg" alt="logo Gameez" class="logo">
                 </a>
             </div>
 
