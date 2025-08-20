@@ -9,6 +9,8 @@ class UserEntity
     private string $userLastname;
     private string $userPhone;
     private string $userEmail;
+
+    private string $userDob;
     private ?string $userPassword = null;
 
     public function __construct(
@@ -17,6 +19,7 @@ class UserEntity
         string $userLastname = '',
         string $userPhone = '',
         string $userEmail = '',
+        string $userDob = '',
         ?string $userPassword = null
     ) {
         $this->idUser = $idUser;
@@ -24,6 +27,7 @@ class UserEntity
         $this->userLastname = $userLastname;
         $this->userPhone = $userPhone;
         $this->userEmail = $userEmail;
+        $this->userDob = $userDob;
         $this->userPassword = $userPassword;
     }
 
@@ -92,5 +96,25 @@ class UserEntity
         $this->userPassword = $userPassword;
         return $this;
     }
+
+    /**
+     * Get the value of userDob
+     */
+    public function getUserDob(): string
+    {
+        return $this->userDob;
+    }
+
+    /**
+     * Set the value of userDob
+     */
+    public function setUserDob(string $userDob): self
+    {
+        $this->userDob = $userDob;
+
+        return $this;
+    }
+
+
 }
 

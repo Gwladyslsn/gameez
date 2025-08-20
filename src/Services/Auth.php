@@ -27,22 +27,21 @@ class Auth
         $pdo = $database->getConnection();
         $userRepo = new UserRepository($pdo);
 
-        $name_user = $_POST["name_user"] ?? '';
-        $lastname_user = $_POST["lastname_user"] ?? '';
-        $email_user = $_POST["email_user"] ?? '';
-        $password_user = $_POST["password_user"] ?? '';
-        $id_role = $_POST["id_role"] ?? '';
-        $credit_user = 20;
+        $userName = $_POST["user_name"] ?? '';
+        $userLastname = $_POST["user_lastname"] ?? '';
+        $userEmail = $_POST["user_mail"] ?? '';
+        $userDob = $_POST["user_dob"] ?? '';
+        $userPassword = $_POST["user_password"] ?? '';
 
         $errors = $userRepo->verifyUserInput($_POST);
 
         if (empty($errors)) {
-            if ($userRepo->emailExists($email_user)) {
+            if ($userRepo->emailExists($userEmail)) {
                 echo '<div class="alert alert-success">
                         <p class="text-white bg-gray-900 body-font">Un compte avec cette adresse email existe déjà. Veuillez vous connecter ou utiliser une autre adresse.</p>
                         </div>';
             } else {
-                if ($userRepo->addUser($name_user, $lastname_user, $email_user, $password_user, $id_role, $credit_user)) {
+                if ($userRepo->addUser($userName, $userLastname, $userPassword, $userEmail, $userDob)) {
                     echo '<div class="alert alert-success">
                             <p class="text-gray-400 bg-gray-900 body-font">✅ Inscription réussie ! Vous pouvez maintenant vous connecter !</p>
                             </div>';
@@ -59,7 +58,7 @@ class Auth
         $database = new Database();
         $pdo = $database->getConnection();
         $userRepo = new UserRepository($pdo);
-        $errors = [];
+        $error = [];
 
         $email = $_POST["user_mail"] ?? '';
         $password = $_POST["user_password"] ?? '';
@@ -80,10 +79,10 @@ class Auth
         $id_user = $userRepo->verifUserExists($email, $password);
         if ($id_user !== false) {
             $_SESSION['user'] = $id_user;
-            header('Location: http://localhost:8000/dashboardUser');
+            header('Location: dashboardUser');
             exit;
         } else {
-            echo "Identifiants et/ou mot de passe incorrect(s).";
+            $error = "Identifiants et/ou mot de passe incorrect(s).";
         }
     }
 }

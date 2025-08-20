@@ -1,8 +1,7 @@
-<?php 
+<?php
+require_once ROOTPATH . 'src/Services/Auth.php';
 require_once ROOTPATH . 'config/config.php';
-
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>

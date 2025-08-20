@@ -1,6 +1,5 @@
 <?php
 
-require_once ROOTPATH . "src/View/template/header.php";
 
 use App\Services\Auth;
 
@@ -18,6 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $auth->login();
     }
 }
+
+require_once ROOTPATH . "src/View/template/header.php";
 
 
 ?>
@@ -73,15 +74,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <h2 class="form-title">Bon retour !</h2>
             <p class="form-subtitle">Connectez-vous pour retrouver votre collection</p>
 
-            <form>
+            <form method="post" id="form_log">
+                <input type="hidden" name="form_type" value="log">
                 <div class="form-group">
                     <label for="loginEmail">Email</label>
-                    <input type="email" id="loginEmail" class="form-input" placeholder="votre@email.com" required>
+                    <input type="email" id="loginEmail" name="user_mail" class="form-input" placeholder="votre@email.com" required>
                 </div>
 
                 <div class="form-group">
                     <label for="loginPassword">Mot de passe</label>
-                    <input type="password" id="loginPassword" class="form-input" placeholder="••••••••" required>
+                    <input type="password" id="loginPassword" name="user_password" class="form-input" placeholder="••••••••" required>
                 </div>
 
                 <div class="checkbox-group">
@@ -89,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <label for="rememberMe">Se souvenir de moi</label>
                 </div>
 
-                <button type="submit" class="submit-btn">Se connecter</button>
+                <button type="submit" class="submit-btn" id="btn_login">Se connecter</button>
             </form>
 
             <div class="divider">
@@ -100,36 +102,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </div>
 
-        <!-- Register Form -->
+        <!-- INSCRIPTION -->
         <div id="registerForm" class="form-container">
             <h2 class="form-title">Créer un compte</h2>
             <p class="form-subtitle">Rejoignez notre communauté de joueurs passionnés</p>
 
-            <form>
+            <div id="feedback"></div><br>
+
+            <form method="post" id="form_sign">
+                <input type="hidden" name="form_type" value="sign">
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="firstName">Prénom</label>
-                        <input type="text" id="firstName" class="form-input" placeholder="John">
+                        <label for="user_name">Prénom</label>
+                        <input type="text" id="user_name" name="user_name" class="form-input" placeholder="John">
                     </div>
                     <div class="form-group">
-                        <label for="lastName">Nom</label>
-                        <input type="text" id="lastName" class="form-input" placeholder="Doe">
+                        <label for="user_lastname">Nom</label>
+                        <input type="text" id="user_lastname" name="user_lastname" class="form-input" placeholder="Doe">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="username">Nom d'utilisateur</label>
-                    <input type="text" id="username" class="form-input" placeholder="johndoe">
+                    <label for="user_mail">Email</label>
+                    <input type="email" id="user_mail_sign" name="user_mail" class="form-input" placeholder="votre@email.com">
                 </div>
 
                 <div class="form-group">
-                    <label for="registerEmail">Email</label>
-                    <input type="email" id="registerEmail" class="form-input" placeholder="votre@email.com">
+                    <label for="user_dob">Date de naissance</label>
+                    <input type="date" id="user_dob" name="user_dob" class="form-input" placeholder="jj/mm/aaaa">
                 </div>
 
                 <div class="form-group">
-                    <label for="registerPassword">Mot de passe</label>
-                    <input type="password" id="registerPassword" class="form-input" placeholder="••••••••">
+                    <label for="user_password">Mot de passe</label>
+                    <input type="password" id="user_password_sign" name="user_password" class="form-input" placeholder="••••••••">
                 </div>
 
                 <div class="form-group">
@@ -151,11 +156,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </label>
                 </div>
 
-                <button type="submit" class="submit-btn">Créer mon compte</button>
+                <button class="submit-btn" id="btn_sign">Créer mon compte</button>
 
                 <div class="forgot-password">
-                <a href="#">Mot de passe oublié ?</a>
-            </div>
+                    <a href="#">Mot de passe oublié ?</a>
+                </div>
             </form>
         </div>
     </div>

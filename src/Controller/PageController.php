@@ -15,4 +15,9 @@ class PageController extends Controller
     {
         $this->render('View/page/register', []);
     }
+
+    public function dashboardUser()
+    {
+        $this->render('View/page/dashboardUser', []);
+    }
 }

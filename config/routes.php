@@ -9,4 +9,8 @@ return [
         'controller' => App\Controller\PageController::class,
         'method' => 'register'
     ],
+    '/dashboardUser' => [
+        'controller' => App\Controller\PageController::class,
+        'method' => 'dashboardUser'
+    ],
 ];

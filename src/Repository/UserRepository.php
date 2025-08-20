@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use DateTime;
 use PDO;
 
 class UserRepository
@@ -15,19 +16,19 @@ class UserRepository
 
     /* CREATE */
 
-    public function addUser(string $username, string $lastname, string $password, string $phone, string $email): bool
+    public function addUser(string $userName, string $userLastname, string $password, string $userEmail, string $userDob): bool
     {
         $query = $this->pdo->prepare("
-        INSERT INTO user (user_name, user_lastname, user_password, user_tel, user_mail)
-        VALUES (:userName, :userLastname, :userPassword, :userPhone, :userEmail)");
+        INSERT INTO user (user_name, user_lastname, user_password, user_mail, user_dob)
+        VALUES (:userName, :userLastname, :userPassword, :userEmail, :userDob)");
 
         $userPassword = password_hash($password, PASSWORD_DEFAULT);
 
         $query->bindParam(':userName', $userName);
         $query->bindParam(':userLastname', $userLastname);
         $query->bindParam(':userPassword', $userPassword);
-        $query->bindParam(':userPhone', $userPhone);
         $query->bindParam(':userEmail', $userEmail);
+        $query->bindParam(':userDob', $userDob);
 
         return $query->execute();
     }
@@ -38,11 +39,11 @@ class UserRepository
 
     /* READ */
 
-    public function getAdminByEmail(string $emailAdmin)
+    public function getAdminByEmail(string $adminMail)
     {
     $sql = "SELECT * FROM admin WHERE admin_mail = :adminMail";
     $stmt = $this->pdo->prepare($sql);
-    $stmt->execute(['admin_mail' => $emailAdmin]);
+    $stmt->execute([':adminMail' => $adminMail]);
     $admin = $stmt->fetch(PDO::FETCH_ASSOC);
     return $admin ?: null;
 }
@@ -66,7 +67,7 @@ class UserRepository
     {
         $sql = "SELECT id_user, user_password FROM user WHERE user_mail = :userEmail";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute(['user_mail' => $userEmail]);
+        $stmt->execute([':userEmail' => $userEmail]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($user && password_verify($password, $user['user_password'])) {
@@ -98,7 +99,7 @@ class UserRepository
     {
         $sql = "SELECT COUNT(*) FROM user WHERE user_mail = :userEmail";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute(['user_mail' => $userEmail]);
+        $stmt->execute([':userEmail' => $userEmail]);
         return $stmt->fetchColumn() > 0;
     }
 
