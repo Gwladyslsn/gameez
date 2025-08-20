@@ -97,5 +97,7 @@ nav {
 
     .hamburger {
         display: block;
+        margin-right: 10px;
+        color: var(--purple);
     }
 }
