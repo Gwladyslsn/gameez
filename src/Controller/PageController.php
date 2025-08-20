@@ -20,4 +20,10 @@ class PageController extends Controller
     {
         $this->render('View/page/dashboardUser', []);
     }
+
+    // ADMIN
+    public function dashboardAdmin()
+    {
+        $this->render('View/page/admin/dashboardAdmin', []);
+    }
 }

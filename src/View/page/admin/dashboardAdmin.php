@@ -3,7 +3,7 @@
 require_once ROOTPATH . "src/View/template/header.php";
 ?>
 
-<h1>Dashboard USER</h1>
+<h1>Dashboard Admin</h1>
 
 <?php
 $page_script = '/asset/js/header.js';

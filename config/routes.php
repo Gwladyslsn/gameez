@@ -13,4 +13,14 @@ return [
         'controller' => App\Controller\PageController::class,
         'method' => 'dashboardUser'
     ],
+
+
+
+
+
+    // ADMIN
+    '/dashboardAdmin' => [
+        'controller' => App\Controller\PageController::class,
+        'method' => 'dashboardAdmin'
+    ],
 ];

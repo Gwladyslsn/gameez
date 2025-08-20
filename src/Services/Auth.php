@@ -65,7 +65,7 @@ class Auth
 
         // 1. Tentative connexion admin
         $admin = $userRepo->getAdminByEmail($email);
-        if ($admin && password_verify($password, $admin['password_admin'])) {
+        if ($admin && password_verify($password, $admin['admin_password'])) {
             $_SESSION['admin'] = [
                 'id_admin' => $admin['id_admin'],
                 'admin_mail' => $admin['admin_mail'],
