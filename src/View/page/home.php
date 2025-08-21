@@ -9,7 +9,7 @@ require_once ROOTPATH . "src/View/template/header.php";
             <h1>Découvrez votre prochain jeu coup de cœur</h1>
             <p>Plus de 5000 jeux de société référencés, notés et recommandés par la communauté</p>
             <div class="cta-buttons">
-                <a href="#" class="btn btn-primary">Explorer les jeux</a>
+                <a href="/games" class="btn btn-primary">Explorer les jeux</a>
                 <a href="/register" class="btn btn-secondary">Créer mon profil</a>
             </div>
         </div>

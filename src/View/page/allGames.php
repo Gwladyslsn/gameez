@@ -73,7 +73,7 @@ require_once ROOTPATH . "src/View/template/header.php";
         </select>
     </div>
 
-    <div>
+    <div class="games-grid">
         <?php foreach ($games as $game): ?>
             <?php include ROOTPATH . 'src/View/template/game_item.php'; ?>
         <?php endforeach; ?>
