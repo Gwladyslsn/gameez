@@ -3,7 +3,7 @@ require_once ROOTPATH . "src/View/template/header.php";
 ?>
 
 
-<div class="container">
+<div class="container-body">
     <div class="page-title">
         <h1>Tous nos jeux</h1>
         <p>Découvrez notre collection de plus de 5000 jeux de société</p>

@@ -15,7 +15,7 @@ require_once ROOTPATH . "src/View/template/header.php";
         </div>
     </section>
 
-    <section class="filters-section container">
+    <section class="filters-section container-body">
         <h2 class="filters-title">Trouvez le jeu parfait</h2>
         <div class="filters-grid">
             <div class="filter-group">
@@ -64,7 +64,7 @@ require_once ROOTPATH . "src/View/template/header.php";
     </section>
 
     <section class="featured-section">
-        <div class="container">
+        <div class="container-body">
             <h2 class="section-title">Jeux populaires cette semaine</h2>
             <div class="games-grid">
                 <div class="game-card">
@@ -155,7 +155,7 @@ require_once ROOTPATH . "src/View/template/header.php";
     </section>
 
     <section class="stats-section">
-        <div class="container">
+        <div class="container-body">
             <div class="stats-grid">
                 <div class="stat-item">
                     <span class="stat-number">5,247</span>
@@ -178,7 +178,7 @@ require_once ROOTPATH . "src/View/template/header.php";
     </section>
 
     <section class="featured-section">
-        <div class="container">
+        <div class="container-body">
             <h2 class="section-title">Nouveautés du mois</h2>
             <div class="games-grid">
                 <div class="game-card">

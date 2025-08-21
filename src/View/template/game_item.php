@@ -4,9 +4,9 @@
     </div>
     <h3 class="game-title"><?= htmlspecialchars($game->getNameGame()) ?></h3>
     <div class="game-meta">
-        <span class="meta-tag"><?= htmlspecialchars($game->getNbGamer()) ?></span>
+        <span class="meta-tag"><?= htmlspecialchars($game->getNbGamer()) ?> joueurs</span>
         <span class="meta-tag"><?= htmlspecialchars($game->getDurationGame()) ?> minutes</span>
-        <span class="meta-tag"><?= htmlspecialchars($game->getAgeGamer()) ?></span>
+        <span class="meta-tag">à partir de <?= htmlspecialchars($game->getAgeGamer()) ?> ans</span>
     </div>
     <div class="game-rating">
         <div class="stars">★★★★☆</div>
