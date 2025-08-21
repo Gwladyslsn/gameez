@@ -35,10 +35,13 @@ require_once ROOTPATH . 'config/config.php';
                 <?php if (isset($_SESSION['admin'])): ?>
                     <a href="/dashboardAdmin">Espace Admin</a>
                 <?php elseif (isset($_SESSION['user'])): ?>
-                    <a href="/dashboardAdmin">Mon compte</a>
-                <?php else: ?>
-                    <a href="/register">Inscription</a>
+                    <a href="/dashboardUser">Mon compte</a>
                 <?php endif; ?>
+                <?php  if (isset($_SESSION['user']) || isset($_SESSION['admin'])): ?>
+                <a href="<?= BASE_URL ?>logout">Déconnexion</a>
+            <?php else: ?>
+                <a href="<?= BASE_URL ?>register">Connexion / Inscription</a>
+            <?php endif; ?>
             </div>
 
             <div class="search-bar">

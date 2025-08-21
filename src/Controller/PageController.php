@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Services\Auth;
+
 
 
 class PageController extends Controller
@@ -19,6 +21,10 @@ class PageController extends Controller
     public function dashboardUser()
     {
         $this->render('View/page/dashboardUser', []);
+    }
+    public function logout()
+    {
+        Auth::logout('/'); // appeler la fonction
     }
 
     // ADMIN

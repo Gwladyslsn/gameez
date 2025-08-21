@@ -85,4 +85,14 @@ class Auth
             $error = "Identifiants et/ou mot de passe incorrect(s).";
         }
     }
+
+    /* DECONNEXION */
+    public static function logout(string $redirectTo = ''): void
+    {
+        self::startSession();
+        session_unset();
+        session_destroy();
+        header("Location: $redirectTo");
+        exit();
+    }
 }

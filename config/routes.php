@@ -13,6 +13,10 @@ return [
         'controller' => App\Controller\PageController::class,
         'method' => 'dashboardUser'
     ],
+    '/logout' => [
+        'controller' => App\Controller\PageController::class,
+        'method' => 'logout'
+    ],
 
 
 
