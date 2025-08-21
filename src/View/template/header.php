@@ -28,7 +28,7 @@ require_once ROOTPATH . 'config/config.php';
             </button>
 
             <div class="nav-links">
-                <a href="#parcourir">Parcourir</a>
+                <a href="/games">Parcourir</a>
                 <a href="#top-rated">Top jeux</a>
                 <a href="#nouveautes">Nouveautés</a>
                 <a href="#communaute">Communauté</a>

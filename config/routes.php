@@ -17,6 +17,10 @@ return [
         'controller' => App\Controller\PageController::class,
         'method' => 'logout'
     ],
+    '/games' => [
+        'controller' => App\Controller\PageController::class,
+        'method' => 'games'
+    ],
 
 
 

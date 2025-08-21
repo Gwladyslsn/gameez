@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Services\Auth;
+use App\Repository\GameRepository;
+use App\Database\Database;
 
 
 
@@ -26,6 +28,15 @@ class PageController extends Controller
     {
         Auth::logout('/'); // appeler la fonction
     }
+    public function games()
+    {
+        $database = new Database();
+        $pdo = $database->getConnection();
+        $gameRepository = new GameRepository($pdo);
+        $games = $gameRepository->getAllGames();
+        $this->render('View/page/allGames', ['games' => $games]);
+    }
+
 
     // ADMIN
     public function dashboardAdmin()
