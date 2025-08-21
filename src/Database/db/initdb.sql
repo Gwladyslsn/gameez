@@ -101,25 +101,26 @@ VALUES
 
 INSERT INTO game (game_name, game_duration, nb_gamer, age_gamer, image, id_category, game_description)
 VALUES
-('Catan', '60-90 min', '3-4', '10+', 'image/jeux/catan.jpg', 1, 'Colonisez une île, échangez des ressources et développez vos colonies.'),
-('7 Wonders', '30 min', '3-7', '10+', 'image/jeux/7wonders.jpg', 1, 'Construisez une merveille antique et développez votre civilisation.'),
-('Terraforming Mars', '120 min', '1-5', '12+', 'image/jeux/terraformingmars.jpg', 1, 'Développez Mars pour la rendre habitable en gérant vos ressources.'),
-('Risk', '120 min', '2-6', '10+', 'image/jeux/risk.jpg', 1, 'Conquérez le monde dans ce jeu de stratégie militaire.'),
-('Scythe', '90-120 min', '1-7', '14+', 'image/jeux/scythe.jpg', 1, 'Un jeu de conquête et gestion de ressources dans une uchronie 1920s.'),
-('Brass: Birmingham', '90-120 min', '2-4', '14+', 'image/jeux/brass.jpg', 1, 'Développez votre réseau industriel pendant la révolution industrielle.'),
-('Puerto Rico', '90 min', '2-5', '12+', 'image/jeux/puertorico.jpg', 1, 'Gérez une colonie en produisant et expédiant des marchandises.'),
-('Agricola', '120 min', '1-5', '12+', 'image/jeux/agricola.jpg', 1, 'Faites prospérer votre ferme et nourrissez votre famille.'),
-('Through the Ages', '180 min', '2-4', '14+', 'image/jeux/throughages.jpg', 1, 'Développez une civilisation à travers les âges.'),
-('Eclipse', '120-180 min', '2-6', '14+', 'image/jeux/eclipse.jpg', 1, 'Conquérez l’espace dans ce 4X stratégique intergalactique.'),
+('Catan', '60-90 min', '3-4', '10+', 'image/jeux/catan.webp', 1, 'Colonisez une île, échangez des ressources et développez vos colonies.'),
+('7 Wonders', '30 min', '3-7', '10+', 'image/jeux/7wonders.webp', 1, 'Construisez une merveille antique et développez votre civilisation.'),
+('Terraforming Mars', '120 min', '1-5', '12+', 'image/jeux/terraformingmars.webp', 1, 'Développez Mars pour la rendre habitable en gérant vos ressources.'),
+('Risk', '120 min', '2-6', '10+', 'image/jeux/risk.webp', 1, 'Conquérez le monde dans ce jeu de stratégie militaire.'),
+('Scythe', '90-120 min', '1-7', '14+', 'image/jeux/scythe.webp', 1, 'Un jeu de conquête et gestion de ressources dans une uchronie 1920s.'),
+('Brass: Birmingham', '90-120 min', '2-4', '14+', 'image/jeux/brass.webp', 1, 'Développez votre réseau industriel pendant la révolution industrielle.'),
+('Puerto Rico', '90 min', '2-5', '12+', 'image/jeux/puertorico.webp', 1, 'Gérez une colonie en produisant et expédiant des marchandises.'),
+('Agricola', '120 min', '1-5', '12+', 'image/jeux/agricola.webp', 1, 'Faites prospérer votre ferme et nourrissez votre famille.'),
+('Through the Ages', '180 min', '2-4', '14+', 'image/jeux/throughages.webp', 1, 'Développez une civilisation à travers les âges.'),
+('Eclipse', '120-180 min', '2-6', '14+', 'image/jeux/eclipse.webp', 1, 'Conquérez l’espace dans ce 4X stratégique intergalactique.'),
 
-('Times Up!', '30 min', '4-12', '12+', 'image/jeux/timesup.jpg', 2, 'Faites deviner des personnalités en un temps limité.'),
-('Blanc-Manger Coco', '30 min', '3-12', '16+', 'image/jeux/blancmangercoco.jpg', 2, 'Complétez des phrases avec des cartes drôles et absurdes.'),
-('Concept', '40 min', '4-12', '10+', 'image/jeux/concept.jpg', 2, 'Faites deviner des mots en associant des pictogrammes.'),
-('Jungle Speed', '15 min', '2-10', '7+', 'image/jeux/junglespeed.jpg', 2, 'Attrapez le totem avant vos adversaires.'),
-('Dixit', '30 min', '3-6', '8+', 'image/jeux/dixit.jpg', 2, 'Faites deviner une image avec une phrase poétique ou énigmatique.'),
-('Crazy Cups', '15 min', '2-4', '6+', 'image/jeux/crazycups.jpg', 2, 'Reproduisez des modèles en empilant des gobelets colorés.'),
-('Just One', '20 min', '3-7', '8+', 'image/jeux/justone.jpg', 2, 'Faites deviner un mot avec des indices uniques.'),
-('Pictionary', '30-60 min', '3-16', '8+', 'image/jeux/pictionary.jpg', 2, 'Dessinez et faites deviner le plus de mots possible.'),
-('Top Ten', '30 min', '4-9', '14+', 'image/jeux/topten.jpg', 2, 'Classez des réponses délirantes selon un thème.'),
-('TTMC', '45-90 min', '2-16', '14+', 'image/jeux/ttmc.jpg', 2, 'Répondez à des questions de culture générale adaptées à vos connaissances.');
+('Times Up!', '30 min', '4-12', '12+', 'image/jeux/timesup.webp', 2, 'Faites deviner des personnalités en un temps limité.'),
+('Blanc-Manger Coco', '30 min', '3-12', '16+', 'image/jeux/blancmangercoco.webp', 2, 'Complétez des phrases avec des cartes drôles et absurdes.'),
+('Concept', '40 min', '4-12', '10+', 'image/jeux/concept.webp', 2, 'Faites deviner des mots en associant des pictogrammes.'),
+('Jungle Speed', '15 min', '2-10', '7+', 'image/jeux/junglespeed.webp', 2, 'Attrapez le totem avant vos adversaires.'),
+('Dixit', '30 min', '3-6', '8+', 'image/jeux/dixit.webp', 2, 'Faites deviner une image avec une phrase poétique ou énigmatique.'),
+('Crazy Cups', '15 min', '2-4', '6+', 'image/jeux/crazycups.webp', 2, 'Reproduisez des modèles en empilant des gobelets colorés.'),
+('Just One', '20 min', '3-7', '8+', 'image/jeux/justone.webp', 2, 'Faites deviner un mot avec des indices uniques.'),
+('Pictionary', '30-60 min', '3-16', '8+', 'image/jeux/pictionary.webp', 2, 'Dessinez et faites deviner le plus de mots possible.'),
+('Top Ten', '30 min', '4-9', '14+', 'image/jeux/topten.webp', 2, 'Classez des réponses délirantes selon un thème.'),
+('TTMC', '45-90 min', '2-16', '14+', 'image/jeux/ttmc.webp', 2, 'Répondez à des questions de culture générale adaptées à vos connaissances.');
 
+DELETE FROM game;
