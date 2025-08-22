@@ -56,6 +56,7 @@ class GameRepository
             $game->setDurationGame((int)$row['game_duration']);
             $game->setNbGamer($row['nb_gamer']);
             $game->setAgeGamer((int)$row['age_gamer']);
+            $game->setImageGame($row['image']);
             $game->setDescriptionGame($row['game_description'] ?? "");
 
             $games[] = $game;

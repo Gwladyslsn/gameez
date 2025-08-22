@@ -1,6 +1,11 @@
+<?php
+
+$imagePath = '/asset/' . htmlspecialchars($game->getImageGame());
+?>
+
 <div class="game-card">
     <div class="game-image">
-        <span><img src="../asset/<?= htmlspecialchars($game->getImageGame()) ?>" alt=""></span>
+        <span><img src="<?= $imagePath ?>" alt="Image du jeu" class="gameImage"></span>
     </div>
     <h3 class="game-title"><?= htmlspecialchars($game->getNameGame()) ?></h3>
     <div class="game-meta">
