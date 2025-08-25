@@ -128,7 +128,6 @@
 
 .game-image {
     height: 200px;
-    background: linear-gradient(45deg, var(--pink), var(--light-pink));
     display: flex;
     align-items: center;
     justify-content: center;

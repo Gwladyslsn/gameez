@@ -123,4 +123,69 @@ VALUES
 ('Top Ten', '30 min', '4-9', '14+', 'image/jeux/topten.webp', 2, 'Classez des réponses délirantes selon un thème.'),
 ('TTMC', '45-90 min', '2-16', '14+', 'image/jeux/ttmc.webp', 2, 'Répondez à des questions de culture générale adaptées à vos connaissances.');
 
-DELETE FROM game;
+INSERT INTO game (game_name, game_duration, nb_gamer, age_gamer, image, id_category, game_description)
+VALUES
+('Uno', '20 min', '2-10', '7+', 'image/jeux/uno.webp', 3, 'Débarrassez-vous de toutes vos cartes avant les autres.'),
+('Saboteur', '30 min', '3-10', '8+', 'image/jeux/saboteur.webp', 3, 'Cherchez de l’or... ou sabotez vos camarades.'),
+('Skyjo', '30 min', '2-8', '8+', 'image/jeux/skyjo.webp', 3, 'Minimisez vos points en gérant vos cartes.'),
+('Exploding Kittens', '15 min', '2-5', '7+', 'image/jeux/explodingkittens.webp', 3, 'Évitez de tirer un chat explosif.'),
+('Bang!', '20-40 min', '4-7', '10+', 'image/jeux/bang.webp', 3, 'Sheriff contre hors-la-loi dans un duel de cartes.'),
+('The Mind', '15 min', '2-4', '8+', 'image/jeux/themind.webp', 3, 'Jouez vos cartes dans l’ordre sans parler.'),
+('Love Letter', '20 min', '2-6', '10+', 'image/jeux/loveletter.webp', 3, 'Séduisez la princesse grâce à vos cartes.'),
+('Coloretto', '30 min', '2-5', '8+', 'image/jeux/coloretto.webp', 3, 'Collectionnez des cartes de couleur sans en avoir trop.'),
+('For Sale', '30 min', '3-6', '8+', 'image/jeux/forsale.webp', 3, 'Achetez et revendez des biens immobiliers.'),
+('Tichu', '60 min', '4', '12+', 'image/jeux/tichu.webp', 3, 'Jeu d’atouts et de combinaisons chinois classique.');
+
+
+INSERT INTO game (game_name, game_duration, nb_gamer, age_gamer, image, id_category, game_description)
+VALUES
+('Yams (Yahtzee)', '15-30 min', '2-6', '8+', 'image/jeux/yahtzee.webp', 4, 'Faites des combinaisons de dés pour marquer des points.'),
+('King of Tokyo', '30 min', '2-6', '8+', 'image/jeux/kingoftokyo.webp', 4, 'Devenez le monstre qui contrôle Tokyo.'),
+('Perudo', '30 min', '2-6', '8+', 'image/jeux/perudo.webp', 4, 'Bluffez vos adversaires avec vos dés cachés.'),
+('Can\'t Stop', '30 min', '2-4', '9+', 'image/jeux/cantstop.webp', 4, 'Un jeu de stop ou encore avec des dés.'),
+('Qwixx', '15 min', '2-5', '8+', 'image/jeux/qwixx.webp', 4, 'Cochez des cases en fonction des dés lancés.'),
+('Strike', '15 min', '2-5', '8+', 'image/jeux/strike.webp', 4, 'Lancez des dés dans une arène pour en récupérer.'),
+('Roll for the Galaxy', '45 min', '2-5', '13+', 'image/jeux/rollforthegalaxy.webp', 4, 'Développez une civilisation spatiale en lançant des dés.'),
+('Las Vegas', '30 min', '2-5', '8+', 'image/jeux/lasvegas.webp', 4, 'Pariez vos dés dans les casinos pour gagner de l’argent.'),
+('Dice Forge', '45 min', '2-4', '10+', 'image/jeux/diceforge.webp', 4, 'Personnalisez vos dés pour devenir plus puissant.');
+
+INSERT INTO game (game_name, game_duration, nb_gamer, age_gamer, image, id_category, game_description)
+VALUES
+('Loup-Garou de Thiercelieux', '30-45 min', '8-18', '10+', 'image/jeux/loupgarou.webp', 5, 'Villageois contre loups-garous dans un jeu de bluff.'),
+('Mafia', '30-60 min', '6-20', '12+', 'image/jeux/mafia.webp', 5, 'Bluffez vos adversaires pour survivre dans la mafia.'),
+('Secret Hitler', '45 min', '5-10', '13+', 'image/jeux/secrethitler.webp', 5, 'Identifiez Hitler avant qu’il ne prenne le pouvoir.'),
+('Avalon', '30 min', '5-10', '12+', 'image/jeux/avalon.webp', 5, 'Chevaliers de la Table Ronde contre traîtres.'),
+('Spyfall', '15 min', '3-8', '12+', 'image/jeux/spyfall.webp', 5, 'Trouvez l’espion caché en posant des questions.'),
+('Shadow Hunters', '60 min', '4-8', '13+', 'image/jeux/shadowhunters.webp', 5, 'Dévoilez qui est chasseur, ombre ou neutre.'),
+('Codenames', '15 min', '2-8', '10+', 'image/jeux/codenames.webp', 5, 'Faites deviner des mots à votre équipe en évitant les assassins.'),
+('Decrypto', '30 min', '3-8', '12+', 'image/jeux/decrypto.webp', 5, 'Faites deviner des codes sans vous faire intercepter.'),
+('Good Cop Bad Cop', '20 min', '4-8', '12+', 'image/jeux/goodcopbadcop.webp', 5, 'Joueurs policiers corrompus ou loyaux doivent s’identifier.');
+
+
+--cooperatif
+INSERT INTO game (game_name, game_duration, nb_gamer, age_gamer, image, id_category, game_description)
+VALUES
+('Pandemic', '45 min', '2-4', '10+', 'image/jeux/pandemic.webp', 6, 'Sauvez le monde en éradiquant les maladies.'),
+('Zombicide', '60 min', '1-6', '14+', 'image/jeux/zombicide.webp', 6, 'Affrontez les zombies en équipe pour survivre.'),
+('The Crew', '20 min', '2-5', '10+', 'image/jeux/thecrew.webp', 6, 'Accomplissez des missions ensemble dans l’espace.'),
+('Hanabi', '25 min', '2-5', '8+', 'image/jeux/hanabi.webp', 6, 'Créez un feu d’artifice parfait sans voir vos cartes.'),
+('Flash Point', '45 min', '2-6', '10+', 'image/jeux/flashpoint.webp', 6, 'Sauvez des vies dans un immeuble en feu.'),
+('Forbidden Island', '30 min', '2-4', '10+', 'image/jeux/forbiddenisland.webp', 6, 'Récupérez des trésors avant que l’île ne sombre.'),
+('Spirit Island', '90 min', '1-4', '13+', 'image/jeux/spiritisland.webp', 6, 'Protégez votre île contre les envahisseurs.'),
+('Arkham Horror', '120 min', '1-6', '14+', 'image/jeux/arkhamhorror.webp', 6, 'Combattez les horreurs cosmiques en équipe.'),
+('Mysterium', '45 min', '2-7', '10+', 'image/jeux/mysterium.webp', 6, 'Résolvez un meurtre avec l’aide d’un fantôme.'),
+('Chronicles of Avel', '60 min', '1-4', '8+', 'image/jeux/avel.webp', 6, 'Protégez votre royaume dans un univers fantastique.');
+
+--Enquete
+INSERT INTO game (game_name, game_duration, nb_gamer, age_gamer, image, id_category, game_description)
+VALUES
+('Cluedo', '45 min', '2-6', '8+', 'image/jeux/cluedo.webp', 7, 'Trouvez le coupable, l’arme et le lieu du crime.'),
+('Detective', '120 min', '1-5', '16+', 'image/jeux/detective.webp', 7, 'Résolvez des enquêtes réalistes avec indices.'),
+('Chronicles of Crime', '60 min', '1-4', '12+', 'image/jeux/chroniclescrime.webp', 7, 'Utilisez votre smartphone pour élucider des crimes.'),
+('Sherlock Holmes Détective Conseil', '90 min', '1-8', '12+', 'image/jeux/sherlockholmes.webp', 7, 'Plongez dans des enquêtes à Londres victorien.'),
+('MicroMacro Crime City', '30 min', '1-4', '10+', 'image/jeux/micromacro.webp', 7, 'Retrouvez les criminels en scrutant la carte géante.'),
+('Detective Club', '45 min', '4-8', '8+', 'image/jeux/detectiveclub.webp', 7, 'Débusquez le menteur à partir d’indices.'),
+('Unlock!', '60 min', '2-6', '10+', 'image/jeux/unlock.webp', 7, 'Résolvez des énigmes dans un escape game maison.'),
+('Exit', '60 min', '1-6', '12+', 'image/jeux/exit.webp', 7, 'Un escape game en version cartes.'),
+('Suspects', '45 min', '1-6', '12+', 'image/jeux/suspects.webp', 7, 'Menez des enquêtes narratives immersives.'),
+('Mysterium Park', '30 min', '2-6', '10+', 'image/jeux/mysteriumpark.webp', 7, 'Une version plus rapide de Mysterium pour deviner le coupable.');
