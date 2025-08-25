@@ -66,92 +66,11 @@ require_once ROOTPATH . "src/View/template/header.php";
     <section class="featured-section">
         <div class="container-body">
             <h2 class="section-title">Jeux populaires cette semaine</h2>
-            <div class="games-grid">
-                <div class="game-card">
-                    <div class="game-image">🏰</div>
-                    <div class="game-info">
-                        <div class="game-title">Wingspan</div>
-                        <div class="game-meta">
-                            <span>1-5 joueurs</span>
-                            <span>40-70 min</span>
-                            <span>10+ ans</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span>4.8 (2,847 avis)</span>
-                        </div>
-                        <div class="game-tags">
-                            <span class="tag">Stratégie</span>
-                            <span class="tag">Nature</span>
-                            <span class="tag">Collection</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="game-card">
-                    <div class="game-image">🚂</div>
-                    <div class="game-info">
-                        <div class="game-title">Les Aventuriers du Rail</div>
-                        <div class="game-meta">
-                            <span>2-5 joueurs</span>
-                            <span>30-60 min</span>
-                            <span>8+ ans</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★☆</span>
-                            <span>4.6 (3,521 avis)</span>
-                        </div>
-                        <div class="game-tags">
-                            <span class="tag">Familial</span>
-                            <span class="tag">Collection</span>
-                            <span class="tag">Géographie</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="game-card">
-                    <div class="game-image">🌟</div>
-                    <div class="game-info">
-                        <div class="game-title">Azul</div>
-                        <div class="game-meta">
-                            <span>2-4 joueurs</span>
-                            <span>30-45 min</span>
-                            <span>8+ ans</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span>4.7 (1,956 avis)</span>
-                        </div>
-                        <div class="game-tags">
-                            <span class="tag">Abstrait</span>
-                            <span class="tag">Puzzle</span>
-                            <span class="tag">Tactique</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="game-card">
-                    <div class="game-image">🎭</div>
-                    <div class="game-info">
-                        <div class="game-title">Codenames</div>
-                        <div class="game-meta">
-                            <span>2-8 joueurs</span>
-                            <span>15-30 min</span>
-                            <span>10+ ans</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★☆</span>
-                            <span>4.5 (4,203 avis)</span>
-                        </div>
-                        <div class="game-tags">
-                            <span class="tag">Party Game</span>
-                            <span class="tag">Mots</span>
-                            <span class="tag">Équipes</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="games-grid" id="game-list">
+                <?php foreach (array_slice($games, 0, 3) as $game): ?>
+                    <?php include ROOTPATH . 'src/View/template/game_item.php'; ?>
+                <?php endforeach; ?>
             </div>
-        </div>
     </section>
 
     <section class="stats-section">

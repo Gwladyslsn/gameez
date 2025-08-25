@@ -9,6 +9,10 @@ return [
         'controller' => App\Controller\PageController::class,
         'method' => 'register'
     ],
+    '/login' => [
+        'controller' => App\Controller\PageController::class,
+        'method' => 'login'
+    ],
     '/dashboardUser' => [
         'controller' => App\Controller\PageController::class,
         'method' => 'dashboardUser'
@@ -25,6 +29,7 @@ return [
         'controller' => App\Controller\GameController::class,
         'method' => 'loadMoreGames'
     ],
+    
 
 
 
@@ -34,5 +39,10 @@ return [
     '/dashboardAdmin' => [
         'controller' => App\Controller\PageController::class,
         'method' => 'dashboardAdmin'
+    ],
+
+    '/loginSuccess' => [
+        'controller' => App\Controller\PageController::class,
+        'method' => 'loginSuccess'
     ],
 ];

@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
         }
     })
 
-    /* INSCRIPTION */
+    /* CONNEXION */
     const formLog = document.getElementById('form_log');
     const userMailLogInput = document.getElementById('loginEmail');
     const userPasswordLogInput = document.getElementById('loginPassword');

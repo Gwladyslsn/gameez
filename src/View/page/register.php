@@ -69,12 +69,12 @@ require_once ROOTPATH . "src/View/template/header.php";
             <button class="toggle-btn" onclick="showRegister()">Inscription</button>
         </div>
 
-        <!-- Login Form -->
-        <div id="loginForm" class="form-container active">
+        <!-- CONNEXION -->
+        <div id="loginForm" class="form-container active" >
             <h2 class="form-title">Bon retour !</h2>
             <p class="form-subtitle">Connectez-vous pour retrouver votre collection</p>
 
-            <form method="post" id="form_log">
+            <form method="post" id="form_log" action="/login">
                 <input type="hidden" name="form_type" value="log">
                 <div class="form-group">
                     <label for="loginEmail">Email</label>

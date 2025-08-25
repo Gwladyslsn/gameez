@@ -12,7 +12,13 @@ class PageController extends Controller
 {
     public function home()
     {
-        $this->render('View/page/home', []);
+        $database = new Database();
+        $pdo = $database->getConnection();
+        $gameRepository = new GameRepository($pdo);
+
+        $games = $gameRepository->getAllGames(3, 0); // seulement 3 jeux pour la section home
+
+        $this->render('View/page/home', ['games' => $games]);
     }
 
     public function register()
@@ -20,14 +26,33 @@ class PageController extends Controller
         $this->render('View/page/register', []);
     }
 
-    public function dashboardUser()
-    {
-        $this->render('View/page/dashboardUser', []);
-    }
     public function logout()
     {
         Auth::logout('/'); // appeler la fonction
     }
+
+
+    public function login()
+    {
+        $auth = new Auth;
+        $result = $auth->login();
+
+        if ($result === 'admin') {
+            $this->render('View/page/admin/loginSuccess', [
+                'redirectUrl' => '/dashboardAdmin'
+            ]);
+            exit;
+        } elseif ($result === 'user') {
+            header('Location: /dashboardAdmin');
+            exit;
+        } else {
+            $this->render('View/page/register', [
+                'error' => 'Identifiants incorrects.'
+            ]);
+        }
+    }
+
+
     public function games()
     {
         $database = new Database();
@@ -37,10 +62,16 @@ class PageController extends Controller
         $this->render('View/page/allGames', ['games' => $games]);
     }
 
-
     // ADMIN
     public function dashboardAdmin()
     {
         $this->render('View/page/admin/dashboardAdmin', []);
+    }
+
+    public function loginSuccess()
+    {
+        $this->render('View/page/admin/loginSuccess', [
+            'redirectUrl' => '/dashboardAdmin'
+        ]);
     }
 }

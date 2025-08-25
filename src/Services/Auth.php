@@ -71,19 +71,19 @@ class Auth
                 'admin_mail' => $admin['admin_mail'],
                 'admin_name' => $admin['admin_name']
             ];
-            header('Location: dashboardAdmin');
-            exit;
-        }
+            return 'admin';
+        };
 
         // 2. Sinon tentative connexion utilisateur
         $id_user = $userRepo->verifUserExists($email, $password);
         if ($id_user !== false) {
             $_SESSION['user'] = $id_user;
-            header('Location: dashboardUser');
-            exit;
+            return 'user';
         } else {
             $error = "Identifiants et/ou mot de passe incorrect(s).";
         }
+
+        return 'error';
     }
 
     /* DECONNEXION */
