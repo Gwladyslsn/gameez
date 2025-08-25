@@ -15,7 +15,8 @@ function showRegister() {
 }
 
 // Animation pour les formulaires
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function (e) {
+    e.preventDefault();
     const inputs = document.querySelectorAll('.form-input');
 
     inputs.forEach(input => {

@@ -75,18 +75,19 @@ require_once ROOTPATH . "src/View/template/header.php";
         </select>
     </div>
 
-    <div class="games-grid">
+    <div class="games-grid" id="game-list">
         <?php foreach ($games as $game): ?>
             <?php include ROOTPATH . 'src/View/template/game_item.php'; ?>
         <?php endforeach; ?>
     </div>
 
     <div class="load-more">
-        <button class="load-more-btn">Charger plus de jeux</button>
+        <button class="load-more-btn" id ="load-more-btn" data-offset="10">Charger plus de jeux</button>
     </div>
 </div>
 
-
+<script src="/asset/js/header.js"></script>
+<script src="/asset/js/games.js"></script>
 <?php
-$page_script = '/asset/js/header.js';
-require_once ROOTPATH . "src/View/template/footer.php"; ?>
+require_once ROOTPATH . "src/View/template/footer.php"; 
+?>

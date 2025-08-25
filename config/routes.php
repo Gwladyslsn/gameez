@@ -21,6 +21,10 @@ return [
         'controller' => App\Controller\PageController::class,
         'method' => 'games'
     ],
+    '/loadMoreGames' => [
+        'controller' => App\Controller\GameController::class,
+        'method' => 'loadMoreGames'
+    ],
 
 
 

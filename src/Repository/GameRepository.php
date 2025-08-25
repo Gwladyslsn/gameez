@@ -43,9 +43,12 @@ class GameRepository
     /**
      * @return GameEntity[]
      */
-    public function getAllGames(): array
+    public function getAllGames(int $limit = 10, int $offset = 0): array
     {
-        $stmt = $this->pdo->query("SELECT * FROM game");
+        $stmt = $this->pdo->prepare("SELECT * FROM game ORDER BY id_game ASC LIMIT :limit OFFSET :offset");
+        $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+        $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+        $stmt->execute();
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         $games = [];
@@ -64,6 +67,7 @@ class GameRepository
 
         return $games;
     }
+    
 
 
     /* UPDATE */
