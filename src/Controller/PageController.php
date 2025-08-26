@@ -16,7 +16,7 @@ class PageController extends Controller
         $pdo = $database->getConnection();
         $gameRepository = new GameRepository($pdo);
 
-        $games = $gameRepository->getAllGames(3, 0); // seulement 3 jeux pour la section home
+        $games = $gameRepository->getAllGames(6, 0); // seulement 3 jeux pour la section home
 
         $this->render('View/page/home', ['games' => $games]);
     }

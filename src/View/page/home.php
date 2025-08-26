@@ -67,8 +67,8 @@ require_once ROOTPATH . "src/View/template/header.php";
         <div class="container-body">
             <h2 class="section-title">Jeux populaires cette semaine</h2>
             <div class="games-grid" id="game-list">
-                <?php foreach (array_slice($games, 0, 3) as $game): ?>
-                    <?php include ROOTPATH . 'src/View/template/game_item.php'; ?>
+                <?php foreach (array_slice($games, 0, 6) as $game): ?>
+                    <?php require ROOTPATH . 'src/View/template/game_item.php'; ?>
                 <?php endforeach; ?>
             </div>
     </section>

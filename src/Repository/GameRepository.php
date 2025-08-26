@@ -68,30 +68,6 @@ class GameRepository
         return $games;
     }
     
-    /*function getBestGames(int $limit = 3): array
-    {
-        $stmt = $this->pdo->prepare("SELECT * FROM game ORDER BY rating DESC LIMIT :limit");
-        $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
-        $stmt->execute();
-        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        $games = [];
-        foreach ($results as $row) {
-            $game = new GameEntity();
-            $game->setIdGame((int)$row['id_game']);
-            $game->setNameGame($row['game_name']);
-            $game->setDurationGame((int)$row['game_duration']);
-            $game->setNbGamer($row['nb_gamer']);
-            $game->setAgeGamer((int)$row['age_gamer']);
-            $game->setImageGame($row['image']);
-            $game->setDescriptionGame($row['game_description'] ?? "");
-
-            $games[] = $game;
-        }
-
-        return $games;
-    }*/
-
 
     /* UPDATE */
 
