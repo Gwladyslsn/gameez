@@ -1,33 +1,35 @@
+<?php
+require_once ROOTPATH . 'config/config.php';
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="asset/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Gameez - Dashboard Admin</title>
 
 </head>
+
 <body>
     <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <span class="icon-gamepad"></span>
-                    <span>Gameez Admin</span>
-                </div>
-                <div class="search-container">
-                    <div class="search-box">
-                        <span class="search-icon icon-search"></span>
-                        <input type="text" placeholder="Rechercher un jeu...">
-                    </div>
-                    <span class="icon-settings" style="cursor: pointer; font-size: 1.25rem;"></span>
-                </div>
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <a href="<?= BASE_URL ?>">
+                    <img src="asset/image/logo.jpg" alt="logo Gameez" class="logo">
+                </a>
             </div>
-        </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Rechercher un jeu...">
+                <button>🔍</button>
+            </div>
+    </header>
 
-        
-<!-- Navigation -->
+    <!-- Navigation -->
     <nav class="nav-tabs">
         <div class="container">
             <div class="nav-tabs-container">
@@ -50,6 +52,3 @@
             </div>
         </div>
     </nav>
-    </header>
-
-    
