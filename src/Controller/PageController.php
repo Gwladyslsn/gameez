@@ -43,13 +43,18 @@ class PageController extends Controller
             ]);
             exit;
         } elseif ($result === 'user') {
-            header('Location: /dashboardAdmin');
+            header('Location: /dashboardUser');
             exit;
         } else {
             $this->render('View/page/register', [
                 'error' => 'Identifiants incorrects.'
             ]);
         }
+    }
+
+    public function dashboardUser()
+    {
+        $this->render('View/page/dashboardUser', []);
     }
 
 

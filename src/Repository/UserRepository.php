@@ -54,11 +54,11 @@ class UserRepository
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getDataUser(string $idUser): ?array
+    public function getDataUser(int $idUser): ?array
     {
         $sql = "SELECT * FROM user WHERE id_user = :idUser";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute(['id_user' => $idUser]);
+        $stmt->execute(['idUser' => $idUser]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
         return $user ?: null;
     }
