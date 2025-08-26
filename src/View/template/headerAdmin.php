@@ -23,6 +23,7 @@ require_once ROOTPATH . 'config/config.php';
                     <img src="asset/image/logo.jpg" alt="logo Gameez" class="logo">
                 </a>
             </div>
+            <h1>Espace admin</h1>
             <div class="search-bar">
                 <input type="text" placeholder="Rechercher un jeu...">
                 <button>🔍</button>
