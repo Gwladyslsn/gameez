@@ -177,10 +177,6 @@ if (isset($_SESSION['user'])) {
                     <div class="stat-number">7</div>
                     <div class="stat-label">Avis rédigés</div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number">156</div>
-                    <div class="stat-label">Heures de jeu</div>
-                </div>
             </div>
         </div>
     </div>
