@@ -16,9 +16,15 @@ class PageController extends Controller
         $pdo = $database->getConnection();
         $gameRepository = new GameRepository($pdo);
 
-        $games = $gameRepository->getAllGames(6, 0); // seulement 3 jeux pour la section home
+        $popularGames = $gameRepository->getPopularGames(6, 0); // seulement 3 jeux pour la section home
+        $newGames = $gameRepository->getNewGames(); // 3 jeux en cours de sortie
+        $nbGames = count($gameRepository->getAllGames());
 
-        $this->render('View/page/home', ['games' => $games]);
+        $this->render('View/page/home', [
+            'popularGames' => $popularGames,
+            'newGames' => $newGames,
+            'nbGames' => $nbGames
+        ]);
     }
 
     public function register()
@@ -63,8 +69,14 @@ class PageController extends Controller
         $database = new Database();
         $pdo = $database->getConnection();
         $gameRepository = new GameRepository($pdo);
+
+        
         $games = $gameRepository->getAllGames();
-        $this->render('View/page/allGames', ['games' => $games]);
+        $nbGames = $gameRepository->countAllGames();
+        $this->render('View/page/allGames', [
+            'games' => $games,
+            'nbGames' => $nbGames
+    ]);
     }
 
     // ADMIN

@@ -66,7 +66,7 @@ require_once ROOTPATH . "src/View/template/header.php";
     </div>
 
     <div class="results-info">
-        <span>1,247 jeux trouvés</span>
+        <span><?= $nbGames ?> jeux trouvés</span>
         <select class="sort-select">
             <option>Trier par popularité</option>
             <option>Trier par note</option>

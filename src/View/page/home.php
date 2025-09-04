@@ -67,8 +67,8 @@ require_once ROOTPATH . "src/View/template/header.php";
         <div class="container-body">
             <h2 class="section-title">Jeux populaires cette semaine</h2>
             <div class="games-grid" id="game-list">
-                <?php foreach (array_slice($games, 0, 6) as $game): ?>
-                    <?php require ROOTPATH . 'src/View/template/game_item.php'; ?>
+                <?php foreach (array_slice($popularGames, 0, 6) as $popularGame): ?>
+                    <?php require ROOTPATH . 'src/View/template/popular_game_item.php'; ?>
                 <?php endforeach; ?>
             </div>
     </section>
@@ -77,7 +77,7 @@ require_once ROOTPATH . "src/View/template/header.php";
         <div class="container-body">
             <div class="stats-grid">
                 <div class="stat-item">
-                    <span class="stat-number">5,247</span>
+                    <span class="stat-number"><?= $nbGames ?></span>
                     <span class="stat-label">Jeux référencés</span>
                 </div>
                 <div class="stat-item">
@@ -99,71 +99,11 @@ require_once ROOTPATH . "src/View/template/header.php";
     <section class="featured-section">
         <div class="container-body">
             <h2 class="section-title">Nouveautés du mois</h2>
-            <div class="games-grid">
-                <div class="game-card">
-                    <div class="game-image">🦸</div>
-                    <div class="game-info">
-                        <div class="game-title">Marvel United</div>
-                        <div class="game-meta">
-                            <span>1-4 joueurs</span>
-                            <span>40-60 min</span>
-                            <span>14+ ans</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★☆</span>
-                            <span>4.3 (892 avis)</span>
-                        </div>
-                        <div class="game-tags">
-                            <span class="tag">Coopératif</span>
-                            <span class="tag">Super-héros</span>
-                            <span class="tag">Figurines</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="game-card">
-                    <div class="game-image">🌊</div>
-                    <div class="game-info">
-                        <div class="game-title">Cascadia</div>
-                        <div class="game-meta">
-                            <span>1-4 joueurs</span>
-                            <span>30-45 min</span>
-                            <span>10+ ans</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span>4.9 (1,247 avis)</span>
-                        </div>
-                        <div class="game-tags">
-                            <span class="tag">Placement</span>
-                            <span class="tag">Nature</span>
-                            <span class="tag">Puzzle</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="game-card">
-                    <div class="game-image">⚔️</div>
-                    <div class="game-info">
-                        <div class="game-title">Gloomhaven</div>
-                        <div class="game-meta">
-                            <span>1-4 joueurs</span>
-                            <span>90-150 min</span>
-                            <span>14+ ans</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span>4.9 (5,687 avis)</span>
-                        </div>
-                        <div class="game-tags">
-                            <span class="tag">Coopératif</span>
-                            <span class="tag">RPG</span>
-                            <span class="tag">Campagne</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="games-grid" id="new-game-list">
+            <?php foreach (array_slice($newGames, 0, 3) as $newGame): ?>
+                <?php require ROOTPATH . 'src/View/template/new_game_item.php'; ?>
+            <?php endforeach; ?>
             </div>
-        </div>
     </section>
 </main>
 

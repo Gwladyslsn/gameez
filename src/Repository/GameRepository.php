@@ -45,10 +45,11 @@ class GameRepository
      */
     public function getAllGames(int $limit = 10, int $offset = 0): array
     {
-        $stmt = $this->pdo->prepare("SELECT * FROM game ORDER BY id_game ASC LIMIT :limit OFFSET :offset");
-        $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
-        $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
-        $stmt->execute();
+        $limit = (int) $limit;
+        $offset = (int) $offset;
+
+        $sql = "SELECT * FROM game ORDER BY id_game ASC LIMIT $limit OFFSET $offset";
+        $stmt = $this->pdo->query($sql);
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         $games = [];
@@ -67,7 +68,63 @@ class GameRepository
 
         return $games;
     }
-    
+
+    public function getPopularGames(int $limit = 10, int $offset = 0): array
+    {
+        $stmt = $this->pdo->prepare("SELECT * FROM game ORDER BY id_game ASC LIMIT :limit OFFSET :offset");
+        $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+        $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+        $stmt->execute();
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $popularGames = [];
+        foreach ($results as $row) {
+            $popularGame = new GameEntity();
+            $popularGame->setIdGame((int)$row['id_game']);
+            $popularGame->setNameGame($row['game_name']);
+            $popularGame->setDurationGame((int)$row['game_duration']);
+            $popularGame->setNbGamer($row['nb_gamer']);
+            $popularGame->setAgeGamer((int)$row['age_gamer']);
+            $popularGame->setImageGame($row['image']);
+            $popularGame->setDescriptionGame($row['game_description'] ?? "");
+
+            $popularGames[] = $popularGame;
+        }
+
+        return $popularGames;
+    }
+
+    public function getNewGames(int $limit = 3, int $offset = 0): array
+    {
+        $stmt = $this->pdo->prepare("SELECT * FROM game ORDER BY id_game DESC LIMIT :limit OFFSET :offset");
+        $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+        $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+        $stmt->execute();
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $newGames = [];
+        foreach ($results as $row) {
+            $newGame = new GameEntity();
+            $newGame->setIdGame((int)$row['id_game']);
+            $newGame->setNameGame($row['game_name']);
+            $newGame->setDurationGame((int)$row['game_duration']);
+            $newGame->setNbGamer($row['nb_gamer']);
+            $newGame->setAgeGamer((int)$row['age_gamer']);
+            $newGame->setImageGame($row['image']);
+            $newGame->setDescriptionGame($row['game_description'] ?? "");
+
+            $newGames[] = $newGame;
+        }
+
+        return $newGames;
+    }
+
+    public function countAllGames(): int
+    {
+        $stmt = $this->pdo->query("SELECT COUNT(*) FROM game");
+        return (int) $stmt->fetchColumn();
+    }
+
 
     /* UPDATE */
 

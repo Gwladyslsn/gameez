@@ -3,7 +3,7 @@
 $imagePath = '/asset/' . htmlspecialchars($game->getImageGame());
 ?>
 
-<div class="game-card">
+<div class="game-card game">
     <div class="game-image">
         <span><img src="<?= $imagePath ?>" alt="Image du jeu" class="gameImage"></span>
     </div>
