@@ -13,53 +13,93 @@ require_once ROOTPATH . "src/View/template/header.php";
 
     <div class="filters-section">
         <div class="search-bar">
-            <input type="text" class="search-input" placeholder="Rechercher un jeu, un éditeur, un auteur...">
+            <input type="text" id="searchInput" class="search-input" placeholder="Rechercher un jeu, un éditeur, un auteur...">
         </div>
 
         <div class="filters-grid">
             <div class="filter-group">
                 <label class="filter-label">Catégorie</label>
-                <select class="filter-select">
-                    <option>Toutes les catégories</option>
-                    <option>Stratégie</option>
-                    <option>Famille</option>
-                    <option>Coopératif</option>
-                    <option>Ambiance</option>
-                    <option>Expert</option>
+                <select class="filter-select" id="categoryFilter">
+                    <option value="">Toutes les catégories</option>
+                    <option value="Stratégie">Stratégie</option>
+                    <option value="Ambiance">Ambiance</option>
+                    <option value="Cartes">Cartes</option>
+                    <option value="Dés">Dés</option>
+                    <option value="Rôles">Rôles</option>
+                    <option value="Cooperatif">Cooperatif</option>
+                    <option value="Enquêtes">Enquêtes</option>
+                    <option value="Enfant">Enfant</option>
+                    <option value="Culturel">Culturel</option>
                 </select>
             </div>
 
             <div class="filter-group">
                 <label class="filter-label">Nombre de joueurs</label>
-                <select class="filter-select">
+                <select class="filter-select" id="nbGamerFilter">
                     <option>Tous</option>
-                    <option>1 joueur</option>
-                    <option>2 joueurs</option>
-                    <option>3-4 joueurs</option>
-                    <option>5+ joueurs</option>
+                    <option value="1-4">1 à 4 joueurs</option>
+                    <option value="1-5">1 à 5 joueurs</option>
+                    <option value="1-5">1 à 6 joueurs</option>
+                    <option value="1-7">1 à 7 joueurs</option>
+                    <option value="1-8">1 à 8 joueurs</option>
+                    <option value="2-4">2 à 4 joueurs</option>
+                    <option value="2-5">2 à 5 joueurs</option>
+                    <option value="2-6">2 à 6 joueurs</option>
+                    <option value="2-7">2 à 7 joueurs</option>
+                    <option value="2-8">2 à 8 joueurs</option>
+                    <option value="2-10">2 à 10 joueurs</option>
+                    <option value="2-16">2 à 16 joueurs</option>
+                    <option value="3-4">3 à 4 joueurs</option>
+                    <option value="3-6">3 à 6 joueurs</option>
+                    <option value="3-7">3 à 7 joueurs</option>
+                    <option value="3-8">3 à 8 joueurs</option>
+                    <option value="3-10">3 à 10 joueurs</option>
+                    <option value="3-12">3 à 12 joueurs</option>
+                    <option value="3-16">3 à 16 joueurs</option>
+                    <option value="4">4 joueurs</option>
+                    <option value="4-7">4 à 7 joueurs</option>
+                    <option value="4-8">4 à 8 joueurs</option>
+                    <option value="4-9">4 à 9 joueurs</option>
+                    <option value="4-12">4 à 12 joueurs</option>
+                    <option value="5-10">5 à 10 joueurs</option>
+                    <option value="6-20">6 à 20 joueurs</option>
+                    <option value="8-18">8 à 18 joueurs</option>
                 </select>
             </div>
 
             <div class="filter-group">
                 <label class="filter-label">Âge</label>
-                <select class="filter-select">
+                <select class="filter-select" id="ageFilter">
                     <option>Tous âges</option>
-                    <option>6+ ans</option>
-                    <option>8+ ans</option>
-                    <option>10+ ans</option>
-                    <option>12+ ans</option>
-                    <option>14+ ans</option>
+                    <option value="6+">6+ ans</option>
+                    <option value="7+">7+ ans</option>
+                    <option value="8+">8+ ans</option>
+                    <option value="10+">10+ ans</option>
+                    <option value="12+">12+ ans</option>
+                    <option value="14+">14+ ans</option>
+                    <option value="16+">16+ ans</option>
                 </select>
             </div>
 
             <div class="filter-group">
                 <label class="filter-label">Durée</label>
-                <select class="filter-select">
+                <select class="filter-select" id="durationFilter">
                     <option>Toutes durées</option>
-                    <option>Moins de 30 min</option>
-                    <option>30-60 min</option>
-                    <option>60-120 min</option>
-                    <option>Plus de 2h</option>
+                    <option value="15 min">15 min</option>
+                    <option value="15 min">15 min</option>
+                    <option value="20-40 min">20 à 40 min</option>
+                    <option value="25 min">25 min</option>
+                    <option value="30 min">30 min</option>
+                    <option value="30-45 min">30 à 45 min</option>
+                    <option value="30-60 min">30 à 60 min</option>
+                    <option value="45 min">45 min</option>
+                    <option value="45-90 min">45 à 90 min</option>
+                    <option value="60-90 min">1h à 1h30h</option>
+                    <option value="90 min">1h30</option>
+                    <option value="90-120 min">1h30 à 2h</option>
+                    <option value="120 min">2h</option>
+                    <option value="120-180 min">2h 2h30</option>
+                    <option value="180 min">2h30</option>
                 </select>
             </div>
         </div>
@@ -71,7 +111,6 @@ require_once ROOTPATH . "src/View/template/header.php";
             <option>Trier par popularité</option>
             <option>Trier par note</option>
             <option>Trier par nom</option>
-            <option>Trier par date de sortie</option>
         </select>
     </div>
 

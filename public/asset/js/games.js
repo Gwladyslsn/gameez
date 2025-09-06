@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function (e) {
 
+    //Charger plus de jeux
     const loadMoreBtn = document.getElementById('load-more-btn');
 
     loadMoreBtn.addEventListener('click', function (e) {
@@ -23,4 +24,40 @@ document.addEventListener('DOMContentLoaded', function (e) {
             })
             .catch(error => console.error('Erreur:', error));
     });
+
+
+    // barre de recherche
+    const searchInput = document.getElementById("searchInput");
+    const categoryFilter = document.getElementById("categoryFilter");
+    // tu feras pareil pour joueurs, age, duree
+    const resultsBox = document.getElementById("results");
+
+    async function fetchGames() {
+        const nameGame = searchInput.value.trim();
+        const category = categoryFilter.value;
+
+        const params = new URLSearchParams({
+            nameGame,
+            category,
+            // ajoute ici les autres filtres ex: players, age, duration
+        });
+
+        const res = await fetch(`/game/search?${params.toString()}`);
+        const games = await res.json();
+
+        resultsBox.innerHTML = games.length
+            ? games.map(g => `<div class="game-card">${g.title} (${g.publisher})</div>`).join("")
+            : "<p>Aucun jeu trouvé</p>";
+    }
+
+    // Recherche dès qu’on tape (avec petit délai pour éviter spam)
+    let debounceTimer;
+    searchInput.addEventListener("input", () => {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(fetchGames, 300);
+    });
+
+    // Recherche quand on change un filtre
+    categoryFilter.addEventListener("change", fetchGames);
+
 });
