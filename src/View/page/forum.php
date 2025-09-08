@@ -5,7 +5,7 @@ require_once ROOTPATH . "src/View/template/header.php";
 
 <div class="container-forum">
     <div class="header-forum">
-        <h1>🎮 Communauté Gameez</h1>
+        <h1>Communauté Gameez</h1>
         <p>Partagez votre passion pour les jeux vidéo avec la communauté</p>
     </div>
 
@@ -27,7 +27,7 @@ require_once ROOTPATH . "src/View/template/header.php";
                 </div>
             </div>
             <div class="post-content">
-                <div class="post-title">🔥 Nouveau jeu indé découvert : "Pixel Adventures"</div>
+                <div class="post-title">Nouveau jeu indé découvert : "Pixel Adventures"</div>
                 <div class="post-text">Salut la communauté ! Je viens de découvrir ce petit jeu indépendant absolument génial. Le gameplay est fluide, les graphismes pixel art sont magnifiques et la bande sonore est addictive. Quelqu'un d'autre l'a testé ? J'aimerais avoir vos avis !</div>
             </div>
             <div class="post-actions">
@@ -73,7 +73,7 @@ require_once ROOTPATH . "src/View/template/header.php";
                 </div>
             </div>
             <div class="post-content">
-                <div class="post-title">🕹️ Ma collection rétro s'agrandit !</div>
+                <div class="post-title">Ma collection rétro s'agrandit !</div>
                 <div class="post-text">Je viens de récupérer une Game Boy Color en parfait état avec Pokémon Or ! La nostalgie est au rendez-vous 😍 Quels sont vos jeux rétro préférés ? Et avez-vous des conseils pour bien conserver les cartouches ?</div>
             </div>
             <div class="post-actions">
@@ -111,7 +111,7 @@ require_once ROOTPATH . "src/View/template/header.php";
                 </div>
             </div>
             <div class="post-content">
-                <div class="post-title">⚡ Tournoi speedrun ce weekend !</div>
+                <div class="post-title">Tournoi speedrun ce weekend !</div>
                 <div class="post-text">Salut les speedrunners ! J'organise un petit tournoi amical ce weekend sur Super Mario Bros. Catégorie Any% ! Qui est chaud pour participer ? On streamera sur Twitch et il y aura peut-être des petits prix à gagner 🏆</div>
             </div>
             <div class="post-actions">
@@ -134,10 +134,11 @@ require_once ROOTPATH . "src/View/template/header.php";
     </div>
 
     <button class="floating-action" onclick="scrollToTop()">
-        ↑
+        <i class="fa-solid fa-arrow-up"></i>
     </button>
 </div>
 
+<script src="/asset/js/forum.js"></script>
 <?php
 $page_script = '/asset/js/header.js';
 require_once ROOTPATH . "src/View/template/footer.php"; ?>
