@@ -5,7 +5,7 @@ require_once ROOTPATH . "src/View/template/header.php";
 
 <div class="container-forum">
     <div class="header-forum">
-        <h1>Communauté Gameez</h1>
+        <h1><i class="fa-solid fa-dice"></i> Communauté Gameez <i class="fa-solid fa-dice"></i></h1>
         <p>Partagez votre passion pour les jeux vidéo avec la communauté</p>
     </div>
 

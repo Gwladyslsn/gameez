@@ -37,6 +37,10 @@ return [
         'controller' => App\Controller\PageController::class,
         'method' => 'forum'
     ],
+    '/extensions' => [
+        'controller' => App\Controller\PageController::class,
+        'method' => 'extensions'
+    ],
     
 
 

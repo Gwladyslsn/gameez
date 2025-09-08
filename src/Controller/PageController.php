@@ -91,6 +91,11 @@ class PageController extends Controller
         $this->render('View/page/forum', []);
     }
 
+    public function extensions()
+    {
+        $this->render('View/page/extensions', []);
+    }
+
     // ADMIN
     public function dashboardAdmin()
     {

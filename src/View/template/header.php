@@ -28,8 +28,8 @@ require_once ROOTPATH . 'config/config.php';
             </button>
 
             <div class="nav-links">
-                <a href="/games">Parcourir</a>
-                <a href="#nouveautes">Nouveautés</a>
+                <a href="/games">Tous les jeux</a>
+                <a href="/extensions">Espace extensions</a>
                 <a href="/forum">Communauté</a>
                 <?php if (isset($_SESSION['admin'])): ?>
                     <a href="/dashboardAdmin">Espace Admin</a>
