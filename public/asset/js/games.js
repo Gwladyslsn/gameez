@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
             <h3 class="game-title">${g.game_name}</h3>
             <div class="game-meta">
                 <span class="meta-tag">${g.nb_gamer} joueurs</span>
-                <span class="meta-tag">${g.duration_game} minutes</span>
+                <span class="meta-tag">${g.game_duration} minutes</span>
                 <span class="meta-tag">à partir de ${g.age_gamer} ans</span>
             </div>
             <div class="game-rating">

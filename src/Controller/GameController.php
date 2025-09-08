@@ -19,8 +19,6 @@ class GameController
     {
         $database = new Database();
         $pdo = $database->getConnection();
-
-        
         $games = $this->gameRepository->getAllGames(10, 0);
 
         require_once ROOTPATH . 'src/View/page/allGames.php';
@@ -28,9 +26,6 @@ class GameController
 
     public function loadMoreGames()
     {
-
-
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $offset = isset($_POST['offset']) ? (int)$_POST['offset'] : 0;
             $games = $this->gameRepository->getAllGames(10, $offset);

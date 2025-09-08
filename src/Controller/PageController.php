@@ -74,7 +74,7 @@ class PageController extends Controller
 
         
         $games = $gameRepository->getAllGames();
-        $nbGames = $gameRepository->countAllGames();
+        $nbGames = $gameRepository->countGames();
         $this->render('View/page/allGames', [
             'games' => $games,
             'nbGames' => $nbGames
