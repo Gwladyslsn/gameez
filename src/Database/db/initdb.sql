@@ -16,8 +16,8 @@ CREATE TABLE user(
 	,CONSTRAINT user_PK PRIMARY KEY (id_joueur)
 )
 
-ALTER TABLE user
-CHANGE id_joueur id_user INT AUTO_INCREMENT;
+ALTER TABLE list 
+CHANGE COLUMN id_joueur id_user INT NOT NULL;
 
 
 /*TABLE ADMIN*/
@@ -68,6 +68,16 @@ CREATE TABLE list(
 
 	,CONSTRAINT list_user_FK FOREIGN KEY (id_joueur) REFERENCES user(id_joueur)
 )
+
+
+CREATE TABLE list_items (
+        id_list_item INT AUTO_INCREMENT PRIMARY KEY,
+        list_id INT NOT NULL,
+        id_game INT NOT NULL,
+        CONSTRAINT fk_list FOREIGN KEY (list_id) REFERENCES list(id_list),
+        CONSTRAINT fk_game FOREIGN KEY (id_game) REFERENCES game(id_game)
+);
+
 
 /*avis*/
 CREATE TABLE review(

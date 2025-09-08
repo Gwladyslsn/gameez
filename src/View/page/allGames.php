@@ -1,7 +1,7 @@
 <?php
 require_once ROOTPATH . "src/View/template/header.php";
 
-
+var_dump ($_SESSION['user']);
 ?>
 
 

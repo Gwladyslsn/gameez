@@ -96,6 +96,15 @@ class PageController extends Controller
         $this->render('View/page/extensions', []);
     }
 
+    
+
+
+
+
+
+
+
+
     // ADMIN
     public function dashboardAdmin()
     {

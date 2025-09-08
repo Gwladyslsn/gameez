@@ -41,6 +41,14 @@ return [
         'controller' => App\Controller\PageController::class,
         'method' => 'extensions'
     ],
+    '/getUserLists' => [
+        'controller' => App\Controller\ListController::class,
+        'method' => 'getUserLists'
+    ],
+    '/add' => [
+        'controller' => App\Controller\ListController::class,
+        'method' => 'add'
+    ],
     
 
 

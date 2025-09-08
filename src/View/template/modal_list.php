@@ -14,5 +14,3 @@
         <button id="validate-add">Valider</button>
     </div>
 </div>
-
-<script src="/asset/js/modalList.js"></script>
