@@ -33,6 +33,10 @@ return [
         'controller' => App\Controller\GameController::class,
         'method' => 'searchGame'
     ],
+    '/forum' => [
+        'controller' => App\Controller\PageController::class,
+        'method' => 'forum'
+    ],
     
 
 

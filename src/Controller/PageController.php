@@ -86,6 +86,11 @@ class PageController extends Controller
         $this->render('View/page/allGames', []);
     }
 
+    public function forum()
+    {
+        $this->render('View/page/forum', []);
+    }
+
     // ADMIN
     public function dashboardAdmin()
     {

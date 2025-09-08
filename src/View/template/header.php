@@ -29,9 +29,8 @@ require_once ROOTPATH . 'config/config.php';
 
             <div class="nav-links">
                 <a href="/games">Parcourir</a>
-                <a href="#top-rated">Top jeux</a>
                 <a href="#nouveautes">Nouveautés</a>
-                <a href="#communaute">Communauté</a>
+                <a href="/forum">Communauté</a>
                 <?php if (isset($_SESSION['admin'])): ?>
                     <a href="/dashboardAdmin">Espace Admin</a>
                 <?php elseif (isset($_SESSION['user'])): ?>
@@ -44,9 +43,5 @@ require_once ROOTPATH . 'config/config.php';
             <?php endif; ?>
             </div>
 
-            <div class="search-bar">
-                <input type="text" placeholder="Rechercher un jeu...">
-                <button>🔍</button>
-            </div>
         </nav>
     </header>
