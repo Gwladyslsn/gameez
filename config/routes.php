@@ -29,6 +29,10 @@ return [
         'controller' => App\Controller\GameController::class,
         'method' => 'loadMoreGames'
     ],
+    '/searchGame' => [
+        'controller' => App\Controller\GameController::class,
+        'method' => 'searchGame'
+    ],
     
 
 

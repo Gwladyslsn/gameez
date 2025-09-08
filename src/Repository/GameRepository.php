@@ -125,6 +125,44 @@ class GameRepository
         return (int) $stmt->fetchColumn();
     }
 
+    public function searchGames(string $nameGame = '', int $idCategory = 0, string $nbPlayer = '', string $agePlayer = '', string $durationGame = ''): array
+    {
+
+        $sql = "SELECT * FROM game WHERE 1=1";
+        $params = [];
+
+        if ($nameGame) {
+            $sql .= " AND (game_name LIKE :nameGame)";
+            $params['nameGame'] = "%$nameGame%";
+        }
+
+        if ($idCategory > 0) {
+            $sql .= " AND id_category = :idCategory";
+            $params['idCategory'] = $idCategory;
+        }
+
+        if ($nbPlayer) {
+            $sql .= " AND nb_gamer = :nbPlayer";
+            $params['nbPlayer'] = $nbPlayer;
+        }
+
+        if ($agePlayer) {
+            $sql .= " AND age_gamer = :agePlayer";
+            $params['agePlayer'] = $agePlayer;
+        }
+
+        if ($durationGame) {
+            $sql .= " AND game_duration = :gameDuration";
+            $params['durationGame'] = $durationGame;
+        }
+
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute($params);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 
     /* UPDATE */
 

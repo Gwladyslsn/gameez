@@ -10,6 +10,8 @@ use App\Database\Database;
 
 class PageController extends Controller
 {
+
+    
     public function home()
     {
         $database = new Database();
@@ -79,6 +81,11 @@ class PageController extends Controller
     ]);
     }
 
+    public function searchGame()
+    {
+        $this->render('View/page/allGames', []);
+    }
+
     // ADMIN
     public function dashboardAdmin()
     {
@@ -91,4 +98,7 @@ class PageController extends Controller
             'redirectUrl' => '/dashboardAdmin'
         ]);
     }
+
+    
+
 }

@@ -14,29 +14,30 @@ require_once ROOTPATH . "src/View/template/header.php";
     <div class="filters-section">
         <div class="search-bar">
             <input type="text" id="searchInput" class="search-input" placeholder="Rechercher un jeu, un éditeur, un auteur...">
+            <button id="searchBtn" class="btn search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
 
         <div class="filters-grid">
             <div class="filter-group">
                 <label class="filter-label">Catégorie</label>
                 <select class="filter-select" id="categoryFilter">
-                    <option value="">Toutes les catégories</option>
-                    <option value="Stratégie">Stratégie</option>
-                    <option value="Ambiance">Ambiance</option>
-                    <option value="Cartes">Cartes</option>
-                    <option value="Dés">Dés</option>
-                    <option value="Rôles">Rôles</option>
-                    <option value="Cooperatif">Cooperatif</option>
-                    <option value="Enquêtes">Enquêtes</option>
-                    <option value="Enfant">Enfant</option>
-                    <option value="Culturel">Culturel</option>
+                    <option value="0">Toutes les catégories</option>
+                    <option value="1">Stratégie</option>
+                    <option value="2">Ambiance</option>
+                    <option value="3">Cartes</option>
+                    <option value="4">Dés</option>
+                    <option value="5">Rôles</option>
+                    <option value="6">Cooperatif</option>
+                    <option value="7">Enquêtes</option>
+                    <option value="8">Enfant</option>
+                    <option value="9">Culturel</option>
                 </select>
             </div>
 
             <div class="filter-group">
                 <label class="filter-label">Nombre de joueurs</label>
                 <select class="filter-select" id="nbGamerFilter">
-                    <option>Tous</option>
+                    <option value="">Tous</option>
                     <option value="1-4">1 à 4 joueurs</option>
                     <option value="1-5">1 à 5 joueurs</option>
                     <option value="1-5">1 à 6 joueurs</option>
@@ -70,7 +71,7 @@ require_once ROOTPATH . "src/View/template/header.php";
             <div class="filter-group">
                 <label class="filter-label">Âge</label>
                 <select class="filter-select" id="ageFilter">
-                    <option>Tous âges</option>
+                    <option value="">Tous âges</option>
                     <option value="6+">6+ ans</option>
                     <option value="7+">7+ ans</option>
                     <option value="8+">8+ ans</option>
@@ -84,9 +85,9 @@ require_once ROOTPATH . "src/View/template/header.php";
             <div class="filter-group">
                 <label class="filter-label">Durée</label>
                 <select class="filter-select" id="durationFilter">
-                    <option>Toutes durées</option>
+                    <option value="">Toutes durées</option>
                     <option value="15 min">15 min</option>
-                    <option value="15 min">15 min</option>
+                    <option value="20 min">20 min</option>
                     <option value="20-40 min">20 à 40 min</option>
                     <option value="25 min">25 min</option>
                     <option value="30 min">30 min</option>
