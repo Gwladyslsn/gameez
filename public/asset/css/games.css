@@ -1,7 +1,7 @@
 .container-body {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 20px;
 }
 
 .page-title {
@@ -31,7 +31,7 @@
 }
 
 .search-bar {
-    margin-bottom: 2rem;
+    margin: 0 auto;
 }
 
 .search-input {

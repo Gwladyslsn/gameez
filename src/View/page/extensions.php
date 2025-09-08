@@ -53,7 +53,6 @@ require_once ROOTPATH . "src/View/template/header.php";
             <div class="extension-info">
                 <h3 class="extension-name">Châteaux & Cathédrales</h3>
                 <div class="base-game">Extension pour • Carcassonne</div>
-                <span class="extension-type">Extension Majeure</span>
                 <p class="extension-description">Construisez des châteaux imposants et des cathédrales majestueuses. Cette extension ajoute 18 nouvelles tuiles et introduit un grand meeple pour renforcer vos revendications territoriales.</p>
             </div>
             <div class="extension-details">
@@ -69,28 +68,10 @@ require_once ROOTPATH . "src/View/template/header.php";
                     <span class="detail-label">🎯 Âge :</span>
                     <span class="detail-value">7+</span>
                 </div>
-                <div class="detail-item">
-                    <span class="detail-label">📦 Contenu :</span>
-                    <span class="detail-value">18 tuiles</span>
-                </div>
-            </div>
-            <div class="extension-stats">
-                <div class="stat">
-                    <span class="stat-number">9.1</span>
-                    <span class="stat-label">Note BGG</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">2.1</span>
-                    <span class="stat-label">Complexité</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">85%</span>
-                    <span class="stat-label">Recommandé</span>
-                </div>
             </div>
             <div class="extension-actions">
-                <button class="add-to-wishlist" onclick="toggleWishlist(this)">💝 Ajouter à ma liste</button>
-                <button class="view-details" onclick="showDetails(this)">📋 Détails</button>
+                <button class="add-to-wishlist">Ajouter à ma liste</button>
+                <button class="add-review">Donner mon avis</button>
             </div>
         </div>
 
@@ -99,7 +80,6 @@ require_once ROOTPATH . "src/View/template/header.php";
             <div class="extension-info">
                 <h3 class="extension-name">Marins & Ports</h3>
                 <div class="base-game">Extension pour • Catan</div>
-                <span class="extension-type">Extension Majeure</span>
                 <p class="extension-description">Explorez les mers et découvrez de nouvelles îles ! Construisez des bateaux, établissez des routes commerciales maritimes et colonisez des îles riches en ressources précieuses.</p>
             </div>
             <div class="extension-details">
@@ -115,28 +95,10 @@ require_once ROOTPATH . "src/View/template/header.php";
                     <span class="detail-label">🎯 Âge :</span>
                     <span class="detail-value">12+</span>
                 </div>
-                <div class="detail-item">
-                    <span class="detail-label">📦 Contenu :</span>
-                    <span class="detail-value">Plateau + 60 pièces</span>
-                </div>
-            </div>
-            <div class="extension-stats">
-                <div class="stat">
-                    <span class="stat-number">8.7</span>
-                    <span class="stat-label">Note BGG</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">2.8</span>
-                    <span class="stat-label">Complexité</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">78%</span>
-                    <span class="stat-label">Recommandé</span>
-                </div>
             </div>
             <div class="extension-actions">
-                <button class="add-to-wishlist in-wishlist" onclick="toggleWishlist(this)">💖 Dans ma liste</button>
-                <button class="view-details" onclick="showDetails(this)">📋 Détails</button>
+                <button class="add-to-wishlist">Ajouter à ma liste</button>
+                <button class="add-review">Donner mon avis</button>
             </div>
         </div>
 
@@ -145,7 +107,6 @@ require_once ROOTPATH . "src/View/template/header.php";
             <div class="extension-info">
                 <h3 class="extension-name">Au Seuil de l'Apocalypse</h3>
                 <div class="base-game">Extension pour • Pandemic</div>
-                <span class="extension-type">Extension Standalone</span>
                 <p class="extension-description">Face à des virus mutants plus dangereux ! Cette extension introduit 5 nouveaux modules de difficulté et des cartes événements qui bouleversent complètement la stratégie habituelle.</p>
             </div>
             <div class="extension-details">
@@ -161,28 +122,10 @@ require_once ROOTPATH . "src/View/template/header.php";
                     <span class="detail-label">🎯 Âge :</span>
                     <span class="detail-value">10+</span>
                 </div>
-                <div class="detail-item">
-                    <span class="detail-label">📦 Contenu :</span>
-                    <span class="detail-value">84 cartes + plateau</span>
-                </div>
-            </div>
-            <div class="extension-stats">
-                <div class="stat">
-                    <span class="stat-number">9.3</span>
-                    <span class="stat-label">Note BGG</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">3.2</span>
-                    <span class="stat-label">Complexité</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">92%</span>
-                    <span class="stat-label">Recommandé</span>
-                </div>
             </div>
             <div class="extension-actions">
-                <button class="add-to-wishlist" onclick="toggleWishlist(this)">💝 Ajouter à ma liste</button>
-                <button class="view-details" onclick="showDetails(this)">📋 Détails</button>
+                <button class="add-to-wishlist">Ajouter à ma liste</button>
+                <button class="add-review">Donner mon avis</button>>
             </div>
         </div>
 
@@ -191,7 +134,6 @@ require_once ROOTPATH . "src/View/template/header.php";
             <div class="extension-info">
                 <h3 class="extension-name">Le Grand Cirque</h3>
                 <div class="base-game">Extension pour • Ticket to Ride</div>
-                <span class="extension-type">Mini Extension</span>
                 <p class="extension-description">Le cirque arrive en ville ! Déplacez le chapiteau de cirque à travers vos routes et gagnez des points bonus. Une extension familiale colorée et amusante pour tous les âges.</p>
             </div>
             <div class="extension-details">
@@ -207,28 +149,10 @@ require_once ROOTPATH . "src/View/template/header.php";
                     <span class="detail-label">🎯 Âge :</span>
                     <span class="detail-value">8+</span>
                 </div>
-                <div class="detail-item">
-                    <span class="detail-label">📦 Contenu :</span>
-                    <span class="detail-value">15 cartes + pion</span>
-                </div>
-            </div>
-            <div class="extension-stats">
-                <div class="stat">
-                    <span class="stat-number">8.2</span>
-                    <span class="stat-label">Note BGG</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">1.8</span>
-                    <span class="stat-label">Complexité</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">71%</span>
-                    <span class="stat-label">Recommandé</span>
-                </div>
             </div>
             <div class="extension-actions">
-                <button class="add-to-wishlist" onclick="toggleWishlist(this)">💝 Ajouter à ma liste</button>
-                <button class="view-details" onclick="showDetails(this)">📋 Détails</button>
+                <button class="add-to-wishlist">Ajouter à ma liste</button>
+                <button class="add-review">Donner mon avis</button>
             </div>
         </div>
 
@@ -237,7 +161,6 @@ require_once ROOTPATH . "src/View/template/header.php";
             <div class="extension-info">
                 <h3 class="extension-name">L'Éveil des Mages</h3>
                 <div class="base-game">Extension pour • Gloomhaven</div>
-                <span class="extension-type">Extension Majeure</span>
                 <p class="extension-description">Quatre nouvelles classes de mages rejoignent l'aventure ! Maîtrisez les éléments avec le Pyromancien, l'Aquamancien, le Terramancien et l'Aéromancien, chacun avec ses propres mécaniques uniques.</p>
             </div>
             <div class="extension-details">
@@ -253,28 +176,11 @@ require_once ROOTPATH . "src/View/template/header.php";
                     <span class="detail-label">🎯 Âge :</span>
                     <span class="detail-value">14+</span>
                 </div>
-                <div class="detail-item">
-                    <span class="detail-label">📦 Contenu :</span>
-                    <span class="detail-value">4 classes + 20 scénarios</span>
-                </div>
             </div>
-            <div class="extension-stats">
-                <div class="stat">
-                    <span class="stat-number">9.5</span>
-                    <span class="stat-label">Note BGG</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">4.1</span>
-                    <span class="stat-label">Complexité</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">96%</span>
-                    <span class="stat-label">Recommandé</span>
-                </div>
-            </div>
-            <div class="extension-actions">
-                <button class="add-to-wishlist" onclick="toggleWishlist(this)">💝 Ajouter à ma liste</button>
-                <button class="view-details" onclick="showDetails(this)">📋 Détails</button>
+
+            <div class="btn-actions">
+                <button class="add-to-wishlist">Ajouter à ma liste</button>
+                <button class="add-review">Donner mon avis</button>
             </div>
         </div>
     </div>

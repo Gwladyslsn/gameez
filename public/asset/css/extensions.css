@@ -192,16 +192,6 @@
     margin-bottom: 12px;
 }
 
-.extension-type {
-    display: inline-block;
-    padding: 5px 15px;
-    background: var(--light-pink);
-    color: var(--purple);
-    border-radius: 15px;
-    font-size: 0.85rem;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
 
 .extension-description {
     color: #666;
@@ -247,20 +237,8 @@
     text-align: center;
 }
 
-.stat-number {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: var(--purple);
-    display: block;
-}
 
-.stat-label {
-    font-size: 0.8rem;
-    color: #666;
-    text-transform: uppercase;
-}
-
-.extension-actions {
+.btn-actions {
     display: flex;
     gap: 10px;
 }
@@ -272,7 +250,6 @@
     border: none;
     border-radius: 20px;
     color: var(--white);
-    font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
     font-size: 1rem;
@@ -286,6 +263,23 @@
 .add-to-wishlist.in-wishlist {
     background: linear-gradient(45deg, var(--pink), var(--light-pink));
     color: var(--black);
+}
+
+.add-review {
+    flex: 1;
+    padding: 12px 20px;
+    background: linear-gradient(45deg, var(--pink), var(--light-pink));
+    border: none;
+    border-radius: 20px;
+    color: var(--black);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.add-review:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(202, 109, 245, 0.4);
 }
 
 .view-details {
