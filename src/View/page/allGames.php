@@ -119,16 +119,23 @@ require_once ROOTPATH . "src/View/template/header.php";
         <?php foreach ($games as $game): ?>
             <?php include ROOTPATH . 'src/View/template/game_item.php'; ?>
         <?php endforeach; ?>
-        <div class="load-more">
-            <button class="load-more-btn" id="load-more-btn" data-offset="10">Charger plus de jeux</button>
-        </div>
+
     </div>
+    <div class="load-more">
+        <button class="load-more-btn" id="load-more-btn" data-offset="10">Charger plus de jeux</button>
+    </div>
+
+    <!--MODAL AJOUT DANS WISHLIST-->
+    <?php include ROOTPATH . 'src/View/template/modal_list.php'; ?>
+    
+
 
 
 </div>
 
 <script src="/asset/js/header.js"></script>
 <script src="/asset/js/games.js"></script>
+<script src="/asset/js/modalList.js"></script>
 <?php
 require_once ROOTPATH . "src/View/template/footer.php";
 ?>

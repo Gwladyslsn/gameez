@@ -24,7 +24,7 @@ if (isset($_SESSION['user'])) {
 
 <div class="dashboard-container">
     <div class="dashboard-header">
-        <h1>🎲 Mon Espace Gameez</h1>
+        <h1><i class="fa-solid fa-puzzle-piece" style="color: #B197FC;"></i></i> Mon Espace Gameez <i class="fa-solid fa-puzzle-piece" style="color: #B197FC;"></i></i></h1>
         <p>Gérez votre profil et vos wishlists de jeux de société</p>
     </div>
 

@@ -1,0 +1,99 @@
+/* Le fond assombri */
+.modal {
+    position: fixed;
+    z-index: 1000;
+    inset: 0;
+    /* top:0, right:0, bottom:0, left:0 */
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Le contenu */
+.modal-content {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Animation d’apparition */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Bouton fermer */
+.modal-content .close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.2s ease;
+}
+
+.modal-content .close:hover {
+    color: #c00;
+}
+
+/* Titre */
+.modal-content h2 {
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Select et input */
+.modal-content select,
+.modal-content input {
+    width: 100%;
+    padding: 0.6rem;
+    margin: 0.5rem 0 1rem 0;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    font-size: 1rem;
+    outline: none;
+    transition: border 0.2s ease;
+}
+
+.modal-content select:focus,
+.modal-content input:focus {
+    border-color: #6c5ce7;
+    /* violet du site */
+}
+
+/* Bouton valider */
+.modal-content button {
+    background: #6c5ce7;
+    /* ton violet */
+    color: #fff;
+    border: none;
+    padding: 0.7rem 1.2rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.modal-content button:hover {
+    background: #5a4ac4;
+}
