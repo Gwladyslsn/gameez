@@ -73,7 +73,11 @@ document.addEventListener('DOMContentLoaded', function (e) {
                 <div class="stars">★★★★☆</div>
                 <span class="rating-text">4.6 (3,521 avis)</span>
             </div>
-            <p class="game-description">${g.description_game}</p>
+            <p class="game-description">${g.game_description}</p>
+            <div class="btn-actions">
+                <button class="add-to-wishlist btn-add-list" data-game-id="<?= htmlspecialchars($game->getIdGame()) ?>">Ajouter à ma liste</button>
+                <button class="add-review">Donner mon avis</button>
+            </div>
         </div>
     `).join("")
             : "<p>Aucun jeu trouvé</p>";
