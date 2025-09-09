@@ -1,23 +1,5 @@
 <?php
 
-
-use App\Services\Auth;
-
-$auth = new Auth();
-
-$errors = [];
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $formType = $_POST['form_type'] ?? '';
-
-    if ($formType === 'sign') {
-        // Inscription
-        $auth->signin();
-    } elseif ($formType === 'log') {
-        // Connexion
-        $auth->login();
-    }
-}
-
 require_once ROOTPATH . "src/View/template/header.php";
 
 

@@ -20,38 +20,35 @@ class Auth
         }
     }
 
-    public function signin()
-    {
-        $errors = [];
-        $database = new Database();
-        $pdo = $database->getConnection();
-        $userRepo = new UserRepository($pdo);
+    public function signin(): array
+{
+    $errors = [];
+    $database = new Database();
+    $pdo = $database->getConnection();
+    $userRepo = new UserRepository($pdo);
 
-        $userName = $_POST["user_name"] ?? '';
-        $userLastname = $_POST["user_lastname"] ?? '';
-        $userEmail = $_POST["user_mail"] ?? '';
-        $userDob = $_POST["user_dob"] ?? '';
-        $userPassword = $_POST["user_password"] ?? '';
+    $userName = $_POST["user_name"] ?? '';
+    $userLastname = $_POST["user_lastname"] ?? '';
+    $userEmail = $_POST["user_mail"] ?? '';
+    $userDob = $_POST["user_dob"] ?? '';
+    $userPassword = $_POST["user_password"] ?? '';
 
-        $errors = $userRepo->verifyUserInput($_POST);
+    $errors = $userRepo->verifyUserInput($_POST);
 
-        if (empty($errors)) {
-            if ($userRepo->emailExists($userEmail)) {
-                echo '<div class="alert alert-success">
-                        <p class="text-white bg-gray-900 body-font">Un compte avec cette adresse email existe déjà. Veuillez vous connecter ou utiliser une autre adresse.</p>
-                        </div>';
-            } else {
-                if ($userRepo->addUser($userName, $userLastname, $userPassword, $userEmail, $userDob)) {
-                    echo '<div class="alert alert-success">
-                            <p class="text-gray-400 bg-gray-900 body-font">✅ Inscription réussie ! Vous pouvez maintenant vous connecter !</p>
-                            </div>';
-                } else {
-                    $errors[] = "Une erreur est survenue";
-                    return $errors;
-                }
+    if (empty($errors)) {
+        if ($userRepo->emailExists($userEmail)) {
+            $errors[] = "Un compte avec cette adresse email existe déjà.";
+        } else {
+            $success = $userRepo->addUser($userName, $userLastname, $userPassword, $userEmail, $userDob);
+            if (!$success) {
+                $errors[] = "Une erreur est survenue lors de l'inscription.";
             }
         }
     }
+
+    return $errors; // le controller s'occupe d'afficher le message
+}
+
 
     public function login()
     {
