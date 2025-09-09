@@ -1,24 +1,5 @@
 <?php
-
 require_once ROOTPATH . "src/View/template/header.php";
-
-use App\Repository\UserRepository;
-use App\Database\Database;
-
-$database = new Database();
-$pdo = $database->getConnection();
-$userRepo = new UserRepository($pdo);
-
-if (isset($_SESSION['user'])) {
-    $id_user = $_SESSION['user'];
-
-    // Récupérer les infos utilisateur avec la méthode correcte
-    $user = $userRepo->getDataUser($id_user);
-} else {
-    header('Location: /register');
-    exit;
-}
-
 ?>
 
 
@@ -33,7 +14,7 @@ if (isset($_SESSION['user'])) {
         <div class="card profile-card">
             <div class="card-header">
                 <h2>👤 Mon Profil</h2>
-                <button class="edit-btn" onclick="toggleEdit()">
+                <button class="edit-btn">
                     ✏️ Modifier
                 </button>
             </div>

@@ -14,7 +14,7 @@ return [
         'method' => 'login'
     ],
     '/dashboardUser' => [
-        'controller' => App\Controller\PageController::class,
+        'controller' => App\Controller\UserController::class,
         'method' => 'dashboardUser'
     ],
     '/logout' => [
