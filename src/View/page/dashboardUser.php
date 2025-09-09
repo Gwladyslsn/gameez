@@ -79,57 +79,25 @@ require_once ROOTPATH . "src/View/template/header.php";
                 ➕ Nouvelle Wishlist
             </button>
 
-            <div class="wishlist-item">
-                <div class="wishlist-header">
-                    <div class="wishlist-name">Mes Incontournables</div>
-                    <div class="wishlist-count">8 jeux</div>
+            <?php foreach ($lists as $list): ?>
+                <div class="wishlist-item">
+                    <div class="wishlist-header">
+                        <div class="wishlist-name"><?= htmlspecialchars($list['list_name']) ?></div>
+                        <div class="wishlist-count"><?= count($list['games']) ?> jeux</div>
+                    </div>
+                    <div class="wishlist-games">
+                        <?php foreach ($list['games'] as $index => $game): ?>
+                            <?php if ($index < 3): ?>
+                                <div class="game-preview"><?= htmlspecialchars($game['game_name']) ?></div>
+                            <?php elseif ($index === 3): ?>
+                                <div class="game-preview">+<?= count($list['games']) - 3 ?> autres</div>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
-                <div class="wishlist-games">
-                    <div class="game-preview">Catan</div>
-                    <div class="game-preview">Azul</div>
-                    <div class="game-preview">Wingspan</div>
-                    <div class="game-preview">+5 autres</div>
-                </div>
-            </div>
-
-            <div class="wishlist-item">
-                <div class="wishlist-header">
-                    <div class="wishlist-name">Noël 2025</div>
-                    <div class="wishlist-count">5 jeux</div>
-                </div>
-                <div class="wishlist-games">
-                    <div class="game-preview">Gloomhaven</div>
-                    <div class="game-preview">Root</div>
-                    <div class="game-preview">Spirit Island</div>
-                    <div class="game-preview">+2 autres</div>
-                </div>
-            </div>
-
-            <div class="wishlist-item">
-                <div class="wishlist-header">
-                    <div class="wishlist-name">Famille</div>
-                    <div class="wishlist-count">12 jeux</div>
-                </div>
-                <div class="wishlist-games">
-                    <div class="game-preview">Ticket to Ride</div>
-                    <div class="game-preview">Splendor</div>
-                    <div class="game-preview">King of Tokyo</div>
-                    <div class="game-preview">+9 autres</div>
-                </div>
-            </div>
-
-            <div class="wishlist-item">
-                <div class="wishlist-header">
-                    <div class="wishlist-name">Sorties Récentes</div>
-                    <div class="wishlist-count">3 jeux</div>
-                </div>
-                <div class="wishlist-games">
-                    <div class="game-preview">Dune Imperium</div>
-                    <div class="game-preview">Lost Ruins</div>
-                    <div class="game-preview">Ark Nova</div>
-                </div>
-            </div>
+            <?php endforeach; ?>
         </div>
+
 
         <!-- Statistiques -->
         <div class="card stats-card">

@@ -19,6 +19,10 @@ CREATE TABLE user(
 ALTER TABLE list 
 CHANGE COLUMN id_joueur id_user INT NOT NULL;
 
+ALTER TABLE list_items 
+CHANGE list_id id_list INT NOT NULL;
+
+
 
 /*TABLE ADMIN*/
 CREATE TABLE admin(

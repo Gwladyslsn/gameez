@@ -51,7 +51,7 @@ class ListRepository
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // Optionnel : récupérer tous les jeux d'une liste
+// récupérer tous les jeux d'une liste
     public function getGamesByList(int $listId): array
     {
         $stmt = $this->pdo->prepare("

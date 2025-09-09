@@ -66,7 +66,7 @@ class ListController
         echo json_encode($lists);
     }
 
-    // Optionnel : récupérer les jeux d'une liste
+// Jeu d'une liste
     public function getGamesOfList(int $listId): void
     {
         header('Content-Type: application/json');
