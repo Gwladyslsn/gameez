@@ -31,7 +31,7 @@ class ListController
             exit;
         }
 
-        $listId = $data['list_id'] ?? null;
+        $listId = $data['id_list'] ?? null;
         $newListName = $data['new_list_name'] ?? null;
         $gameId = isset($data['id_game']) ? (int) $data['id_game'] : null;
 

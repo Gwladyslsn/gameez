@@ -5,16 +5,17 @@ document.addEventListener('DOMContentLoaded', function () {
     const selectList = document.getElementById("select-list");
     const newListInput = document.getElementById("new-list-name"); // si tu as un input pour nouvelle liste
 
-    // Ouvrir le modal
-    document.querySelectorAll(".btn-add-list").forEach(btn => {
-        btn.addEventListener("click", (e) => {
+    // Ouvrir le modal via event delegation
+    document.addEventListener("click", (e) => {
+        if (e.target.classList.contains("btn-add-list")) {
             e.preventDefault();
+            const btn = e.target;
             const gameId = btn.getAttribute("data-game-id");
             modal.dataset.gameId = gameId; // stocke l'id du jeu dans le modal
             modal.classList.remove('hidden');
 
             loadUserLists(); // charge les listes existantes dans le select
-        });
+        }
     });
 
     // Fermer le modal
@@ -77,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Préparer les données
         const data = {
-            list_id: listId,
+            id_list: listId,
             new_list_name: newListName,
             id_game: gameId
         };
@@ -105,6 +106,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
 
 
 

@@ -34,11 +34,11 @@ class ListRepository
     public function addGameToList(int $listId, int $gameId): void
     {
         $stmt = $this->pdo->prepare("
-            INSERT INTO list_items (list_id, id_game) 
-            VALUES (:list_id, :id_game)
+            INSERT INTO list_items (id_list, id_game) 
+            VALUES (:id_list, :id_game)
         ");
         $stmt->execute([
-            ':list_id' => $listId,
+            ':id_list' => $listId,
             ':id_game' => $gameId
         ]);
     }
