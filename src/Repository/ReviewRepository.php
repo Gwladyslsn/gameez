@@ -14,23 +14,23 @@ class ReviewRepository
         $this->pdo = $pdo;
     }
 
-    // Ajouter une nouvelle liste
-    public function addReview(ReviewEntity $review):void 
+    // Ajouter un avis à un jeu
+    public function addNewReview($review_note, $review_comment, $review_date, $id_user, $id_game):void 
     {
         $stmt = $this->pdo->prepare("
-            INSERT INTO review (review_note, comment, review_date, id_user, id_game) 
-            VALUES (:review_note, :commentReview, :review_date, :id_user, :id_game)
+            INSERT INTO review (review_note, review_comment, review_date, id_user, id_game) 
+            VALUES (:review_note, :review_comment, :review_date, :id_user, :id_game)
         ");
         $stmt->execute([
-            ':review_note' => $review->getReviewNote(),
-            ':comment' => $review->getCommentReview(),
-            ':review_date' => $review->getReviewDate(),
-            ':id_user' => $review->getIdUser(),
-            ':id_game' => $review->getIdGame(),
+            ':review_note' => $review_note,
+            ':review_comment' => $review_comment,
+            ':review_date' => $review_date,
+            ':id_user' => $id_user,
+            ':id_game' => $id_game,
         ]);
 
     }
-
+/*
 // Ajouter un jeu à une liste
     public function addGameToList(int $listId, int $gameId): void
     {
@@ -63,5 +63,5 @@ class ReviewRepository
         ");
         $stmt->execute([':id_list' => $listId]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
+    }*/
 }

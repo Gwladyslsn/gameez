@@ -96,6 +96,11 @@ class PageController extends Controller
         $this->render('View/page/extensions', []);
     }
 
+    public function addNewReview()
+    {
+        $this->render('View/page/allGames', []);
+    }
+
     
 
 

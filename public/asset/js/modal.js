@@ -114,6 +114,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const modalReview = document.getElementById("modal-add-review");
     const closeBtnReview = modalList.querySelector(".close");
     const validateBtnReview = document.getElementById("validate-add-review");
+    const formReview = document.getElementById("form-review");
 
     // Ouvrir le modal via event delegation
     document.addEventListener("click", (e) => {
@@ -139,8 +140,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // Valider l'avis
     validateBtnReview.addEventListener("click", async (e) => {
         e.preventDefault();
-        const rating = form.querySelector('input[name="note_reviews"]:checked')?.value;
-        const comment = form.querySelector('textarea[name="comment_reviews"]').value;
+        const rating = formReview.querySelector('input[name="review_note"]:checked')?.value;
+        const comment = formReview.querySelector('textarea[name="review_comment"]').value;
         const gameId = modalReview .dataset.gameId;
 
         if (!gameId) {
@@ -152,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Préparer les données
         const data = {
             review_note: rating,
-            comment: comment,
+            review_comment: comment,
             id_game: gameId
         };
 
@@ -174,6 +175,7 @@ document.addEventListener('DOMContentLoaded', function () {
         } catch (err) {
             console.error('Erreur lors de l\'ajout:', err);
             alert('Une erreur est survenue.');
+            formReview.reset();
         }
     });
 });

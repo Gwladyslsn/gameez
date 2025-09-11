@@ -15,16 +15,37 @@ class ReviewController
         $pdo = (new Database())->getConnection();
         $this->reviewRepository = new ReviewRepository($pdo);
     }
-    /*public function showReview()
+    public function addReview(): void
     {
-        $database = new Database();
-        $pdo = $database->getConnection();
-        $games = $this->reviewRepository->getAllReview();
+        header('Content-Type: application/json');
 
-        require_once ROOTPATH . 'src/View/page/allGames.php';
+        $data = json_decode(file_get_contents('php://input'), true);
+
+        if(!$data || !isset($_SESSION['user'])){
+            echo json_encode(['status' => 'error', 'message' => 'Données invalides ou utilisateur non connecté']);
+            exit;
+        }
+
+        $review_note = $data['review_note'] ?? null;
+        $review_comment = $data['review_comment'] ?? null;
+        $gameId = isset($data['id_game']) ? (int) $data['id_game'] : null;
+        $review_date = date('Y-m-d H:i:s');
+        $id_user = $_SESSION['user'];
+        $id_game = isset($data['id_game']) ? (int) $data['id_game'] : null;
+
+        if(!$gameId){
+            echo json_encode(['status' => 'error', 'message' => 'Aucun jeu spécifié']);
+            exit;
+        }
+
+
+        // Ajouter avis
+        $this->reviewRepository->addNewReview($review_note, $review_comment, $review_date, $id_user, $id_game);
+
+        echo json_encode(['status' => 'success']);
     }
 
-    public function loadMoreGames()
+    /*public function loadMoreGames()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $offset = isset($_POST['offset']) ? (int)$_POST['offset'] : 0;

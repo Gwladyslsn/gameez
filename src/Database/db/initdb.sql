@@ -98,6 +98,9 @@ CREATE TABLE review(
 ALTER TABLE review 
 CHANGE COLUMN id_joueur id_user INT NOT NULL;
 
+ALTER TABLE review 
+CHANGE COLUMN comment review_comment TEXT NOT NULL;
+
 
 /* AJOUT DE DONNEES */
 

@@ -5,16 +5,16 @@ class ReviewEntity
 {
     private ?int $idReview;
     private int $reviewNote;
-    private string $commentReview;
+    private string $reviewComment;
     private \DateTime $reviewDate;
     private int $idUser;
     private int $idGame;
 
-    public function __construct(?int $idReview, int $reviewNote, string $commentReview, \DateTime $reviewDate, int $idUser, int $idGame)
+    public function __construct(?int $idReview, int $reviewNote, string $reviewComment, \DateTime $reviewDate, int $idUser, int $idGame)
     {
         $this->idReview = $idReview;
         $this->reviewNote = $reviewNote;
-        $this->commentReview = $commentReview;
+        $this->reviewComment = $reviewComment;
         $this->reviewDate = $reviewDate;
         $this->idUser = $idUser;
         $this->idGame = $idGame;
@@ -65,15 +65,15 @@ class ReviewEntity
      */
     public function getCommentReview(): string
     {
-        return $this->commentReview;
+        return $this->reviewComment;
     }
 
     /**
      * Set the value of commentReview
      */
-    public function setCommentReview(string $commentReview): self
+    public function setCommentReview(string $reviewComment): self
     {
-        $this->commentReview = $commentReview;
+        $this->reviewComment = $reviewComment;
 
         return $this;
     }

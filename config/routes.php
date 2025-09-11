@@ -49,6 +49,10 @@ return [
         'controller' => App\Controller\ListController::class,
         'method' => 'add'
     ],
+    '/addReview' => [
+        'controller' => App\Controller\ReviewController::class,
+        'method' => 'addReview'
+    ],
     
 
 
