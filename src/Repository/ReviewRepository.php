@@ -2,10 +2,10 @@
 
 namespace App\Repository;
 
-use App\Entity\ListEntity;
+use App\Entity\ReviewEntity;
 use PDO;
 
-class ListRepository
+class ReviewRepository
 {
     private PDO $pdo;
 
@@ -15,19 +15,20 @@ class ListRepository
     }
 
     // Ajouter une nouvelle liste
-    public function addList(ListEntity $list): int
+    public function addReview(ReviewEntity $review):void 
     {
         $stmt = $this->pdo->prepare("
-            INSERT INTO list (list_name, create_at, id_user) 
-            VALUES (:list_name, :created_at, :id_user)
+            INSERT INTO review (review_note, comment, review_date, id_user, id_game) 
+            VALUES (:review_note, :commentReview, :review_date, :id_user, :id_game)
         ");
         $stmt->execute([
-            ':list_name' => $list->getNameList(),
-            ':created_at' => $list->getCreatedAt(),
-            ':id_user' => $list->getUserId()
+            ':review_note' => $review->getReviewNote(),
+            ':comment' => $review->getCommentReview(),
+            ':review_date' => $review->getReviewDate(),
+            ':id_user' => $review->getIdUser(),
+            ':id_game' => $review->getIdGame(),
         ]);
 
-        return (int)$this->pdo->lastInsertId();
     }
 
 // Ajouter un jeu à une liste

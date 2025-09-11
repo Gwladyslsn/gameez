@@ -240,6 +240,26 @@
     transform: translateY(-2px);
 }
 
+.star {
+    --size: 50px;
+    width: var(--size);
+    height: var(--size);
+    background: #facc15;
+    clip-path: polygon(50% 0%,
+            61% 35%,
+            98% 35%,
+            68% 57%,
+            79% 91%,
+            50% 70%,
+            21% 91%,
+            32% 57%,
+            2% 35%,
+            39% 35%);
+    display: inline-block;
+}
+
+
+
 @media (max-width: 768px) {
     .nav {
         flex-direction: column;

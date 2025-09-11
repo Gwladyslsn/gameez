@@ -126,6 +126,8 @@ require_once ROOTPATH . "src/View/template/header.php";
 
     <!--MODAL AJOUT DANS WISHLIST-->
     <?php include ROOTPATH . 'src/View/template/modal_list.php'; ?>
+    <!--MODAL AJOUT AVIS-->
+    <?php include ROOTPATH . 'src/View/template/modal_review.php'; ?>
     
 
 
@@ -134,7 +136,7 @@ require_once ROOTPATH . "src/View/template/header.php";
 
 <script src="/asset/js/header.js"></script>
 <script src="/asset/js/games.js"></script>
-<script src="/asset/js/modalList.js"></script>
+<script src="/asset/js/modal.js"></script>
 <?php
 require_once ROOTPATH . "src/View/template/footer.php";
 ?>

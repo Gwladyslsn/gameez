@@ -19,10 +19,6 @@ CREATE TABLE user(
 ALTER TABLE list 
 CHANGE COLUMN id_joueur id_user INT NOT NULL;
 
-ALTER TABLE list_items 
-CHANGE list_id id_list INT NOT NULL;
-
-
 
 /*TABLE ADMIN*/
 CREATE TABLE admin(
@@ -82,6 +78,8 @@ CREATE TABLE list_items (
         CONSTRAINT fk_game FOREIGN KEY (id_game) REFERENCES game(id_game)
 );
 
+ALTER TABLE list_items 
+CHANGE list_id id_list INT NOT NULL;
 
 /*avis*/
 CREATE TABLE review(
@@ -97,6 +95,8 @@ CREATE TABLE review(
 	,CONSTRAINT review_game0_FK FOREIGN KEY (id_game) REFERENCES game(id_game)
 )
 
+ALTER TABLE review 
+CHANGE COLUMN id_joueur id_user INT NOT NULL;
 
 
 /* AJOUT DE DONNEES */
