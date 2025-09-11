@@ -80,7 +80,7 @@ class Auth
             $error = "Identifiants et/ou mot de passe incorrect(s).";
         }
 
-        return 'error';
+        return $error;
     }
 
     /* DECONNEXION */

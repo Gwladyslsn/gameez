@@ -110,6 +110,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
     const userMailLogInput = document.getElementById('loginEmail');
     const userPasswordLogInput = document.getElementById('loginPassword');
     const submitBtnLog = document.getElementById('btn_login');
+    const feedbackLog = document.getElementById('feedback-login');
 
     submitBtnLog.addEventListener('click', function (e) {
         e.preventDefault();
@@ -135,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
         //Afficher message si erreur
         if (Object.keys(errors).length > 0) {
-            feedback.innerHTML = '';
+            feedbackLog.innerHTML = '';
 
             const alertDiv = document.createElement('div');
             alertDiv.className = 'alert alert-danger';
@@ -152,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
             }
 
             alertDiv.appendChild(ul);
-            feedback.appendChild(alertDiv);
+            feedbackLog.appendChild(alertDiv);
 
             console.log("Erreurs de validation côté client :", errors);
         } else {

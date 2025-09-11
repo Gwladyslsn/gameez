@@ -40,25 +40,27 @@ class PageController extends Controller
     }
 
 
-    public function login()
-    {
-        $auth = new Auth;
-        $result = $auth->login();
+    public function login():void
+{
+    $auth = new Auth;
+    $result = $auth->login();
 
-        if ($result === 'admin') {
-            $this->render('View/page/admin/loginSuccess', [
-                'redirectUrl' => '/dashboardAdmin'
-            ]);
-            exit;
-        } elseif ($result === 'user') {
-            header('Location: /dashboardUser');
-            exit;
-        } else {
-            $this->render('View/page/register', [
-                'error' => 'Identifiants incorrects.'
-            ]);
-        }
+    if ($result === 'admin') {
+        $this->render('View/page/admin/loginSuccess', [
+            'redirectUrl' => '/dashboardAdmin'
+        ]);
+        exit;
+    } elseif ($result === 'user') {
+        header('Location: /dashboardUser');
+        exit;
+    } else {
+        // ICI on utilise le message d'erreur retourné par Auth::login()
+        $this->render('View/page/register', [
+            'error' => $result
+        ]);
     }
+}
+
 
     public function dashboardUser()
     {
@@ -98,7 +100,7 @@ class PageController extends Controller
 
     public function addNewReview()
     {
-        $this->render('View/page/allGames', []);
+        $this->render('View/page/addNewReview', []);
     }
 
     

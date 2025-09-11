@@ -52,9 +52,13 @@ require_once ROOTPATH . "src/View/template/header.php";
         </div>
 
         <!-- CONNEXION -->
-        <div id="loginForm" class="form-container active" >
+        <div id="loginForm" class="form-container active">
             <h2 class="form-title">Bon retour !</h2>
             <p class="form-subtitle">Connectez-vous pour retrouver votre collection</p>
+
+            <?php if (!empty($error)): ?>
+                <p class="error-message"><?= htmlspecialchars($error) ?></p>
+            <?php endif; ?>
 
             <form method="post" id="form_log" action="/login">
                 <input type="hidden" name="form_type" value="log">
