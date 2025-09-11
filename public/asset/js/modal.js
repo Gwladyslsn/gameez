@@ -168,6 +168,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (result.status === 'success') {
                 alert('Avis ajouté avec succès ! !');
+                formReview.reset();
                 modalReview.classList.add('hidden');
             } else {
                 alert(result.message);
