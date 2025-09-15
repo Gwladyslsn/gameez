@@ -127,47 +127,36 @@ require_once ROOTPATH . "src/View/template/header.php";
 
 
         <!-- Section Mes avis -->
-        <div class="card reviews-card">
+        <div class="card review-card">
             <div class="card-header">
                 <h2><i class="fa-solid fa-star" style="color: #FFD43B;"> </i> Mes avis</h2>
-            </div>
-            <!-- Filtres -->
-            <div class="reviews-filters">
-                <button class="filter-btn active" onclick="filterReviews('all')">Tous</button>
-                <button class="filter-btn" onclick="filterReviews('high')">Notes élevées (4-5★)</button>
-                <button class="filter-btn" onclick="filterReviews('recent')">Récents</button>
             </div>
 
             <div class="review">
                 <?php foreach ($reviews as $review): ?>
+                    <?php $rating = (int)$review['review_note']; ?>
                     <!-- Liste des avis -->
                     <div class="reviews-container">
-                        <div class="review-card" data-rating="4">
+                        <div class="review-card" data-rating="<?= $rating ?>">
                             <div class="review-header">
                                 <div class="review-game-info">
                                     <h3 class="game-name"><?= $review['game_name'] ?></h3>
-                                    <div class="review-meta">
-                                        <span class="review-date">
-                                            <i class="fa-solid fa-calendar"></i>
-                                            15/01/2024
-                                        </span>
-                                    </div>
                                 </div>
                                 <div class="review-rating">
                                     <div class="stars-display">
-                                        <i class="fa-solid fa-star star-filled"></i>
-                                        <i class="fa-solid fa-star star-filled"></i>
-                                        <i class="fa-solid fa-star star-filled"></i>
-                                        <i class="fa-solid fa-star star-filled"></i>
-                                        <i class="fa-solid fa-star star-empty"></i>
+                                        <?php for ($i = 1; $i <= 5; $i++): ?>
+                                            <?php if ($i <= $rating): ?>
+                                                <i class="fa-solid fa-star star-filled"></i>
+                                            <?php else: ?>
+                                                <i class="fa-regular fa-star star-empty"></i>
+                                            <?php endif; ?>
+                                        <?php endfor; ?>
                                     </div>
-                                    <span class="rating-number"><?= $review['review_note'] ?></span>
                                 </div>
                             </div>
-
                             <div class="review-comment">
                                 <div class="comment-bubble">
-                                    <p><?= $review['review_comment'] ?></p>
+                                    <p><i class="fa-solid fa-quote-left"></i> <?= $review['review_comment'] ?> <i class="fa-solid fa-quote-right"></i></p>
                                 </div>
                             </div>
 
@@ -175,16 +164,20 @@ require_once ROOTPATH . "src/View/template/header.php";
                                 <button class="action-btn edit-btn" onclick="editReview(1)">
                                     <i class="fa-solid fa-edit"></i> Modifier
                                 </button>
+                                <button class="action-btn delete-btn" onclick="editReview(1)">
+                                    <i class="fa-solid fa-edit"></i> Supprimer
+                                </button>
                             </div>
                         </div>
-                    <?php endforeach ?>
                     </div>
+                <?php endforeach ?>
             </div>
         </div>
     </div>
+</div>
 
-    <script src="/asset/js/header.js"></script>
-    <script src="/asset/js/dashboardUser.js"></script>
+<script src="/asset/js/header.js"></script>
+<script src="/asset/js/dashboardUser.js"></script>
 
-    <?php
-    require_once ROOTPATH . "src/View/template/footer.php"; ?>
+<?php
+require_once ROOTPATH . "src/View/template/footer.php"; ?>
