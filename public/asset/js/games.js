@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
         resultsBox.innerHTML = games.length
             ? games.map(g => `
-        <div class="game-card game">
+        <div class="game-card game" id="game-container">
             <div class="game-image">
                 <span><img src="/asset/${g.image}" alt="Image du jeu" class="gameImage"></span>
             </div>
@@ -75,8 +75,8 @@ document.addEventListener('DOMContentLoaded', function (e) {
             </div>
             <p class="game-description">${g.game_description}</p>
             <div class="btn-actions">
-                <button class="add-to-wishlist btn-add-list" data-game-id="<?= htmlspecialchars($game->getIdGame()) ?>">Ajouter à ma liste</button>
-                <button class="add-review">Donner mon avis</button>
+                <button class="add-to-wishlist btn-add-list" data-game-id="${g.id_game}">Ajouter à ma liste</button>
+                <button class="add-review" data-game-id="${g.id_game}">Donner mon avis</button>
             </div>
         </div>
     `).join("")
