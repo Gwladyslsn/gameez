@@ -28,6 +28,7 @@ class UserController extends Controller
         $nb_games = $listRepository->countGamesByUser($_SESSION['user']);
         $nb_review = $reviewRepo->countReviewByUser($_SESSION['user']);
         $average_notes = $reviewRepo->getAverageReviewByUser($_SESSION['user']);
+        $reviews = $reviewRepo->getReviewByUser($_SESSION['user']);
 
         foreach ($lists as &$list) {
         $list['games'] = $listRepository->getGamesByList($list['id_list']);
@@ -39,7 +40,8 @@ class UserController extends Controller
             'nb_list' => $nb_list,
             'nb_games' => $nb_games,
             'nb_review' => $nb_review,
-            'average_notes' => $average_notes
+            'average_notes' => $average_notes,
+            'reviews' => $reviews
         ]);
     }
     }

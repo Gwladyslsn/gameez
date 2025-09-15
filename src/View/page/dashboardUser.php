@@ -107,7 +107,7 @@ require_once ROOTPATH . "src/View/template/header.php";
 
             <div class="stats-grid">
                 <div class="stat-item">
-                    <div class="stat-number"><?= $nb_list?></div>
+                    <div class="stat-number"><?= $nb_list ?></div>
                     <div class="stat-label">Wishlists actives</div>
                 </div>
                 <div class="stat-item">
@@ -124,11 +124,67 @@ require_once ROOTPATH . "src/View/template/header.php";
                 </div>
             </div>
         </div>
+
+
+        <!-- Section Mes avis -->
+        <div class="card reviews-card">
+            <div class="card-header">
+                <h2><i class="fa-solid fa-star" style="color: #FFD43B;"> </i> Mes avis</h2>
+            </div>
+            <!-- Filtres -->
+            <div class="reviews-filters">
+                <button class="filter-btn active" onclick="filterReviews('all')">Tous</button>
+                <button class="filter-btn" onclick="filterReviews('high')">Notes élevées (4-5★)</button>
+                <button class="filter-btn" onclick="filterReviews('recent')">Récents</button>
+            </div>
+
+            <div class="review">
+                <?php foreach ($reviews as $review): ?>
+                    <!-- Liste des avis -->
+                    <div class="reviews-container">
+                        <div class="review-card" data-rating="4">
+                            <div class="review-header">
+                                <div class="review-game-info">
+                                    <h3 class="game-name"><?= $review['game_name'] ?></h3>
+                                    <div class="review-meta">
+                                        <span class="review-date">
+                                            <i class="fa-solid fa-calendar"></i>
+                                            15/01/2024
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="review-rating">
+                                    <div class="stars-display">
+                                        <i class="fa-solid fa-star star-filled"></i>
+                                        <i class="fa-solid fa-star star-filled"></i>
+                                        <i class="fa-solid fa-star star-filled"></i>
+                                        <i class="fa-solid fa-star star-filled"></i>
+                                        <i class="fa-solid fa-star star-empty"></i>
+                                    </div>
+                                    <span class="rating-number"><?= $review['review_note'] ?></span>
+                                </div>
+                            </div>
+
+                            <div class="review-comment">
+                                <div class="comment-bubble">
+                                    <p><?= $review['review_comment'] ?></p>
+                                </div>
+                            </div>
+
+                            <div class="review-actions">
+                                <button class="action-btn edit-btn" onclick="editReview(1)">
+                                    <i class="fa-solid fa-edit"></i> Modifier
+                                </button>
+                            </div>
+                        </div>
+                    <?php endforeach ?>
+                    </div>
+            </div>
+        </div>
     </div>
-</div>
 
-<script src="/asset/js/header.js"></script>
-<script src="/asset/js/dashboardUser.js"></script>
+    <script src="/asset/js/header.js"></script>
+    <script src="/asset/js/dashboardUser.js"></script>
 
-<?php
-require_once ROOTPATH . "src/View/template/footer.php"; ?>
+    <?php
+    require_once ROOTPATH . "src/View/template/footer.php"; ?>

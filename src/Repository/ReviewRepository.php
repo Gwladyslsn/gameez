@@ -34,6 +34,22 @@ class ReviewRepository
 
 
     /* READ */
+
+    public function getReviewByUser(int $userId) 
+    {
+        $sql = "SELECT r.id_review, r.id_user, r.id_game, r.review_note, r.review_comment,
+        g.game_name, g.image
+        FROM review r
+        JOIN game g ON r.id_game = g.id_game
+        WHERE r.id_user = :id_user
+    ";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([':id_user' => $userId]);
+        $reviews = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $reviews;
+    }
     public function countReviewByUser(int $userId) 
     {
         $stmt = $this->pdo->prepare("SELECT COUNT(*) as nb_review FROM review WHERE id_user = :id_user");

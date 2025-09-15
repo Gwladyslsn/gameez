@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
             <p class="game-description">${g.game_description}</p>
             <div class="btn-actions">
                 <button class="add-to-wishlist btn-add-list" data-game-id="${g.id_game}">Ajouter à ma liste</button>
-                <button class="add-review" data-game-id="${g.id_game}">Donner mon avis</button>
+                <button class="add-review btn-add-review" data-game-id="${g.id_game}">Donner mon avis</button>
             </div>
         </div>
     `).join("")
@@ -89,7 +89,6 @@ document.addEventListener('DOMContentLoaded', function (e) {
     // Clic sur la loupe
     searchBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        console.log('click btn loupe');
         fetchGames();
     });
 
