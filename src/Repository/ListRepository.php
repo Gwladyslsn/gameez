@@ -30,7 +30,7 @@ class ListRepository
         return (int)$this->pdo->lastInsertId();
     }
 
-// Ajouter un jeu à une liste
+    // Ajouter un jeu à une liste
     public function addGameToList(int $listId, int $gameId): void
     {
         $stmt = $this->pdo->prepare("
@@ -43,7 +43,7 @@ class ListRepository
         ]);
     }
 
-// Récupérer toutes les listes d'un utilisateur
+    // Récupérer toutes les listes d'un utilisateur
     public function getListsByUser(int $userId): array
     {
         $stmt = $this->pdo->prepare("SELECT * FROM list WHERE id_user = :id_user");
@@ -51,7 +51,7 @@ class ListRepository
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-// récupérer tous les jeux d'une liste
+    // récupérer tous les jeux d'une liste
     public function getGamesByList(int $listId): array
     {
         $stmt = $this->pdo->prepare("
@@ -62,5 +62,29 @@ class ListRepository
         ");
         $stmt->execute([':id_list' => $listId]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function countListByUser(int $userId)
+    {
+        $stmt = $this->pdo->prepare("SELECT COUNT(*) as nb_list FROM list WHERE id_user = :id_user");
+        $stmt->execute([':id_user' => $userId]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return (int) $row['nb_list'];
+    }
+
+    public function countGamesByUser(int $userId): int
+    {
+        $sql = "SELECT COUNT(*) AS nb_games
+        FROM list_items li
+        JOIN list l ON li.id_list = l.id_list
+        WHERE l.id_user = :id_user";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([':id_user' => $userId]);
+
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return (int) $row['nb_games'];
     }
 }

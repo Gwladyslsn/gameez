@@ -22,7 +22,7 @@ require_once ROOTPATH . "src/View/template/header.php";
             <div class="profile-info">
                 <div class="info-group">
                     <div class="info-label">Pseudo</div>
-                    <div class="info-value" id="username-display">GameMaster42</div>
+                    <div class="info-value" id="username-display"></div>
                     <div class="info-value hidden" id="username-edit">
                         <input type="text" value="GameMaster42" id="username-input">
                     </div>
@@ -54,7 +54,7 @@ require_once ROOTPATH . "src/View/template/header.php";
 
                 <div class="info-group">
                     <div class="info-label">Date de naissance</div>
-                    <div class="info-value"><?= htmlspecialchars($user['user_dob']) ?></div>
+                    <div class="info-value"><?= date('d/m/Y', strtotime($user['user_dob'])) ?></div>
                 </div>
 
             </div>
@@ -107,24 +107,20 @@ require_once ROOTPATH . "src/View/template/header.php";
 
             <div class="stats-grid">
                 <div class="stat-item">
-                    <div class="stat-number">4</div>
+                    <div class="stat-number"><?= $nb_list?></div>
                     <div class="stat-label">Wishlists actives</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">28</div>
+                    <div class="stat-number"><?= $nb_games ?></div>
                     <div class="stat-label">Jeux en wishlist</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">15</div>
+                    <div class="stat-number"><?= $nb_review ?></div>
                     <div class="stat-label">Jeux notés</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">4.2</div>
+                    <div class="stat-number"><?= $average_notes ?></div>
                     <div class="stat-label">Note moyenne</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">7</div>
-                    <div class="stat-label">Avis rédigés</div>
                 </div>
             </div>
         </div>

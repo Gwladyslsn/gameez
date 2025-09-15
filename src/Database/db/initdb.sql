@@ -206,3 +206,14 @@ VALUES
 ('Exit', '60 min', '1-6', '12+', 'image/jeux/exit.webp', 7, 'Un escape game en version cartes.'),
 ('Suspects', '45 min', '1-6', '12+', 'image/jeux/suspects.webp', 7, 'Menez des enquêtes narratives immersives.'),
 ('Mysterium Park', '30 min', '2-6', '10+', 'image/jeux/mysteriumpark.webp', 7, 'Une version plus rapide de Mysterium pour deviner le coupable.');
+
+
+
+/*TEST*/
+
+SELECT COUNT(*) as nb_list FROM list WHERE id_user = 1;
+
+SELECT COUNT(*) AS nb_games
+FROM list_items li
+JOIN list l ON li.id_list = l.id_list
+WHERE l.id_user = 4;
