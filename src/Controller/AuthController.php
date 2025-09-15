@@ -15,7 +15,7 @@ class AuthController extends Controller
             $formType = $_POST['form_type'] ?? '';
 
             if ($formType === 'sign') {
-                $errors = $auth->signin(); // récupère les erreurs
+                $errors = $auth->signin();
             } elseif ($formType === 'log') {
                 $result = $auth->login();
                 if ($result['success']) {

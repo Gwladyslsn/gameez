@@ -6,7 +6,7 @@ return [
         'method' => 'home'
     ],
     '/register' => [
-        'controller' => App\Controller\PageController::class,
+        'controller' => App\Controller\AuthController::class,
         'method' => 'register'
     ],
     '/login' => [
