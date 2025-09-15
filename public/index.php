@@ -14,7 +14,11 @@ foreach ($routes as $path => $routeInfo) {
     $router->addRoute($path, $routeInfo['controller'], $routeInfo['method']);
 }
 
+
+
 $uri = $_SERVER['REQUEST_URI'];
 $uri = str_replace('/index.php', '', $uri); // Corrige l’URI
 $router->dispatch($uri);
+
+
 ?>
