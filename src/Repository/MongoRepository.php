@@ -6,9 +6,6 @@ use DateTime;
 use MongoDB\BSON\ObjectId;
 use MongoDB\Client;
 
-var_dump(class_exists(\MongoDB\BSON\ObjectId::class));
-$id = new \MongoDB\BSON\ObjectId();
-
 class MongoRepository
 {
     private \MongoDB\Collection $collection;
@@ -16,15 +13,57 @@ class MongoRepository
 
     public function __construct()
     {
-        $uri = getenv('MONGODB_URI');
+        $uri = getenv('MONGO_URI');
         if (!$uri) {
-            throw new \Exception("Erreur : MONGODB_URI non défini");
+            throw new \Exception("Erreur : MONGO_URI non défini");
         }
 
         $client = new Client($uri);
         $this->collection = $client->gameez->posts;
+
     }
 
+    public function createPost(string $title, string $content, int $userId, string $username)
+    {
+        $result = $this->collection->insertOne([
+            'title' => $title,
+            'content' => $content,
+            'author' => [
+                'id' => $userId,
+                'username' => $username,
+                'avatar' => strtoupper(substr($username, 0, 2)),
+            ],
+            'likes' => 0,
+            'replies' => [],
+            'created_at' => (new DateTime())->format(DateTime::ATOM),
+        ]);
+
+        return [
+            'success' => true,
+            'insertedId' => (string)$result->getInsertedId()
+        ];
+    }
+
+        
+
+
+        public function addComment(int $id, string $content, int $userId, string $username): void
+    {
+        $this->collection->updateOne(
+            ['_id' => $id],
+            ['$push' => [
+                'replies' => [
+                    'author' => [
+                        'id' => $userId,
+                        'username' => $username,
+                        'avatar' => strtoupper(substr($username, 0, 2)),
+                    ],
+                    'content' => $content,
+                    'created_at' => (new DateTime())->format(DateTime::ATOM),
+                ],
+            ]]
+        );
+    }
 
 
     public function findById(string $id): ?array
@@ -38,39 +77,9 @@ class MongoRepository
         return $cursor->toArray();
     }
 
-    public function createPost(string $title, string $content, int $userId, string $username): void
-    {
-        $this->collection->insertOne([
-            'title' => $title,
-            'content' => $content,
-            'author' => [
-                'id' => $userId,
-                'username' => $username,
-                'avatar' => strtoupper(substr($username, 0, 2)),
-            ],
-            'likes' => 0,
-            'replies' => [],
-            'created_at' => (new DateTime())->format(DateTime::ATOM),
-        ]);
-    }
 
-    public function addComment(int $id, string $content, int $userId, string $username): void
-    {
-        $this->collection->updateOne(
-            ['_id' => $id],
-            ['$push' => [
-                'comments' => [
-                    'author' => [
-                        'id' => $userId,
-                        'username' => $username,
-                        'avatar' => strtoupper(substr($username, 0, 2)),
-                    ],
-                    'content' => $content,
-                    'created_at' => (new DateTime())->format(DateTime::ATOM),
-                ],
-            ]]
-        );
-    }
+
+
 
     public function likePost(string $id): void
     {

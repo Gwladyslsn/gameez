@@ -10,18 +10,17 @@ class MongoDBConnection
     private static ?Database $db = null;
 
     public static function getConnection(): Database
-    {
-        if (!self::$db) {
-            // ⚠️ Mets ici ton URI MongoDB (local/Docker ou Atlas)
-            // Exemple Docker :
-            $client = new Client('mongodb://mongo:27017');
-
-            // Exemple Atlas :
-            // $client = new Client('mongodb+srv://<user>:<pass>@<cluster>.mongodb.net');
-
-            self::$db = $client->selectDatabase('gameez'); // le nom de ta DB
+{
+    if (!self::$db) {
+        $uri = getenv('MONGO_URI'); 
+        if (!$uri) {
+            throw new \Exception("MONGO_URI non défini");
         }
-
-        return self::$db;
+        $client = new Client($uri);
+        self::$db = $client->selectDatabase('Gameez');
     }
+
+    return self::$db;
+}
+
 }

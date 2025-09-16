@@ -37,55 +37,75 @@ function scrollToTop() {
 }
 
 // Gestion de la création de posts
-document.querySelector('.create-post-form').addEventListener('submit', function (e) {
+document.querySelector('.create-post-form').addEventListener('submit', async function (e) {
     e.preventDefault();
     const title = this.querySelector('input').value;
     const content = this.querySelector('textarea').value;
 
     if (title && content) {
-        createNewPost(title, content);
-        this.reset();
+        try {
+            const formData = new FormData();
+            formData.append('title', title);
+            formData.append('content', content);
+
+            const response = await fetch('/createPost', {
+                method: 'POST',
+                headers: { 'X-Requested-With': 'XMLHttpRequest' },
+                body: formData
+            });
+
+            const data = await response.json();
+
+            // Insérer le post renvoyé par PHP
+            createNewPost(data.title, data.content, data.username, data.created_at);
+
+            this.reset();
+        } catch (error) {
+            console.error("Erreur AJAX :", error);
+        }
     }
 });
 
-function createNewPost(title, content) {
+
+function createNewPost(title, content, username, createdAt) {
     const postsContainer = document.querySelector('.posts-container');
     const newPost = document.createElement('div');
     newPost.className = 'post fade-in';
 
     newPost.innerHTML = `
-                <div class="post-header">
-                    <div class="user-avatar">VO</div>
-                    <div class="post-info">
-                        <div class="username">Vous</div>
-                        <div class="post-time">À l'instant</div>
-                    </div>
-                </div>
-                <div class="post-content">
-                    <div class="post-title">${title}</div>
-                    <div class="post-text">${content}</div>
-                </div>
-                <div class="post-actions">
-                    <button class="action-btn like-btn" onclick="toggleLike(this)">
-                        <span>❤️</span>
-                        <span class="like-count">0</span>
-                    </button>
-                    <button class="action-btn comment-btn" onclick="toggleComments(this)">
-                        <span>💬</span>
-                        <span>0 commentaires</span>
-                    </button>
-                </div>
-                <div class="comments-section">
-                    <div class="add-comment">
-                        <input type="text" class="comment-input" placeholder="Ajoutez votre commentaire...">
-                        <button class="comment-submit">Envoyer</button>
-                    </div>
-                </div>
-            `;
+        <div class="post-header">
+            <div class="user-avatar">${username.substring(0,2).toUpperCase()}</div>
+            <div class="post-info">
+                <div class="username">${username}</div>
+                <div class="post-time">${createdAt}</div>
+            </div>
+        </div>
+        <div class="post-content">
+            <div class="post-title">${title}</div>
+            <div class="post-text">${content}</div>
+        </div>
+        <div class="post-actions">
+            <button class="action-btn like-btn" onclick="toggleLike(this)">
+                <span>❤️</span>
+                <span class="like-count">0</span>
+            </button>
+            <button class="action-btn comment-btn" onclick="toggleComments(this)">
+                <span>💬</span>
+                <span>0 commentaire</span>
+            </button>
+        </div>
+        <div class="comments-section">
+            <div class="add-comment">
+                <input type="text" class="comment-input" placeholder="Ajoutez votre commentaire...">
+                <button class="comment-submit">Envoyer</button>
+            </div>
+        </div>
+    `;
 
     postsContainer.insertBefore(newPost, postsContainer.firstChild);
     newPost.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
+
 
 // Gestion des commentaires
 document.addEventListener('click', function (e) {

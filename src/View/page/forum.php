@@ -1,6 +1,7 @@
 <?php
 
 require_once ROOTPATH . "src/View/template/header.php";
+
 ?>
 
 <div class="container-forum">
@@ -24,7 +25,7 @@ require_once ROOTPATH . "src/View/template/header.php";
         <div class="user-avatar"><?= $post['author']['avatar'] ?></div>
         <div class="post-info">
             <div class="username"><?= $post['author']['username'] ?></div>
-            <div class="post-time"><?= $post['created_at']->toDateTime()->format('d/m/Y H:i') ?></div>
+            <div class="post-time"><?= $post['created_at'] ?></div>
         </div>
     </div>
     <div class="post-content">
@@ -38,16 +39,16 @@ require_once ROOTPATH . "src/View/template/header.php";
                 ❤️ <span class="like-count"><?= $post['likes'] ?></span>
             </button>
         </form>
-        <button class="action-btn comment-btn">💬 <?= count($post['comments']) ?> commentaires</button>
+        <button class="action-btn comment-btn">💬 <?= count($post['replies']) ?> commentaires</button>
     </div>
     <!-- commentaires -->
     <div class="comments-section">
-        <?php foreach($post['comments'] as $comment): ?>
+        <?php foreach($post['replies'] as $comment): ?>
         <div class="comment">
             <div class="comment-header">
                 <div class="comment-avatar"><?= $comment['author']['avatar'] ?></div>
                 <div class="comment-username"><?= $comment['author']['username'] ?></div>
-                <div class="comment-time"><?= $comment['created_at']->toDateTime()->format('d/m/Y H:i') ?></div>
+                <div class="comment-time"><?= $comment['created_at'] ?></div>
             </div>
             <div class="comment-text"><?= htmlspecialchars($comment['content']) ?></div>
         </div>

@@ -34,8 +34,8 @@ return [
         'method' => 'searchGame'
     ],
     '/forum' => [
-        'controller' => App\Controller\PageController::class,
-        'method' => 'forum'
+        'controller' => App\Controller\MongoDbController::class,
+        'method' => 'showForum'
     ],
     '/extensions' => [
         'controller' => App\Controller\PageController::class,
@@ -53,6 +53,11 @@ return [
         'controller' => App\Controller\ReviewController::class,
         'method' => 'addReview'
     ],
+    '/createPost' => [
+        'controller' => App\Controller\MongoDbController::class,
+        'method' => 'createPost'
+    ],
+    
     
 
 

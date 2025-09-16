@@ -3,7 +3,7 @@ services:
     image: php:8.2-apache
     container_name: phpApache_gameez
     environment:
-      - MONGODB_URI=${MONGODB_URI}
+      - MONGO_URI=${MONGO_URI}
       - db_host=${db_host}
       - db_name=${db_name}
       - db_user=${db_user}
