@@ -88,7 +88,7 @@ class MongoDbController
         $newComment = $this->mongoRepository->addComment($postId, $content_comment, $userId, $username);
 
         // Renvoyer le commentaire créé côté JS
-        echo json_encode(['success' => true, 'comment' => $newComment]);
+        echo json_encode(['success' => true, 'replies' => $newComment]);
 
     } catch (\Exception $e) {
         echo json_encode(['success' => false, 'message' => $e->getMessage()]);
