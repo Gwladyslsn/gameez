@@ -45,25 +45,29 @@ class MongoRepository
     }
 
         
+public function addComment(string $id, string $content_comment, int $userId, string $username): array
+{
+    $postId = new ObjectId($id);
 
+    $replies = [
+        '_id' => $postId, 
+        'author' => [
+            'id' => $userId,
+            'username' => $username,
+            'avatar' => strtoupper(substr($username, 0, 2)),
+        ],
+        'content_comment' => $content_comment,
+        'created_at' => (new DateTime())->format(DateTime::ATOM),
+    ];
 
-        public function addComment(int $id, string $content, int $userId, string $username): void
-    {
-        $this->collection->updateOne(
-            ['_id' => $id],
-            ['$push' => [
-                'replies' => [
-                    'author' => [
-                        'id' => $userId,
-                        'username' => $username,
-                        'avatar' => strtoupper(substr($username, 0, 2)),
-                    ],
-                    'content' => $content,
-                    'created_at' => (new DateTime())->format(DateTime::ATOM),
-                ],
-            ]]
-        );
-    }
+    $this->collection->updateOne(
+        ['_id' => $postId],
+        ['$push' => ['replies' => $replies]]
+    );
+
+    return $replies; // 👈 renvoyer le commentaire pour l'utiliser côté controller
+}
+
 
 
     public function findById(string $id): ?array

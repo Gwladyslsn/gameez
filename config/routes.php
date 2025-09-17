@@ -57,6 +57,10 @@ return [
         'controller' => App\Controller\MongoDbController::class,
         'method' => 'createPost'
     ],
+    '/addComment' => [
+        'controller' => App\Controller\MongoDbController::class,
+        'method' => 'addComment'
+    ],
     
     
 
