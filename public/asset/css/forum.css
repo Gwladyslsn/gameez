@@ -280,6 +280,22 @@
     box-shadow: 0 3px 10px rgba(102, 126, 234, 0.3);
 }
 
+.reply-btn{
+    padding: 10px 15px;
+    background: linear-gradient(45deg, var(--pink), var(--light-pink));
+    border: none;
+    border-radius: 25px;
+    color: var(--black);
+    font-size: 1.1rem;
+    cursor: pointer;
+    align-self: flex-end;
+}
+
+.reply-btn:hover{
+    background: linear-gradient(45deg, var(--light-pink), var(--pink));
+    box-shadow: 0 5px 20px rgba(255, 154, 158, 0.4);
+}
+
 .floating-action {
     position: fixed;
     bottom: 30px;

@@ -74,7 +74,7 @@ function createNewPost(title, content, username, createdAt) {
 
     newPost.innerHTML = `
         <div class="post-header">
-            <div class="user-avatar">${username.substring(0,2).toUpperCase()}</div>
+            <div class="user-avatar">${username.substring(0, 2).toUpperCase()}</div>
             <div class="post-info">
                 <div class="username">${username}</div>
                 <div class="post-time">${createdAt}</div>
@@ -107,10 +107,31 @@ function createNewPost(title, content, username, createdAt) {
 }
 
 
-// Gestion des commentaires
+// COMMENTAIRES
+
+// Gérer l'affichage / masquage des commentaires
+document.querySelectorAll('.comment-btn').forEach(button => {
+    button.addEventListener('click', function () {
+        const postContainer = button.closest('.post');
+        const commentsSection = postContainer.querySelector('.comments-section');
+
+        commentsSection.classList.toggle('active');
+
+        if (commentsSection.classList.contains('active')) {
+            commentsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+            // Focus automatiquement sur le champ d'ajout de commentaire
+            const commentInput = commentsSection.querySelector('.comment-input');
+            if (commentInput) commentInput.focus();
+        }
+    });
+});
+
+//Gérer la soumission d'un nouveau commentaire
 document.addEventListener('click', function (e) {
-    if (e.target.classList.contains('comment-submit')) {
-        const input = e.target.previousElementSibling;
+    if (e.target.classList.contains('add_comment')) { // <-- adapte au nom de ton bouton
+        e.preventDefault(); // empêcher le rechargement de la page
+        const form = e.target.closest('form');
+        const input = form.querySelector('.comment-input');
         const commentText = input.value.trim();
 
         if (commentText) {
@@ -120,29 +141,36 @@ document.addEventListener('click', function (e) {
     }
 });
 
+//Fonction pour ajouter dynamiquement un commentaire dans le DOM
 function addComment(button, text) {
     const commentsSection = button.closest('.comments-section');
     const addCommentDiv = button.closest('.add-comment');
 
+    // ⚠️ ICI il faut connaître l'utilisateur connecté et la date actuelle
+    // Tu peux récupérer ces infos côté serveur et les passer via data-attributes
+    const username = document.body.dataset.username || 'Moi';
+    const createdAt = new Date().toLocaleString();
+
     const newComment = document.createElement('div');
     newComment.className = 'comment fade-in';
     newComment.innerHTML = `
-                <div class="comment-header">
-                    <div class="comment-avatar">${username.substring(0,2).toUpperCase()}</div>
-                    <div class="comment-username">${username}</div>
-                    <div class="comment-time">${createdAt}</div>
-                </div>
-                <div class="comment-text">${text}</div>
-            `;
+        <div class="comment-header">
+            <div class="comment-avatar">${username.substring(0, 2).toUpperCase()}</div>
+            <div class="comment-username">${username}</div>
+            <div class="comment-time">${createdAt}</div>
+        </div>
+        <div class="comment-text">${text}</div>
+    `;
 
     commentsSection.insertBefore(newComment, addCommentDiv);
 
-    // Mettre à jour le compteur de commentaires
+    // Mettre à jour le compteur
     const post = commentsSection.closest('.post');
-    const commentBtn = post.querySelector('.comment-btn span:last-child');
-    const currentCount = parseInt(commentBtn.textContent.split(' ')[0]) || 0;
-    commentBtn.textContent = `${currentCount + 1} commentaire${currentCount + 1 > 1 ? 's' : ''}`;
+    const commentBtn = post.querySelector('.comment-btn');
+    const currentCount = parseInt(commentBtn.textContent) || 0;
+    commentBtn.textContent = `${currentCount + 1} commentaires`;
 }
+
 
 // Animation de pulsation pour les likes
 const style = document.createElement('style');

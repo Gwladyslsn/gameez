@@ -57,7 +57,7 @@ require_once ROOTPATH . "src/View/template/header.php";
         <form method="POST" class="add-comment">
             <input type="hidden" name="post_id" value="<?= $post['_id'] ?>">
             <input type="text" name="comment_content" class="comment-input" placeholder="Ajoutez votre commentaire..." required>
-            <button type="submit" name="add_comment">Envoyer</button>
+            <button type="submit" name="add_comment" class="reply-btn">Envoyer</button>
         </form>
     </div>
 </div>
