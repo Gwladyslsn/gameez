@@ -128,9 +128,9 @@ function addComment(button, text) {
     newComment.className = 'comment fade-in';
     newComment.innerHTML = `
                 <div class="comment-header">
-                    <div class="comment-avatar">VO</div>
-                    <div class="comment-username">Vous</div>
-                    <div class="comment-time">À l'instant</div>
+                    <div class="comment-avatar">${username.substring(0,2).toUpperCase()}</div>
+                    <div class="comment-username">${username}</div>
+                    <div class="comment-time">${createdAt}</div>
                 </div>
                 <div class="comment-text">${text}</div>
             `;

@@ -21,14 +21,6 @@ require_once ROOTPATH . "src/View/template/header.php";
 
             <div class="profile-info">
                 <div class="info-group">
-                    <div class="info-label">Pseudo</div>
-                    <div class="info-value" id="username-display"></div>
-                    <div class="info-value hidden" id="username-edit">
-                        <input type="text" value="GameMaster42" id="username-input">
-                    </div>
-                </div>
-
-                <div class="info-group">
                     <div class="info-label">Email</div>
                     <div class="info-value" id="email-display"><?= htmlspecialchars($user['user_mail']) ?></div>
                     <div class="info-value hidden" id="email-edit">

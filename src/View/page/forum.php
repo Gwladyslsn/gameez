@@ -50,7 +50,7 @@ require_once ROOTPATH . "src/View/template/header.php";
                 <div class="comment-username"><?= $comment['author']['username'] ?></div>
                 <div class="comment-time"><?= $comment['created_at'] ?></div>
             </div>
-            <div class="comment-text"><?= htmlspecialchars($comment['content']) ?></div>
+            <div class="comment-text"><?= htmlspecialchars($comment['replies']) ?></div>
         </div>
         <?php endforeach; ?>
 
