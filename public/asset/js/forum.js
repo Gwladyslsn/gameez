@@ -234,7 +234,7 @@ window.addEventListener('scroll', function () {
         floatingAction.style.opacity = '1';
         floatingAction.style.transform = 'scale(1)';
     } else {
-        floatingAction.style.opacity = '0.7';
-        floatingAction.style.transform = 'scale(0.8)';
+        floatingAction.style.opacity = '0';
+        floatingAction.style.transform = 'scale(0)';
     }
 });
