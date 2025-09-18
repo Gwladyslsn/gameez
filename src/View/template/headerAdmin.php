@@ -24,10 +24,6 @@ require_once ROOTPATH . 'config/config.php';
                 </a>
             </div>
             <h1>Espace admin</h1>
-            <div class="search-bar">
-                <input type="text" placeholder="Rechercher un jeu...">
-                <button>🔍</button>
-            </div>
     </header>
 
     <!-- Navigation -->
