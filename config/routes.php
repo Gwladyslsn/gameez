@@ -61,6 +61,14 @@ return [
         'controller' => App\Controller\MongoDbController::class,
         'method' => 'addComment'
     ],
+    '/likePost' => [
+        'controller' => App\Controller\MongoDbController::class,
+        'method' => 'likePost'
+    ],
+    '/unlikePost' => [
+        'controller' => App\Controller\MongoDbController::class,
+        'method' => 'unlikePost'
+    ],
     
     
 

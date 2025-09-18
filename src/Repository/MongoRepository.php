@@ -69,6 +69,19 @@ public function addComment(string $id, string $content_comment, int $userId, str
 }
 
 
+    public function likePost(string $postId): int
+{
+
+    $result = $this->collection->findOneAndUpdate(
+        ['_id' => new ObjectId($postId)],
+        ['$inc' => ['likes' => 1]],
+        ['returnDocument' => \MongoDB\Operation\FindOneAndUpdate::RETURN_DOCUMENT_AFTER]
+    );
+
+    return $result['likes'] ?? 0;
+}
+
+
 
     public function findById(string $id): ?array
     {
@@ -81,16 +94,5 @@ public function addComment(string $id, string $content_comment, int $userId, str
         return $cursor->toArray();
     }
 
-
-
-
-
-    public function likePost(string $id): void
-    {
-        $this->collection->updateOne(
-            ['_id' => $id],
-            ['$inc' => ['likes' => 1]]
-        );
-    }
 }
 

@@ -188,23 +188,44 @@ function addComment(form, comment) {
 }
 
 
-
-
-
-
-
 // ANIMATION
 
 // Animation de pulsation pour les likes
-const style = document.createElement('style');
-style.textContent = `
-            @keyframes pulse {
-                0% { transform: scale(1); }
-                50% { transform: scale(1.2); }
-                100% { transform: scale(1); }
-            }
-        `;
-document.head.appendChild(style);
+document.querySelectorAll('.like-btn').forEach(button => {
+    button.addEventListener('click', async (e) => {
+        e.preventDefault();
+
+        const form = button.closest('form');
+        const postId = form.querySelector('input[name="post_id"]').value;
+
+        try {
+            const response = await fetch('/likePost', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ post_id: postId })
+            });
+
+            if (!response.ok) throw new Error('Erreur réseau');
+
+            const data = await response.json();
+            // data.likes = nouveau nombre de likes
+
+            const likeCount = button.querySelector('.like-count');
+            likeCount.textContent = data.likes;
+
+            // Animation
+            button.style.animation = 'pulse 0.3s ease';
+            button.addEventListener('animationend', () => {
+                button.style.animation = '';
+            });
+
+        } catch (err) {
+            console.error(err);
+            alert("Impossible de liker");
+        }
+    });
+});
+
 
 // Masquer le bouton de retour en haut quand on est en haut de page
 window.addEventListener('scroll', function () {

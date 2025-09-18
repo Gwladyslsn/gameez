@@ -35,7 +35,7 @@ require_once ROOTPATH . "src/View/template/header.php";
     <div class="post-actions">
         <form method="POST">
             <input type="hidden" name="post_id" value="<?= $post['_id'] ?>">
-            <button type="submit" name="like_post" class="action-btn like-btn">
+            <button type="button" name="like_post" class="action-btn like-btn">
                 ❤️ <span class="like-count"><?= $post['likes'] ?></span>
             </button>
         </form>

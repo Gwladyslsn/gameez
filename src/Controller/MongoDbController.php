@@ -98,12 +98,36 @@ class MongoDbController
 
     // Like un post
     public function likePost(): void
-    {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['like_post'])) {
-            $postId = $_POST['post_id'];
-            $this->mongoRepository->likePost($postId);
-            header("Location: /forum");
-            exit;
+{
+    header('Content-Type: application/json');
+
+    try {
+        // Récupérer le JSON envoyé par fetch
+        $data = json_decode(file_get_contents('php://input'), true);
+
+        if (!isset($data['post_id'])) {
+            http_response_code(400);
+            echo json_encode(['success' => false, 'message' => 'Post ID manquant']);
+            return;
         }
+
+        $postId = $data['post_id'];
+        $newLikeCount = $this->mongoRepository->likePost($postId); // ← Retourne le nb de likes mis à jour
+
+        http_response_code(200);
+        echo json_encode([
+            'success' => true,
+            'likes' => $newLikeCount
+        ]);
+
+    } catch (\Exception $e) {
+        http_response_code(500);
+        echo json_encode([
+            'success' => false,
+            'message' => 'Erreur lors de l\'ajout du like',
+            'error' => $e->getMessage()
+        ]);
     }
+}
+
 }
