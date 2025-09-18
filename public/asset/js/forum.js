@@ -111,7 +111,7 @@ function createNewPost(title, content, username, createdAt) {
 // GESTION COMMENTAIRES
 // ======================
 
-// 1️⃣ Affichage / masquage des commentaires
+// Affichage / masquage des commentaires
 document.querySelectorAll('.comment-btn').forEach(button => {
     button.addEventListener('click', function (e) {
         e.preventDefault();
@@ -132,7 +132,7 @@ document.querySelectorAll('.comment-btn').forEach(button => {
 
 document.querySelectorAll('.add-comment').forEach(form => {
     form.addEventListener('submit', async (e) => {
-        e.preventDefault(); // empêche le rechargement
+        e.preventDefault();
 
         const postId = form.querySelector('input[name="post_id"]').value;
         const content = form.querySelector('input[name="comment_content"]').value;
@@ -146,41 +146,42 @@ document.querySelectorAll('.add-comment').forEach(form => {
 
             if (!response.ok) throw new Error('Erreur réseau');
 
-            const newComment = await response.json();
+            const newCommentData = await response.json();
 
             // Ajouter dynamiquement le commentaire dans le DOM
-            addComment();
+            addComment(form, newCommentData.replies);
+            form.reset();
 
         } catch (err) {
-            console.error(err);
             alert("Impossible d'ajouter le commentaire");
         }
     });
 });
 
 
-// 3️⃣ Fonction d'affichage d'un nouveau commentaire
-function addComment(button, comment) {
-    const commentsSection = button.closest('.comments-section');
-    const addCommentDiv = button.closest('.add-comment');
+//Fonction d'affichage d'un nouveau commentaire
+function addComment(form, comment) {
+    const post = form.closest('.post');
+    const commentsSection = document.querySelector('.comments-section');
+    const addCommentDiv = document.querySelector('.add-comment');
 
     const newComment = document.createElement('div');
     newComment.className = 'comment fade-in';
+
     newComment.innerHTML = `
         <div class="comment-header">
-            <div class="comment-avatar">${comment.username.substring(0, 2).toUpperCase()}</div>
-            <div class="comment-username">${comment.username}</div>
-            <div class="comment-time">${comment.created_at}</div>
+            <div class="comment-avatar">${comment.author.username.substring(0, 2).toUpperCase()}</div>
+            <div class="comment-username">${comment.author.username}</div>
+            <div class="comment-time">${new Date(comment.created_at).toLocaleString()}</div>
         </div>
-        <div class="comment-text">${comment.text}</div>
+        <div class="comment-text">${comment.content_comment}</div>
     `;
 
     commentsSection.insertBefore(newComment, addCommentDiv);
-    alert("commentaire ajouté");
-    form.reset();
+    newComment.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    
 
     // Mettre à jour le compteur
-    const post = commentsSection.closest('.post');
     const commentBtn = post.querySelector('.comment-btn');
     const currentCount = parseInt(commentBtn.textContent) || 0;
     commentBtn.textContent = `${currentCount + 1} commentaires`;
@@ -192,7 +193,7 @@ function addComment(button, comment) {
 
 
 
-
+// ANIMATION
 
 // Animation de pulsation pour les likes
 const style = document.createElement('style');
