@@ -20,21 +20,6 @@ function showTab(tabName) {
 
 // Add some interactivity
 document.addEventListener('DOMContentLoaded', function () {
-    // Search functionality
-    const searchInput = document.querySelector('.search-box input');
-    searchInput.addEventListener('input', function () {
-        console.log('Recherche:', this.value);
-        // Here you would implement actual search functionality
-    });
-
-    // Filter functionality
-    const filterSelects = document.querySelectorAll('.filter-select');
-    filterSelects.forEach(select => {
-        select.addEventListener('change', function () {
-            console.log('Filtre changé:', this.value);
-            // Here you would implement actual filtering
-        });
-    });
 
     // Review actions
     const approveButtons = document.querySelectorAll('.btn-approve');

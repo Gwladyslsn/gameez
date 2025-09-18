@@ -14,8 +14,7 @@ require_once ROOTPATH . 'src/View/template/headerAdmin.php';
                         <div class="stat-card-header">
                             <div>
                                 <div class="stat-card-title">Total des jeux</div>
-                                <div class="stat-card-value">1,247</div>
-                                <div class="stat-card-trend">+12% ce mois</div>
+                                <div class="stat-card-value"><?= $stats['total_games'] ?></div>
                             </div>
                             <div class="stat-card-icon games">
                                 <span><i class="fa-solid fa-gamepad" style="color: #ff9a9e;"></i></span>
@@ -27,8 +26,7 @@ require_once ROOTPATH . 'src/View/template/headerAdmin.php';
                         <div class="stat-card-header">
                             <div>
                                 <div class="stat-card-title">Utilisateurs actifs</div>
-                                <div class="stat-card-value">8,532</div>
-                                <div class="stat-card-trend">+8% ce mois</div>
+                                <div class="stat-card-value"><?= $stats['total_users'] ?></div>
                             </div>
                             <div class="stat-card-icon users">
                                 <span><i class="fa-solid fa-person" style="color: #74C0FC;"></i></span>
@@ -39,8 +37,8 @@ require_once ROOTPATH . 'src/View/template/headerAdmin.php';
                     <div class="stat-card">
                         <div class="stat-card-header">
                             <div>
-                                <div class="stat-card-title">Avis en attente</div>
-                                <div class="stat-card-value">23</div>
+                                <div class="stat-card-title">Total des avis</div>
+                                <div class="stat-card-value"><?= $stats['total_reviews'] ?></div>
                             </div>
                             <div class="stat-card-icon reviews">
                                 <span><i class="fa-solid fa-comment" style="color: #f0f1f3;"></i></span>
@@ -52,8 +50,7 @@ require_once ROOTPATH . 'src/View/template/headerAdmin.php';
                         <div class="stat-card-header">
                             <div>
                                 <div class="stat-card-title">Note moyenne des jeux</div>
-                                <div class="stat-card-value">145,678</div>
-                                <div class="stat-card-trend">+15% ce mois</div>
+                                <div class="stat-card-value"><?= $stats['avg_review'] ?> /5</div>
                             </div>
                             <div class="stat-card-icon clicks">
                                 <span><i class="fa-solid fa-ranking-star" style="color: #FFD43B;"></i></span>
@@ -67,77 +64,26 @@ require_once ROOTPATH . 'src/View/template/headerAdmin.php';
                     <div class="top-games-card">
                         <h3 class="top-games-title">
                             <span class="icon-trending"></span>
-                            Top 5 - Plus d'avis
+                            Top 5 - Meilleur note
                         </h3>
-                        <div class="game-item">
-                            <div class="game-info">
-                                <div class="game-rank clicks">1</div>
-                                <span>The Witcher 3</span>
-                            </div>
-                            <div class="game-stats">
-                                <div class="game-value">15,432 clics</div>
-                                <div class="game-rating">
-                                    <span class="star">★</span>
-                                    <span>4.8</span>
+                        <?php $rank = 1; ?>
+                        <?php foreach ($topGames as $topGame): ?>
+                            <div class="game-item">
+                                <div class="game-info">
+                                    <div class="game-rank clicks"><?= $rank ?></div>
+                                    <span><?= $topGame['game_name'] ?></span>
+                                </div>
+                                <div class="game-stats">
+                                    <div class="game-value"><?= $topGame['review_count'] ?> avis</div>
+                                    <div class="game-rating">
+                                        <span class="star">★</span>
+                                        <span><?= $topGame['average_rating'] ?></span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                            <?php $rank++; ?>
+                        <?php endforeach ?>
 
-                        <div class="game-item">
-                            <div class="game-info">
-                                <div class="game-rank clicks">2</div>
-                                <span>Cyberpunk 2077</span>
-                            </div>
-                            <div class="game-stats">
-                                <div class="game-value">12,890 clics</div>
-                                <div class="game-rating">
-                                    <span class="star">★</span>
-                                    <span>4.2</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="game-item">
-                            <div class="game-info">
-                                <div class="game-rank clicks">3</div>
-                                <span>Elden Ring</span>
-                            </div>
-                            <div class="game-stats">
-                                <div class="game-value">11,234 clics</div>
-                                <div class="game-rating">
-                                    <span class="star">★</span>
-                                    <span>4.9</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="game-item">
-                            <div class="game-info">
-                                <div class="game-rank clicks">4</div>
-                                <span>God of War</span>
-                            </div>
-                            <div class="game-stats">
-                                <div class="game-value">9,876 clics</div>
-                                <div class="game-rating">
-                                    <span class="star">★</span>
-                                    <span>4.7</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="game-item">
-                            <div class="game-info">
-                                <div class="game-rank clicks">5</div>
-                                <span>Horizon Zero Dawn</span>
-                            </div>
-                            <div class="game-stats">
-                                <div class="game-value">8,765 clics</div>
-                                <div class="game-rating">
-                                    <span class="star">★</span>
-                                    <span>4.6</span>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
                     <div class="top-games-card">

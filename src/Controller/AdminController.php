@@ -2,20 +2,20 @@
 
 namespace App\Controller;
 
+use App\Repository\AdminRepository;
 use App\Database\Database;
-use App\Repository\ListRepository;
-use App\Repository\UserRepository;
-use App\Repository\ReviewRepository;
-use App\Repository\GameRepository;
 
-class AdminController extends Controller 
+class AdminController
 {
-
-    public function dashboardAdmin()
+    public function dashboardadmin()
     {
-    if (!isset($_SESSION['admin'])) {
-            header('Location: /register');
-            exit;
-        }
+        $pdo = (new Database())->getConnection();
+        $adminRepo = new AdminRepository($pdo);
+
+        $stats = $adminRepo->getStats();
+        $topGames = $adminRepo->getTopGames();
+
+        require ROOTPATH . 'src/View/page/admin/dashboardAdmin.php';
     }
 }
+

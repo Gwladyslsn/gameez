@@ -217,3 +217,5 @@ SELECT COUNT(*) AS nb_games
 FROM list_items li
 JOIN list l ON li.id_list = l.id_list
 WHERE l.id_user = 4;
+
+SELECT COUNT(*) FROM game;

@@ -78,7 +78,7 @@ return [
 
     // ADMIN
     '/dashboardAdmin' => [
-        'controller' => App\Controller\PageController::class,
+        'controller' => App\Controller\AdminController::class,
         'method' => 'dashboardAdmin'
     ],
 
