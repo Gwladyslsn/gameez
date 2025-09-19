@@ -15,6 +15,22 @@ class GameController
         $pdo = (new Database())->getConnection();
         $this->gameRepository = new GameRepository($pdo);
     }
+
+    public function addGame(): void
+    {
+        header('Content-Type: application/json');
+
+        $nameGame = $_POST['game_name'] ?? '';
+        $durationGame = $_POST['game_duration'] ?? '';
+        $nbGamer = $_POST['nb_gamer'] ?? '';
+        $ageGamer = $_POST['age_gamer'] ?? '';
+        $imageGame = $_POST['image'] ?? '';
+        $idCategory = isset($_POST['id_category']) ? (int)$_POST['id_category'] : 0;
+        $descriptionGame = $_POST['game_description'] ?? '';
+        
+        $newGame = $this->gameRepository->addGame($nameGame, $durationGame, $nbGamer, $ageGamer, $imageGame, $idCategory, $descriptionGame);
+
+    }
     public function showGames()
     {
         $database = new Database();

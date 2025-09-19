@@ -156,7 +156,7 @@ require_once ROOTPATH . 'src/View/template/headerAdmin.php';
                             </div>
                             <div class="mb-4">
                                 <label for="id_category" class="text-black">Catégorie</label>
-                                <select id="category-game" class="select-modal" >
+                                <select id="category-game" class="select-modal" name="id_category">
                                     <option value="0">Choisir une categorie</option>
                                     <option value="1">Stratégie</option>
                                     <option value="2">Ambiance</option>

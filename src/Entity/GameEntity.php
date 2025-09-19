@@ -13,6 +13,7 @@ class GameEntity
 
     private string $ageGamer;
     private string $imageGame;
+    private int $idCategory;
 
     private string $descriptionGame;
 
@@ -23,6 +24,7 @@ class GameEntity
         string $nbGamer = '',
         string $ageGamer = '',
         string $imageGame = '',
+        int $idCategory = '',
         ?string $descriptionGame = ''
     ) {
         $this->idGame = $idGame;
@@ -31,8 +33,10 @@ class GameEntity
         $this->nbGamer = $nbGamer;
         $this->ageGamer = $ageGamer;
         $this->imageGame = $imageGame;
+        $this->idCategory = $idCategory;
         $this->descriptionGame = $descriptionGame;
     }
+
 
 
     /**
@@ -46,7 +50,7 @@ class GameEntity
     /**
      * Set the value of idGame
      */
-    public function setIdGame(int $idGame): self
+    public function setIdGame(?int $idGame): self
     {
         $this->idGame = $idGame;
 
@@ -139,6 +143,24 @@ class GameEntity
     public function setImageGame(string $imageGame): self
     {
         $this->imageGame = $imageGame;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of idCategory
+     */
+    public function getIdCategory(): int
+    {
+        return $this->idCategory;
+    }
+
+    /**
+     * Set the value of idCategory
+     */
+    public function setIdCategory(int $idCategory): self
+    {
+        $this->idCategory = $idCategory;
 
         return $this;
     }

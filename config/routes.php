@@ -86,4 +86,8 @@ return [
         'controller' => App\Controller\PageController::class,
         'method' => 'loginSuccess'
     ],
+    '/addGame' => [
+        'controller' => App\Controller\GameController::class,
+        'method' => 'addGame'
+    ],
 ];

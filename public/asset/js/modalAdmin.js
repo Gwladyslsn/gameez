@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // ENVOI DES DONNÉES EN BDD
     const btnAddGame = document.getElementById('btn-add-game');
 
-    btnAddGame.addEventListener('click', function (e) {
+    btnAddGame.addEventListener('click', async  (e) => {
         e.preventDefault();
 
         const InputNameGame = document.getElementById('game_name');
@@ -45,8 +45,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const InputAgeGamer = document.getElementById('age_gamer');
         const InputDescriptionGame = document.getElementById('game_description');
         const InputCategoryGame = document.getElementById('category-game');
+        const formNewGame = document.getElementById('form-game');
 
-        console.log('InputCategoryGame', InputCategoryGame); // doit pas être null
 
         const nameGame = InputNameGame.value.trim();
         const durationGame = InputDurationGame.value.trim();
@@ -55,9 +55,31 @@ document.addEventListener('DOMContentLoaded', function () {
         const descriptionGame = InputDescriptionGame.value.trim();
         const categoryGame = InputCategoryGame.value;
         const fileGame = fileInput.files[0]; // <-- Récupère bien le fichier choisi
+        console.log('nameGame :',nameGame, 'durationGame :', durationGame, 'nbGamer :', nbGamer, 'ageGamer :', ageGamer, 'descriptionGame : ', descriptionGame, 'categoryGame : ', categoryGame, 'fileGame : ', fileGame )
 
-        const data = [nameGame, durationGame, nbGamer, ageGamer, descriptionGame, categoryGame, fileGame];
-        console.log('data', data);
+        const data = [nameGame, durationGame, nbGamer, ageGamer, fileGame, categoryGame, descriptionGame];
+        
+        try {
+            const response = await fetch('/addGame', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+
+            if (result.status === 'success') {
+                alert('Jeu ajouté avec succès ! !');
+                formNewGame.reset();
+                modalAddGame.classList.add('hidden');
+            } else {
+                alert(result.message);
+            }
+        } catch (err) {
+            console.error('Erreur lors de l\'ajout:', err);
+            alert('Une erreur est survenue.');
+            formNewGame.reset();
+        }
     });
 });
 

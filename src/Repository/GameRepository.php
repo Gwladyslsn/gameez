@@ -22,11 +22,12 @@ class GameRepository
         string $nbGamer,
         string $ageGamer,
         string $imageGame,
+        int $idCategory,
         string $descriptionGame
     ): bool {
         $query = $this->pdo->prepare("
-            INSERT INTO game (game_name, game_duration, nb_gamer, age_gamer, image, game_description)
-            VALUES (:nameGame, :durationGame, :nbGamer, :ageGamer, :imageGame, :descriptionGame)
+            INSERT INTO game (game_name, game_duration, nb_gamer, age_gamer, image, id_category, game_description)
+            VALUES (:nameGame, :durationGame, :nbGamer, :ageGamer, :imageGame, :idCategory, :descriptionGame)
         ");
 
         $query->bindParam(':nameGame', $nameGame);
@@ -34,6 +35,7 @@ class GameRepository
         $query->bindParam(':nbGamer', $nbGamer);
         $query->bindParam(':ageGamer', $ageGamer);
         $query->bindParam(':imageGame', $imageGame);
+        $query->bindParam(':idCategory', $idCategory, PDO::PARAM_INT);
         $query->bindParam(':descriptionGame', $descriptionGame);
 
         return $query->execute();
