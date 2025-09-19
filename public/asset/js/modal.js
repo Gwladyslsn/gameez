@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Modal avis
 
     const modalReview = document.getElementById("modal-add-review");
-    const closeBtnReview = modalList.querySelector(".close");
+    const closeBtnReview = modalReview.querySelector(".close");
     const validateBtnReview = document.getElementById("validate-add-review");
     const formReview = document.getElementById("form-review");
 
@@ -180,26 +180,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-
-    //Modal ajout jeu (ADMIN !!)
-    const btnNewGame = document.getElementById('new-game');
-    const modalAddGame = document.getElementById('modal-add-game');
-    const closeBtnModal = modalAddGame.querySelector(".close");
-
-    btnNewGame.addEventListener('click',function (e){
-    e.preventDefault;
-
-    modalAddGame.classList.remove('hidden');
-    });
-
-    // Fermer le modal
-    closeBtnModal.addEventListener('click', () => {
-        modalAddGame.classList.add('hidden');
-    });
-
-    window.addEventListener('click', (e) => {
-        if (e.target === modalAddGame) modalAddGame.classList.add('hidden');
-    });
 });
 
 

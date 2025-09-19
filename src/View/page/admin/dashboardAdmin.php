@@ -118,6 +118,7 @@ require_once ROOTPATH . 'src/View/template/headerAdmin.php';
                     </button>
                 </div>
 
+                <!--MODAL AJOUT JEU-->
                 <div id="modal-add-game" class="modal modalGame hidden">
                     <div class="modal-content-game">
                         <span class="close">&times;</span>
@@ -142,7 +143,12 @@ require_once ROOTPATH . 'src/View/template/headerAdmin.php';
                             </div>
                             <div class="mb-4">
                                 <label for="image" class="text-black">Image</label>
-                                <textarea id="image" name="image" rows="2"></textarea>
+                                <img id="preview-game" src="/asset/image/jeux/game-default.png" alt="Illustration du jeu" class="image-game">
+                                <input id="file-game" type="file" name="image" accept="image/*" class="hidden">
+                                <button type="button" id="btn-img-game"
+                                    class="button-image">
+                                    Choisir une image
+                                </button>
                             </div>
                             <div class="mb-4">
                                 <label for="game_description" class="text-black">Description</label>
@@ -150,7 +156,7 @@ require_once ROOTPATH . 'src/View/template/headerAdmin.php';
                             </div>
                             <div class="mb-4">
                                 <label for="id_category" class="text-black">Catégorie</label>
-                                <select>
+                                <select class="select-modal">
                                     <option value="0">Choisir une categorie</option>
                                     <option value="1">Stratégie</option>
                                     <option value="2">Ambiance</option>
@@ -165,8 +171,6 @@ require_once ROOTPATH . 'src/View/template/headerAdmin.php';
                             </div>
                             <button id="btn-add-game">Ajouter ce jeux</button>
                         </form>
-
-
                     </div>
                 </div>
 
@@ -378,7 +382,8 @@ require_once ROOTPATH . 'src/View/template/headerAdmin.php';
 </main>
 
 <script src="/asset/js/dashboardAdmin.js"></script>
-<script src="/asset/js/modal.js"></script>
+<script src="/asset/js/modalAdmin.js"></script>
+
 <?php
 require_once ROOTPATH . "src/View/template/footer.php";
 ?>
