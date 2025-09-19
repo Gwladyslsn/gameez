@@ -63,7 +63,7 @@ require_once ROOTPATH . 'src/View/template/headerAdmin.php';
                 <div class="top-games-grid">
                     <div class="top-games-card">
                         <h3 class="top-games-title">
-                            <span class="icon-trending"></span>
+                            <span><i class="fa-solid fa-star" style="color: #FFD43B;"></i></span>
                             Top 5 - Meilleur note
                         </h3>
                         <?php $rank = 1; ?>
@@ -76,7 +76,7 @@ require_once ROOTPATH . 'src/View/template/headerAdmin.php';
                                 <div class="game-stats">
                                     <div class="game-value"><?= $topGame['review_count'] ?> avis</div>
                                     <div class="game-rating">
-                                        <span class="star">★</span>
+                                        <span><i class="fa-solid fa-star" style="color: #FFD43B;"></i></span>
                                         <span><?= $topGame['average_rating'] ?></span>
                                     </div>
                                 </div>
@@ -88,58 +88,23 @@ require_once ROOTPATH . 'src/View/template/headerAdmin.php';
 
                     <div class="top-games-card">
                         <h3 class="top-games-title">
-                            <span class="star">★</span>
+                            <span><i class="fa-solid fa-flag" style="color: #B197FC;"></i></span>
                             Top 5 - Plus en wishlist
                         </h3>
+                        <?php $rank = 1; ?>
+                        <?php foreach ($topWishlistGames as $topWishlistGame): ?>
                         <div class="game-item">
                             <div class="game-info">
                                 <div class="game-rank wishlists">1</div>
-                                <span>Baldur's Gate 3</span>
+                                <span><?= $topWishlistGame['game_name'] ?></span>
                             </div>
                             <div class="game-stats">
-                                <div class="game-value">2,341 wishlists</div>
+                                <div class="game-value"><?= $topWishlistGame['list_count'] ?> listes</div>
                             </div>
                         </div>
+                        <?php $rank++; ?>
+                        <?php endforeach ?>
 
-                        <div class="game-item">
-                            <div class="game-info">
-                                <div class="game-rank wishlists">2</div>
-                                <span>Starfield</span>
-                            </div>
-                            <div class="game-stats">
-                                <div class="game-value">2,156 wishlists</div>
-                            </div>
-                        </div>
-
-                        <div class="game-item">
-                            <div class="game-info">
-                                <div class="game-rank wishlists">3</div>
-                                <span>Spider-Man 2</span>
-                            </div>
-                            <div class="game-stats">
-                                <div class="game-value">1,987 wishlists</div>
-                            </div>
-                        </div>
-
-                        <div class="game-item">
-                            <div class="game-info">
-                                <div class="game-rank wishlists">4</div>
-                                <span>Final Fantasy XVI</span>
-                            </div>
-                            <div class="game-stats">
-                                <div class="game-value">1,834 wishlists</div>
-                            </div>
-                        </div>
-
-                        <div class="game-item">
-                            <div class="game-info">
-                                <div class="game-rank wishlists">5</div>
-                                <span>Diablo IV</span>
-                            </div>
-                            <div class="game-stats">
-                                <div class="game-value">1,723 wishlists</div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

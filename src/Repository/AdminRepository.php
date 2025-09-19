@@ -64,4 +64,26 @@ class AdminRepository
     return $topGames;
 }
 
+    public function getTopWishlistGames(int $limit = 5): array
+{
+
+    $topWishlistGames = [];
+
+    $sql = "SELECT 
+    g.id_game, g.game_name,
+    COUNT(li.id_list) AS list_count
+    FROM game g
+    JOIN list_items li ON g.id_game = li.id_game
+    GROUP BY g.id_game, g.game_name
+    ORDER BY list_count DESC
+    LIMIT :limit;
+    ";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+    $stmt->execute();
+    $topWishlistGames =  $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    return $topWishlistGames;
+}
+
 }
