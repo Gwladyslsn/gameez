@@ -93,16 +93,16 @@ require_once ROOTPATH . 'src/View/template/headerAdmin.php';
                         </h3>
                         <?php $rank = 1; ?>
                         <?php foreach ($topWishlistGames as $topWishlistGame): ?>
-                        <div class="game-item">
-                            <div class="game-info">
-                                <div class="game-rank wishlists">1</div>
-                                <span><?= $topWishlistGame['game_name'] ?></span>
+                            <div class="game-item">
+                                <div class="game-info">
+                                    <div class="game-rank wishlists">1</div>
+                                    <span><?= $topWishlistGame['game_name'] ?></span>
+                                </div>
+                                <div class="game-stats">
+                                    <div class="game-value"><?= $topWishlistGame['list_count'] ?> listes</div>
+                                </div>
                             </div>
-                            <div class="game-stats">
-                                <div class="game-value"><?= $topWishlistGame['list_count'] ?> listes</div>
-                            </div>
-                        </div>
-                        <?php $rank++; ?>
+                            <?php $rank++; ?>
                         <?php endforeach ?>
 
                     </div>
@@ -112,10 +112,62 @@ require_once ROOTPATH . 'src/View/template/headerAdmin.php';
             <!-- Games Management Tab -->
             <div id="games" class="tab-content">
                 <div class="section-header">
-                    <button class="btn-primary">
+                    <button class="btn-primary" id="new-game">
                         <span class="icon-plus"></span>
                         Ajouter un jeu
                     </button>
+                </div>
+
+                <div id="modal-add-game" class="modal modalGame hidden">
+                    <div class="modal-content-game">
+                        <span class="close">&times;</span>
+                        <h3 class="text-black text-center mb-4">Ajouter un jeu</h3>
+                        <form id="form-game">
+
+                            <div class="mb-4">
+                                <label for="game_name" class="text-black">Nom du jeu</label>
+                                <textarea id="game_name" name="game_name" rows="2"></textarea>
+                            </div>
+                            <div class="mb-4">
+                                <label for="game_duration" class="text-black">Durée</label>
+                                <textarea id="game_duration" name="game_duration" rows="2"></textarea>
+                            </div>
+                            <div class="mb-4">
+                                <label for="nb_gamer" class="text-black">Nombre de joueur</label>
+                                <textarea id="nb_gamer" name="nb_gamer" rows="2"></textarea>
+                            </div>
+                            <div class="mb-4">
+                                <label for="age_gamer" class="text-black">Age minimum</label>
+                                <textarea id="age_gamer" name="age_gamer" rows="2"></textarea>
+                            </div>
+                            <div class="mb-4">
+                                <label for="image" class="text-black">Image</label>
+                                <textarea id="image" name="image" rows="2"></textarea>
+                            </div>
+                            <div class="mb-4">
+                                <label for="game_description" class="text-black">Description</label>
+                                <textarea id="game_description" name="game_description" rows="2"></textarea>
+                            </div>
+                            <div class="mb-4">
+                                <label for="id_category" class="text-black">Catégorie</label>
+                                <select>
+                                    <option value="0">Choisir une categorie</option>
+                                    <option value="1">Stratégie</option>
+                                    <option value="2">Ambiance</option>
+                                    <option value="3">Cartes</option>
+                                    <option value="4">Dés</option>
+                                    <option value="5">Rôles</option>
+                                    <option value="6">Cooperatif</option>
+                                    <option value="7">Enquêtes</option>
+                                    <option value="8">Enfant</option>
+                                    <option value="9">Culturel</option>
+                                </select>
+                            </div>
+                            <button id="btn-add-game">Ajouter ce jeux</button>
+                        </form>
+
+
+                    </div>
                 </div>
 
                 <div class="games-table-container">
@@ -326,6 +378,7 @@ require_once ROOTPATH . 'src/View/template/headerAdmin.php';
 </main>
 
 <script src="/asset/js/dashboardAdmin.js"></script>
+<script src="/asset/js/modal.js"></script>
 <?php
 require_once ROOTPATH . "src/View/template/footer.php";
 ?>
