@@ -144,7 +144,7 @@ require_once ROOTPATH . 'src/View/template/headerAdmin.php';
                             <div class="mb-4">
                                 <label for="image" class="text-black">Image</label>
                                 <img id="preview-game" src="/asset/image/jeux/game-default.png" alt="Illustration du jeu" class="image-game">
-                                <input id="file-game" type="file" name="image" accept="image/*" class="hidden">
+                                <input type="file" id="file-game" name="image" accept="image/*" class="hidden">
                                 <button type="button" id="btn-img-game"
                                     class="button-image">
                                     Choisir une image
@@ -156,7 +156,7 @@ require_once ROOTPATH . 'src/View/template/headerAdmin.php';
                             </div>
                             <div class="mb-4">
                                 <label for="id_category" class="text-black">Catégorie</label>
-                                <select class="select-modal">
+                                <select id="category-game" class="select-modal" >
                                     <option value="0">Choisir une categorie</option>
                                     <option value="1">Stratégie</option>
                                     <option value="2">Ambiance</option>
