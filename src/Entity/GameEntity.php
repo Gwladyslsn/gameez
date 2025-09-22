@@ -17,6 +17,8 @@ class GameEntity
 
     private string $descriptionGame;
 
+    private string $categoryName;
+
     public function __construct(
         ?int $idGame = null,
         string $nameGame = '',
@@ -25,7 +27,8 @@ class GameEntity
         string $ageGamer = '',
         string $imageGame = '',
         int $idCategory = 0,
-        ?string $descriptionGame = ''
+        ?string $descriptionGame = '',
+        string $categoryName = ''
     ) {
         $this->idGame = $idGame;
         $this->nameGame = $nameGame;
@@ -35,6 +38,7 @@ class GameEntity
         $this->imageGame = $imageGame;
         $this->idCategory = $idCategory;
         $this->descriptionGame = $descriptionGame;
+        $this->categoryName = $categoryName;
     }
 
 
@@ -182,4 +186,14 @@ class GameEntity
 
         return $this;
     }
+
+    public function getCategoryName(): ?string
+{
+    return $this->categoryName;
+}
+
+public function setCategoryName(?string $categoryName): void
+{
+    $this->categoryName = $categoryName;
+}
 }

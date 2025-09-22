@@ -157,7 +157,7 @@ require_once ROOTPATH . 'src/View/template/headerAdmin.php';
                             <div class="mb-4">
                                 <label for="id_category" class="text-black">Catégorie</label>
                                 <select id="id_category" class="select-modal" name="id_category">
-                                    <option >Choisir une categorie</option>
+                                    <option>Choisir une categorie</option>
                                     <option value="1">Stratégie</option>
                                     <option value="2">Ambiance</option>
                                     <option value="3">Cartes</option>
@@ -178,12 +178,7 @@ require_once ROOTPATH . 'src/View/template/headerAdmin.php';
                     <div class="table-header">
                         <h3>Jeux récents</h3>
                         <div class="filters">
-                            <select class="filter-select">
-                                <option>Tous les statuts</option>
-                                <option>Publié</option>
-                                <option>Brouillon</option>
-                            </select>
-                            <select class="filter-select">
+                            <select class="filter-select" id="filter-category">
                                 <option value="0">Toutes les catégories</option>
                                 <option value="1">Stratégie</option>
                                 <option value="2">Ambiance</option>
@@ -198,67 +193,38 @@ require_once ROOTPATH . 'src/View/template/headerAdmin.php';
                         </div>
                     </div>
 
-                    <table class="games-table">
+                    <table class="games-table" >
                         <thead>
                             <tr>
+                                <th>Id</th>
                                 <th>Nom</th>
                                 <th>Catégorie</th>
-                                <th>Statut</th>
-                                <th>Date</th>
+                                <th>Type</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>The Witcher 3</td>
-                                <td>RPG</td>
-                                <td><span class="status-badge published">Publié</span></td>
-                                <td>2024-08-20</td>
-                                <td>
-                                    <div class="action-buttons">
-                                        <button class="btn-icon btn-edit">
-                                            <span class="icon-edit"></span>
-                                        </button>
-                                        <button class="btn-icon btn-delete">
-                                            <span class="icon-delete"></span>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Cyberpunk 2077</td>
-                                <td>Action</td>
-                                <td><span class="status-badge published">Publié</span></td>
-                                <td>2024-08-19</td>
-                                <td>
-                                    <div class="action-buttons">
-                                        <button class="btn-icon btn-edit">
-                                            <span class="icon-edit"></span>
-                                        </button>
-                                        <button class="btn-icon btn-delete">
-                                            <span class="icon-delete"></span>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Elden Ring</td>
-                                <td>RPG</td>
-                                <td><span class="status-badge draft">Brouillon</span></td>
-                                <td>2024-08-18</td>
-                                <td>
-                                    <div class="action-buttons">
-                                        <button class="btn-icon btn-edit">
-                                            <span class="icon-edit"></span>
-                                        </button>
-                                        <button class="btn-icon btn-delete">
-                                            <span class="icon-delete"></span>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
+                        <tbody id="list-games">
+                            <?php foreach ($games as $game): ?>
+                                <tr>
+                                    <td><?= htmlspecialchars($game->getIdGame()) ?></td>
+                                    <td><?= htmlspecialchars($game->getNameGame()) ?></td>
+                                    <td><?= htmlspecialchars($game->getCategoryName()) ?></td>
+                                    <td>Jeu</td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn-icon btn-edit">
+                                                <span class="icon-edit"></span>
+                                            </button>
+                                            <button class="btn-icon btn-delete">
+                                                <span class="icon-delete"></span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php endforeach ?>
                         </tbody>
                     </table>
+
                 </div>
             </div>
 

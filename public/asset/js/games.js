@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
         fetchGames();
     });
 
-    // Recherche dès qu’on tape (avec délai anti-spam)
+    // Recherche dès qu’on tape (délai anti-spam)
     let debounceTimer;
     searchInput.addEventListener("input", () => {
         clearTimeout(debounceTimer);

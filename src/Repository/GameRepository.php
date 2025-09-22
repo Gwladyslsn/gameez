@@ -71,6 +71,41 @@ class GameRepository
         return $games;
     }
 
+    public function getGames(): array
+{
+    // On ajoute la jointure pour récupérer le nom de la catégorie
+    $sql = "
+        SELECT g.*, c.category_name
+        FROM game g
+        LEFT JOIN category c ON g.id_category = c.id_category
+        ORDER BY g.id_game ASC
+    ";
+    $stmt = $this->pdo->query($sql);
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    $games = [];
+    foreach ($results as $row) {
+        $game = new GameEntity();
+        $game->setIdGame((int)$row['id_game']);
+        $game->setNameGame($row['game_name']);
+        $game->setDurationGame((int)$row['game_duration']);
+        $game->setNbGamer($row['nb_gamer']);
+        $game->setAgeGamer((int)$row['age_gamer']);
+        $game->setImageGame($row['image']);
+        $game->setDescriptionGame($row['game_description'] ?? "");
+
+        // ➕ On ajoute la catégorie
+        if (method_exists($game, 'setCategoryName')) {
+            $game->setCategoryName($row['category_name'] ?? null);
+        }
+
+        $games[] = $game;
+    }
+
+    return $games;
+}
+
+
     public function getPopularGames(int $limit = 10, int $offset = 0): array
     {
         $stmt = $this->pdo->prepare("SELECT * FROM game ORDER BY id_game ASC LIMIT :limit OFFSET :offset");

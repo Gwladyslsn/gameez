@@ -63,7 +63,50 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    // filtre categorie
+    const filterCategory = document.getElementById("filter-category");
 
-    
+    async function getCategories() {
+        const idCategory = parseInt(filterCategory.value);
+
+        const params = new URLSearchParams({
+            idCategory
+        });
+
+        const response = await fetch(`/searchGame?${params.toString()}`);
+        const filterGames = await response.json();
+
+        const results = document.getElementById("list-games");
+
+
+        results.innerHTML = filterGames.length
+            ? filterGames.map(g => `
+                        <tbody>
+                                <tr id="list-games">
+                                    <td>${g.id_game}</td>
+                                    <td>${g.game_name}</td>
+                                    <td>${g.id_category}</td>
+                                    <td>Jeu</td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn-icon btn-edit">
+                                                <span class="icon-edit"></span>
+                                            </button>
+                                            <button class="btn-icon btn-delete">
+                                                <span class="icon-delete"></span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                                </table>
+    `).join("")
+            : "<td>Aucun jeu trouvé dans cette catégorie</td>";
+
+
+    };
+
+    filterCategory.addEventListener("change", getCategories);
+
 
 });
