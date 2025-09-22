@@ -123,7 +123,7 @@ require_once ROOTPATH . 'src/View/template/headerAdmin.php';
                     <div class="modal-content-game">
                         <span class="close">&times;</span>
                         <h3 class="text-black text-center mb-4">Ajouter un jeu</h3>
-                        <form id="form-game">
+                        <form id="form-game" method="post">
 
                             <div class="mb-4">
                                 <label for="game_name" class="text-black">Nom du jeu</label>
@@ -156,8 +156,8 @@ require_once ROOTPATH . 'src/View/template/headerAdmin.php';
                             </div>
                             <div class="mb-4">
                                 <label for="id_category" class="text-black">Catégorie</label>
-                                <select id="category-game" class="select-modal" name="id_category">
-                                    <option value="0">Choisir une categorie</option>
+                                <select id="id_category" class="select-modal" name="id_category">
+                                    <option >Choisir une categorie</option>
                                     <option value="1">Stratégie</option>
                                     <option value="2">Ambiance</option>
                                     <option value="3">Cartes</option>

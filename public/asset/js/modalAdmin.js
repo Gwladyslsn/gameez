@@ -36,50 +36,58 @@ document.addEventListener('DOMContentLoaded', function () {
     // ENVOI DES DONNÉES EN BDD
     const btnAddGame = document.getElementById('btn-add-game');
 
-    btnAddGame.addEventListener('click', async  (e) => {
-        e.preventDefault();
+btnAddGame.addEventListener('click', async (e) => {
+    e.preventDefault();
 
-        const InputNameGame = document.getElementById('game_name');
-        const InputDurationGame = document.getElementById('game_duration');
-        const InputNbGamer = document.getElementById('nb_gamer');
-        const InputAgeGamer = document.getElementById('age_gamer');
-        const InputDescriptionGame = document.getElementById('game_description');
-        const InputCategoryGame = document.getElementById('category-game');
-        const formNewGame = document.getElementById('form-game');
+    const InputNameGame = document.getElementById('game_name');
+    const InputDurationGame = document.getElementById('game_duration');
+    const InputNbGamer = document.getElementById('nb_gamer');
+    const InputAgeGamer = document.getElementById('age_gamer');
+    const InputDescriptionGame = document.getElementById('game_description');
+    const InputCategoryGame = document.getElementById('id_category');
+    const formNewGame = document.getElementById('form-game');
 
+    const nameGame = InputNameGame.value.trim();
+    const durationGame = InputDurationGame.value.trim();
+    const nbGamer = InputNbGamer.value.trim();
+    const ageGamer = InputAgeGamer.value.trim();
+    const descriptionGame = InputDescriptionGame.value.trim();
+    const categoryGame = InputCategoryGame.value;
+    const fileGame = fileInput.files[0];
 
-        const nameGame = InputNameGame.value.trim();
-        const durationGame = InputDurationGame.value.trim();
-        const nbGamer = InputNbGamer.value.trim();
-        const ageGamer = InputAgeGamer.value.trim();
-        const descriptionGame = InputDescriptionGame.value.trim();
-        const categoryGame = InputCategoryGame.value;
-        const fileGame = fileInput.files[0]; // <-- Récupère bien le fichier choisi
-        console.log('nameGame :',nameGame, 'durationGame :', durationGame, 'nbGamer :', nbGamer, 'ageGamer :', ageGamer, 'descriptionGame : ', descriptionGame, 'categoryGame : ', categoryGame, 'fileGame : ', fileGame )
+    console.log('nameGame:', nameGame, 'categoryGame:', categoryGame);
 
-        const data = [nameGame, durationGame, nbGamer, ageGamer, fileGame, categoryGame, descriptionGame];
-        
-        try {
-            const response = await fetch('/addGame', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data)
-            });
+    // 🔑 Prépare un FormData
+    const formData = new FormData();
+    formData.append('nameGame', nameGame);
+    formData.append('durationGame', durationGame);
+    formData.append('nbGamer', nbGamer);
+    formData.append('ageGamer', ageGamer);
+    formData.append('descriptionGame', descriptionGame);
+    formData.append('categoryGame', categoryGame); // sera bien envoyé comme string mais PHP peut le caster
+    formData.append('fileGame', fileGame);
 
-            const result = await response.json();
+    try {
+        const response = await fetch('/addGame', {
+            method: 'POST',
+            body: formData // 👈 pas besoin de Content-Type, c'est automatique
+        });
 
-            if (result.status === 'success') {
-                alert('Jeu ajouté avec succès ! !');
-                formNewGame.reset();
-                modalAddGame.classList.add('hidden');
-            } else {
-                alert(result.message);
-            }
-        } catch (err) {
-            console.error('Erreur lors de l\'ajout:', err);
-            alert('Une erreur est survenue.');
+        const result = await response.json();
+
+        if (result.status === 'success') {
+            alert('Jeu ajouté avec succès !');
             formNewGame.reset();
+            modalAddGame.classList.add('hidden');
+        } else {
+            alert(result.message);
         }
-    });
+    } catch (err) {
+        console.error('Erreur lors de l\'ajout:', err);
+        alert('Une erreur est survenue.');
+        formNewGame.reset();
+    }
+});
+
 });
 

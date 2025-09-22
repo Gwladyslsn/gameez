@@ -24,7 +24,7 @@ class GameEntity
         string $nbGamer = '',
         string $ageGamer = '',
         string $imageGame = '',
-        int $idCategory = '',
+        int $idCategory = 0,
         ?string $descriptionGame = ''
     ) {
         $this->idGame = $idGame;

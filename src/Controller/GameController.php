@@ -17,20 +17,50 @@ class GameController
     }
 
     public function addGame(): void
-    {
-        header('Content-Type: application/json');
+{
+    header('Content-Type: application/json');
 
-        $nameGame = $_POST['game_name'] ?? '';
-        $durationGame = $_POST['game_duration'] ?? '';
-        $nbGamer = $_POST['nb_gamer'] ?? '';
-        $ageGamer = $_POST['age_gamer'] ?? '';
-        $imageGame = $_POST['image'] ?? '';
-        $idCategory = isset($_POST['id_category']) ? (int)$_POST['id_category'] : 0;
-        $descriptionGame = $_POST['game_description'] ?? '';
-        
-        $newGame = $this->gameRepository->addGame($nameGame, $durationGame, $nbGamer, $ageGamer, $imageGame, $idCategory, $descriptionGame);
+    // Récupération des données envoyées via FormData
+    $nameGame = $_POST['nameGame'] ?? '';
+    $durationGame = $_POST['durationGame'] ?? '';
+    $nbGamer = $_POST['nbGamer'] ?? '';
+    $ageGamer = $_POST['ageGamer'] ?? '';
+    $descriptionGame = $_POST['descriptionGame'] ?? '';
+    $idCategory = isset($_POST['categoryGame']) ? (int) $_POST['categoryGame'] : null;
 
+    // ✅ Gestion de l'image uploadée (via FormData)
+    $imageGame = null;
+    if (isset($_FILES['fileGame']) && $_FILES['fileGame']['error'] === UPLOAD_ERR_OK) {
+        $uploadDir = ROOTPATH . 'asset/image/jeux/';
+        if (!is_dir($uploadDir)) {
+            mkdir($uploadDir, 0777, true);
+        }
+        $fileName = basename($_FILES['fileGame']['name']);
+        $filePath = $uploadDir . $fileName;
+
+        if (move_uploaded_file($_FILES['fileGame']['tmp_name'], $filePath)) {
+            $imageGame = 'image/jeux/' . $fileName; // Chemin que tu stockeras en BDD
+        }
     }
+
+    try {
+        $newGame = $this->gameRepository->addGame(
+            $nameGame,
+            $durationGame,
+            $nbGamer,
+            $ageGamer,
+            $imageGame,
+            $idCategory,
+            $descriptionGame
+        );
+
+        echo json_encode(['status' => 'success', 'message' => 'Jeu ajouté avec succès', 'data' => $newGame]);
+    } catch (\Exception $e) {
+        http_response_code(500);
+        echo json_encode(['status' => 'error', 'message' => $e->getMessage()]);
+    }
+}
+
     public function showGames()
     {
         $database = new Database();
