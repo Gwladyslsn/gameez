@@ -405,6 +405,7 @@ header {
 
 .review-rating {
     display: flex;
+    flex-direction : row;
     align-items: center;
     gap: 0.25rem;
 }

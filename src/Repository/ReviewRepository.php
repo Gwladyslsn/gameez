@@ -35,6 +35,22 @@ class ReviewRepository
 
     /* READ */
 
+    public function getAllReviews() 
+    {
+        $sql = "SELECT r.id_review, r.id_user, r.id_game, r.review_note, r.review_comment,
+        g.game_name, g.image, u.user_name
+        FROM review r
+        JOIN game g ON r.id_game = g.id_game
+        JOIN user u ON r.id_user = u.id_user
+    ";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+        $reviews = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $reviews;
+    }
+
     public function getReviewByUser(int $userId) 
     {
         $sql = "SELECT r.id_review, r.id_user, r.id_game, r.review_note, r.review_comment,

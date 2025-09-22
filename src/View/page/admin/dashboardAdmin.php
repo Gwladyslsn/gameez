@@ -234,19 +234,20 @@ require_once ROOTPATH . 'src/View/template/headerAdmin.php';
                     <span class="pending-badge">3 avis en attente</span>
                 </div>
 
+                <?php foreach ($reviews as $review): ?>
                 <div class="review-card">
                     <div class="review-header">
                         <div>
-                            <h4 class="review-game-title">The Witcher 3</h4>
+                            <h4 class="review-game-title"><?= $review['game_name']?></h4>
                             <div class="review-meta">
-                                <span class="review-user">Par Alex123</span>
+                                <span class="review-user"><?= $review['user_name']?></span>
                                 <div class="review-rating">
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                    <span>(5/5)</span>
+                                    <span></span><i class="fa-solid fa-star" style="color: #FFD43B;"></i></span>
+                                    <span></span><i class="fa-solid fa-star" style="color: #FFD43B;"></i></span>
+                                    <span></span><i class="fa-solid fa-star" style="color: #FFD43B;"></i></span>
+                                    <span></span><i class="fa-solid fa-star" style="color: #FFD43B;"></i></span>
+                                    <span></span><i class="fa-solid fa-star" style="color: #FFD43B;"></i></span>
+                                    <span>(<?= $review['review_note']?>/5)</span>
                                 </div>
                             </div>
                         </div>
@@ -255,7 +256,7 @@ require_once ROOTPATH . 'src/View/template/headerAdmin.php';
                             2024-08-24
                         </div>
                     </div>
-                    <p class="review-comment">Jeu absolument fantastique avec une histoire incroyable et un monde ouvert magnifique. Les quêtes secondaires sont aussi intéressantes que la quête principale.</p>
+                    <p class="review-comment"><?= $review['review_comment']?></p>
                     <div class="review-actions">
                         <button class="btn-reject">
                             <span class="icon-x"></span>
@@ -267,74 +268,7 @@ require_once ROOTPATH . 'src/View/template/headerAdmin.php';
                         </button>
                     </div>
                 </div>
-
-                <div class="review-card">
-                    <div class="review-header">
-                        <div>
-                            <h4 class="review-game-title">Cyberpunk 2077</h4>
-                            <div class="review-meta">
-                                <span class="review-user">Par Gamer456</span>
-                                <div class="review-rating">
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                    <span class="star empty">★</span>
-                                    <span class="star empty">★</span>
-                                    <span>(3/5)</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="review-date">
-                            <span class="icon-clock"></span>
-                            2024-08-24
-                        </div>
-                    </div>
-                    <p class="review-comment">Beaucoup de bugs au lancement mais l'univers est vraiment cool. Les graphismes sont impressionnants sur une bonne config.</p>
-                    <div class="review-actions">
-                        <button class="btn-reject">
-                            <span class="icon-x"></span>
-                            Rejeter
-                        </button>
-                        <button class="btn-approve">
-                            <span class="icon-check"></span>
-                            Approuver
-                        </button>
-                    </div>
-                </div>
-
-                <div class="review-card">
-                    <div class="review-header">
-                        <div>
-                            <h4 class="review-game-title">Elden Ring</h4>
-                            <div class="review-meta">
-                                <span class="review-user">Par RPGFan</span>
-                                <div class="review-rating">
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                    <span>(5/5)</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="review-date">
-                            <span class="icon-clock"></span>
-                            2024-08-23
-                        </div>
-                    </div>
-                    <p class="review-comment">Meilleur FromSoftware à ce jour ! L'exploration est addictive et les boss sont épiques. Un chef-d'œuvre du jeu vidéo.</p>
-                    <div class="review-actions">
-                        <button class="btn-reject">
-                            <span class="icon-x"></span>
-                            Rejeter
-                        </button>
-                        <button class="btn-approve">
-                            <span class="icon-check"></span>
-                            Approuver
-                        </button>
-                    </div>
-                </div>
+                <?php endforeach ?>
             </div>
 
             <!-- Users Tab -->
