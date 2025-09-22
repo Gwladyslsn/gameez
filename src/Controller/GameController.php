@@ -94,4 +94,5 @@ class GameController
 
         echo json_encode($gamesSearch);
     }
+
 }
