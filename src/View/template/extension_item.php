@@ -20,16 +20,16 @@ $imagePath = '/asset/image/extensions/' . htmlspecialchars($extension->getImageE
     </div>
     <div class="extension-details">
         <div class="detail-item">
-            <span class="detail-label">👥 Joueurs :</span>
-            <span class="detail-value">2-6</span>
+            <span class="detail-label">Note moyenne :</span>
+            <span class="detail-value">4</span>
         </div>
         <div class="detail-item">
-            <span class="detail-label">⏱️ Durée :</span>
-            <span class="detail-value">+15 min</span>
+            <span class="detail-label">complexité :</span>
+            <span class="detail-value"><?= htmlspecialchars($extension->getComplexity()) ?> /5</span>
         </div>
         <div class="detail-item">
-            <span class="detail-label">🎯 Âge :</span>
-            <span class="detail-value">7+</span>
+            <span class="detail-label">Date de sortie :</span>
+            <span class="detail-value"><?= htmlspecialchars($extension->getReleaseDate()->format('d/m/Y')) ?></span>
         </div>
     </div>
     <div class="extension-actions">
