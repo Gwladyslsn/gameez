@@ -221,12 +221,12 @@ VALUES
 ('Mysterium Park', '30 min', '2-6', '10+', 'image/jeux/mysteriumpark.webp', 7, 'Une version plus rapide de Mysterium pour deviner le coupable.');
 
 INSERT INTO extension (extension_name, extension_description, complexity, extension_image, release_date, id_game) VALUES
-('Seafarers', "Cette extension ajoute l'élément de voyage en mer au jeu de base Catan, permettant aux joueurs de construire des navires et d'explorer de nouvelles îles. Elle inclut des scénarios avec différentes cartes et objectifs.", 2, 'catan-seafarers.jpg', '1997-01-01', 41),
-('Leaders', "Introduit des leaders historiques dotés de capacités uniques pour guider votre civilisation. Les joueurs sélectionnent des leaders avant chaque âge, ajoutant une nouvelle couche stratégique au jeu.", 3, '7wonders-leaders.jpg', '2011-01-01', 42),
-('The Rise of Fenris', "Cette extension ajoute une campagne non rejouable de 8 épisodes, ainsi que 11 modules à débloquer. Elle conclut l'histoire de Scythe en introduisant de nouvelles factions et de nouveaux éléments de jeu.", 5, 'scythe-fenris.jpg', '2018-09-01', 45),
-('On the Brink', "Ajoute plusieurs nouveaux rôles et événements, ainsi qu'un nouveau défi de souche virulente. Elle introduit le Bio-Terroriste et des événements de Mutation, augmentant la difficulté et la rejouabilité.", 4, 'pandemic-brink.jpg', '2009-01-01', 109),
-('Power Up!', "Introduit des cartes d'Évolution pour chaque monstre, permettant aux joueurs de personnaliser leur monstre avec des capacités uniques. Il s'agit de la première extension pour le jeu de base.", 1, 'kot-powerup.jpg', '2012-01-01', 92),
-('Prelude', "Une extension plus petite qui aide à accélérer le jeu. Les joueurs reçoivent deux cartes Prélude au début de la partie qui leur donnent un coup de pouce initial, permettant une mise en place plus rapide et des coups d'ouverture puissants.", 2, 'tm-prelude.jpg', '2018-09-01', 43);
+('Seafarers', "Cette extension ajoute l'élément de voyage en mer au jeu de base Catan, permettant aux joueurs de construire des navires et d'explorer de nouvelles îles. Elle inclut des scénarios avec différentes cartes et objectifs.", 2, 'catan-seafarers.webp', '1997-01-01', 41),
+('Leaders', "Introduit des leaders historiques dotés de capacités uniques pour guider votre civilisation. Les joueurs sélectionnent des leaders avant chaque âge, ajoutant une nouvelle couche stratégique au jeu.", 3, '7wonders-leaders.webp', '2011-01-01', 42),
+('The Rise of Fenris', "Cette extension ajoute une campagne non rejouable de 8 épisodes, ainsi que 11 modules à débloquer. Elle conclut l'histoire de Scythe en introduisant de nouvelles factions et de nouveaux éléments de jeu.", 5, 'scythe-fenris.webp', '2018-09-01', 45),
+('On the Brink', "Ajoute plusieurs nouveaux rôles et événements, ainsi qu'un nouveau défi de souche virulente. Elle introduit le Bio-Terroriste et des événements de Mutation, augmentant la difficulté et la rejouabilité.", 4, 'pandemic-brink.webp', '2009-01-01', 109),
+('Power Up!', "Introduit des cartes d'Évolution pour chaque monstre, permettant aux joueurs de personnaliser leur monstre avec des capacités uniques. Il s'agit de la première extension pour le jeu de base.", 1, 'kot-powerup.webp', '2012-01-01', 92),
+('Prelude', "Une extension plus petite qui aide à accélérer le jeu. Les joueurs reçoivent deux cartes Prélude au début de la partie qui leur donnent un coup de pouce initial, permettant une mise en place plus rapide et des coups d'ouverture puissants.", 2, 'tm-prelude.webp', '2018-09-01', 43);
 
 
 /*TEST*/
