@@ -38,8 +38,8 @@ return [
         'method' => 'showForum'
     ],
     '/extensions' => [
-        'controller' => App\Controller\PageController::class,
-        'method' => 'extensions'
+        'controller' => App\Controller\ExtensionController::class,
+        'method' => 'showExtensions'
     ],
     '/getUserLists' => [
         'controller' => App\Controller\ListController::class,

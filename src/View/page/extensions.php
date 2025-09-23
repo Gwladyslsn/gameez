@@ -1,5 +1,4 @@
 <?php
-
 require_once ROOTPATH . "src/View/template/header.php";
 ?>
 
@@ -48,142 +47,11 @@ require_once ROOTPATH . "src/View/template/header.php";
     </div>
 
     <div class="extensions-grid" id="extensionsGrid">
-        <div class="extension-card fade-in" data-category="strategy">
-            <div class="extension-image">🏰</div>
-            <div class="extension-info">
-                <h3 class="extension-name">Châteaux & Cathédrales</h3>
-                <div class="base-game">Extension pour • Carcassonne</div>
-                <p class="extension-description">Construisez des châteaux imposants et des cathédrales majestueuses. Cette extension ajoute 18 nouvelles tuiles et introduit un grand meeple pour renforcer vos revendications territoriales.</p>
-            </div>
-            <div class="extension-details">
-                <div class="detail-item">
-                    <span class="detail-label">👥 Joueurs :</span>
-                    <span class="detail-value">2-6</span>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-label">⏱️ Durée :</span>
-                    <span class="detail-value">+15 min</span>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-label">🎯 Âge :</span>
-                    <span class="detail-value">7+</span>
-                </div>
-            </div>
-            <div class="extension-actions">
-                <button class="add-to-wishlist">Ajouter à ma liste</button>
-                <button class="add-review">Donner mon avis</button>
-            </div>
-        </div>
-
-        <div class="extension-card fade-in" data-category="adventure">
-            <div class="extension-image">🌊</div>
-            <div class="extension-info">
-                <h3 class="extension-name">Marins & Ports</h3>
-                <div class="base-game">Extension pour • Catan</div>
-                <p class="extension-description">Explorez les mers et découvrez de nouvelles îles ! Construisez des bateaux, établissez des routes commerciales maritimes et colonisez des îles riches en ressources précieuses.</p>
-            </div>
-            <div class="extension-details">
-                <div class="detail-item">
-                    <span class="detail-label">👥 Joueurs :</span>
-                    <span class="detail-value">3-4</span>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-label">⏱️ Durée :</span>
-                    <span class="detail-value">90 min</span>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-label">🎯 Âge :</span>
-                    <span class="detail-value">12+</span>
-                </div>
-            </div>
-            <div class="extension-actions">
-                <button class="add-to-wishlist">Ajouter à ma liste</button>
-                <button class="add-review">Donner mon avis</button>
-            </div>
-        </div>
-
-        <div class="extension-card fade-in" data-category="cooperative">
-            <div class="extension-image">🔬</div>
-            <div class="extension-info">
-                <h3 class="extension-name">Au Seuil de l'Apocalypse</h3>
-                <div class="base-game">Extension pour • Pandemic</div>
-                <p class="extension-description">Face à des virus mutants plus dangereux ! Cette extension introduit 5 nouveaux modules de difficulté et des cartes événements qui bouleversent complètement la stratégie habituelle.</p>
-            </div>
-            <div class="extension-details">
-                <div class="detail-item">
-                    <span class="detail-label">👥 Joueurs :</span>
-                    <span class="detail-value">2-4</span>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-label">⏱️ Durée :</span>
-                    <span class="detail-value">45 min</span>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-label">🎯 Âge :</span>
-                    <span class="detail-value">10+</span>
-                </div>
-            </div>
-            <div class="extension-actions">
-                <button class="add-to-wishlist">Ajouter à ma liste</button>
-                <button class="add-review">Donner mon avis</button>>
-            </div>
-        </div>
-
-        <div class="extension-card fade-in" data-category="family">
-            <div class="extension-image">🎪</div>
-            <div class="extension-info">
-                <h3 class="extension-name">Le Grand Cirque</h3>
-                <div class="base-game">Extension pour • Ticket to Ride</div>
-                <p class="extension-description">Le cirque arrive en ville ! Déplacez le chapiteau de cirque à travers vos routes et gagnez des points bonus. Une extension familiale colorée et amusante pour tous les âges.</p>
-            </div>
-            <div class="extension-details">
-                <div class="detail-item">
-                    <span class="detail-label">👥 Joueurs :</span>
-                    <span class="detail-value">2-5</span>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-label">⏱️ Durée :</span>
-                    <span class="detail-value">+10 min</span>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-label">🎯 Âge :</span>
-                    <span class="detail-value">8+</span>
-                </div>
-            </div>
-            <div class="extension-actions">
-                <button class="add-to-wishlist">Ajouter à ma liste</button>
-                <button class="add-review">Donner mon avis</button>
-            </div>
-        </div>
-
-        <div class="extension-card fade-in" data-category="thematic">
-            <div class="extension-image">🧙‍♂️</div>
-            <div class="extension-info">
-                <h3 class="extension-name">L'Éveil des Mages</h3>
-                <div class="base-game">Extension pour • Gloomhaven</div>
-                <p class="extension-description">Quatre nouvelles classes de mages rejoignent l'aventure ! Maîtrisez les éléments avec le Pyromancien, l'Aquamancien, le Terramancien et l'Aéromancien, chacun avec ses propres mécaniques uniques.</p>
-            </div>
-            <div class="extension-details">
-                <div class="detail-item">
-                    <span class="detail-label">👥 Joueurs :</span>
-                    <span class="detail-value">1-4</span>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-label">⏱️ Durée :</span>
-                    <span class="detail-value">120 min</span>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-label">🎯 Âge :</span>
-                    <span class="detail-value">14+</span>
-                </div>
-            </div>
-
-            <div class="btn-actions">
-                <button class="add-to-wishlist">Ajouter à ma liste</button>
-                <button class="add-review">Donner mon avis</button>
-            </div>
-        </div>
+            <?php foreach ($extensions as $extension): ?>
+                <?php include ROOTPATH . 'src/View/template/extension_item.php'; ?>
+        <?php endforeach; ?>
     </div>
+
 </div>
 
 

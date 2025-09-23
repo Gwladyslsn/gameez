@@ -103,6 +103,11 @@ class PageController extends Controller
         $this->render('View/page/addNewReview', []);
     }
 
+    public function showExtensions()
+    {
+        $this->render('View/page/extensions', []);
+    }
+
     
 
 
