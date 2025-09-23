@@ -90,7 +90,7 @@ class GameController
         $agePlayer = $_GET['agePlayer'] ?? '';
         $durationGame = $_GET['durationGame'] ?? '';
 
-        $gamesSearch = $this->gameRepository->searchGames($nameGame, $idCategory, $nbPlayer, $agePlayer, $durationGame);
+        $gamesSearch = $this->gameRepository->searchGame($nameGame, $idCategory, $nbPlayer, $agePlayer, $durationGame);
 
         echo json_encode($gamesSearch);
     }

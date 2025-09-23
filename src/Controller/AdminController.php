@@ -9,6 +9,7 @@ use App\Database\Database;
 
 class AdminController
 {
+
     public function dashboardadmin()
     {
         $pdo = (new Database())->getConnection();
@@ -21,8 +22,12 @@ class AdminController
         $topWishlistGames = $adminRepo->getTopWishlistGames();
         $games = $gameRepo->getGames();
         $reviews = $reviewRepo->getAllReviews();
+        
 
         require ROOTPATH . 'src/View/page/admin/dashboardAdmin.php';
     }
+
+
+    
 }
 

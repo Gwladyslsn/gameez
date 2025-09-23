@@ -198,7 +198,7 @@ class GameRepository
     }
 
 
-    public function searchGames(string $nameGame = '', int $idCategory = 0, string $nbPlayer = '', string $agePlayer = '', string $durationGame = ''): array
+    public function searchGame(string $nameGame = '', int $idCategory = 0, string $nbPlayer = '', string $agePlayer = '', string $durationGame = ''): array
     {
 
         $sql = "SELECT * FROM game WHERE 1=1";
