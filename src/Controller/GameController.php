@@ -31,7 +31,7 @@ class GameController
     // ✅ Gestion de l'image uploadée (via FormData)
     $imageGame = null;
     if (isset($_FILES['fileGame']) && $_FILES['fileGame']['error'] === UPLOAD_ERR_OK) {
-        $uploadDir = ROOTPATH . 'asset/image/jeux/';
+        $uploadDir = ROOTPATH . 'image/jeux/';
         if (!is_dir($uploadDir)) {
             mkdir($uploadDir, 0777, true);
         }
