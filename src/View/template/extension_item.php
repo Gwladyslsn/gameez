@@ -24,16 +24,16 @@ $imagePath = '/asset/image/extensions/' . htmlspecialchars($extension->getImageE
             <span class="detail-value">4</span>
         </div>
         <div class="detail-item">
-            <span class="detail-label">complexité :</span>
+            <span class="detail-label">Complexité :</span>
             <span class="detail-value"><?= htmlspecialchars($extension->getComplexity()) ?> /5</span>
         </div>
         <div class="detail-item">
-            <span class="detail-label">Date de sortie :</span>
+            <span class="detail-label">Sortie le :</span>
             <span class="detail-value"><?= htmlspecialchars($extension->getReleaseDate()->format('d/m/Y')) ?></span>
         </div>
     </div>
     <div class="extension-actions">
-        <button class="add-to-wishlist">Ajouter à ma liste</button>
-        <button class="add-review">Donner mon avis</button>
+        <button class="add-to-wishlist btn-add-list" data-type="extension" data-id="<?= htmlspecialchars($extension->getIdExtension()) ?>">Ajouter à ma liste</button>
+        <button class="add-review btn-add-review" data-type="extension" data-id="<?= htmlspecialchars($extension->getIdExtension()) ?>">Donner mon avis</button>
     </div>
 </div>

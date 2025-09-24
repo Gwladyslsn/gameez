@@ -1,5 +1,6 @@
 <?php
 require_once ROOTPATH . "src/View/template/header.php";
+$imagePath = '/asset/image/extensions/' . htmlspecialchars($extensionFav['extension_image']);
 ?>
 
 
@@ -13,19 +14,29 @@ require_once ROOTPATH . "src/View/template/header.php";
         <h2 class="section-title">⭐ Extension Coup de Cœur</h2>
         <div class="featured-card fade-in">
             <div class="featured-content">
-                <div class="featured-image">🏴‍☠️</div>
+                
+                <div class="featured-image"><img src="<?= $imagePath ?>" alt="Image du jeu" class="gameExtension"></div>
                 <div class="featured-info">
-                    <h3>Pirates & Corsaires</h3>
-                    <div class="featured-base-game">Extension pour • Les Aventuriers du Rail</div>
-                    <p>Embarquez pour des aventures en haute mer ! Cette extension ajoute des routes maritimes, des cartes trésor et de nouveaux défis pirates. Naviguez entre les îles et découvrez des trésors cachés.</p>
+                    <h3><?= $extensionFav['extension_name'] ?></h3>
+                    <div class="featured-base-game">Extension pour • <?= $extensionFav['game_name'] ?></div>
+                    <p><?= $extensionFav['extension_description'] ?></p>
                     <div class="featured-highlights">
-                        <span class="highlight">🚢 Routes maritimes</span>
-                        <span class="highlight">💰 Cartes trésor</span>
-                        <span class="highlight">🗺️ Nouvelles cartes</span>
+                        <div class="detail-item">
+                            <span class="detail-label">Note moyenne :</span>
+                            <span class="detail-value">4</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Complexité :</span>
+                            <span class="detail-value"><?= $extensionFav['complexity'] ?> /5</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Sortie le :</span>
+                            <span class="detail-value"><?= $extensionFav['release_date']?></span>
+                        </div>
                     </div>
                 </div>
                 <button class="featured-wishlist" onclick="addToWishlist('Pirates & Corsaires')">
-                    💝 Ajouter à ma liste
+                    Ajouter à ma liste
                 </button>
             </div>
         </div>
@@ -47,15 +58,20 @@ require_once ROOTPATH . "src/View/template/header.php";
     </div>
 
     <div class="extensions-grid" id="extensionsGrid">
-            <?php foreach ($extensions as $extension): ?>
-                <?php include ROOTPATH . 'src/View/template/extension_item.php'; ?>
+        <?php foreach ($extensions as $extension): ?>
+            <?php include ROOTPATH . 'src/View/template/extension_item.php'; ?>
         <?php endforeach; ?>
     </div>
 
 </div>
 
+<!--MODAL AJOUT DANS WISHLIST-->
+    <?php include ROOTPATH . 'src/View/template/modal_list.php'; ?>
+    <!--MODAL AJOUT AVIS-->
+    <?php include ROOTPATH . 'src/View/template/modal_review.php'; ?>
 
-<script src="/asset/js/forum.js"></script>
+
+<script src="/asset/js/modal.js"></script>
 <?php
 $page_script = '/asset/js/header.js';
 require_once ROOTPATH . "src/View/template/footer.php"; ?>

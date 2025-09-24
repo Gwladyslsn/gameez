@@ -58,6 +58,23 @@ class ExtensionRepository
     return $extensions;
 }
 
+public function getFavExtension()
+{
+    $sql = "SELECT e.*, g.game_name
+            FROM extension e
+            JOIN game g ON e.id_game = g.id_game
+            WHERE e.id_extension = 2";
+
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->execute();
+
+    $extensionFav = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $extensionFav;
+
+
+}
+
 
 
 

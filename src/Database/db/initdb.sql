@@ -81,6 +81,21 @@ CREATE TABLE list_items (
 ALTER TABLE list_items 
 CHANGE list_id id_list INT NOT NULL;
 
+ALTER TABLE list_items
+MODIFY id_game INT NULL;
+
+ALTER TABLE list_items
+ADD id_extension INT NULL,
+ADD CONSTRAINT fk_extension FOREIGN KEY (id_extension) REFERENCES extension(id_extension);
+
+ALTER TABLE list_items
+ADD CONSTRAINT chk_game_or_extension
+CHECK (
+    (id_game IS NOT NULL AND id_extension IS NULL)
+    OR
+    (id_game IS NULL AND id_extension IS NOT NULL)
+);
+
 /*avis*/
 CREATE TABLE review(
         id_review   Int  Auto_increment  NOT NULL ,

@@ -19,38 +19,40 @@ class ListController
         }
     }
 
-    // Ajouter une liste et/ou un jeu à une liste
+    // Ajouter une extension et/ou un jeu à une liste
     public function add(): void
-    {
-        header('Content-Type: application/json');
+{
+    header('Content-Type: application/json');
 
-        $data = json_decode(file_get_contents('php://input'), true);
+    $data = json_decode(file_get_contents('php://input'), true);
 
-        if(!$data || !isset($_SESSION['user'])){
-            echo json_encode(['status' => 'error', 'message' => 'Données invalides ou utilisateur non connecté']);
-            exit;
-        }
-
-        $listId = $data['id_list'] ?? null;
-        $newListName = $data['new_list_name'] ?? null;
-        $gameId = isset($data['id_game']) ? (int) $data['id_game'] : null;
-
-        if(!$gameId){
-            echo json_encode(['status' => 'error', 'message' => 'Aucun jeu spécifié']);
-            exit;
-        }
-
-        // Si nouvelle liste
-        if($newListName){
-            $list = new ListEntity(null, $newListName, $_SESSION['user']);
-            $listId = $this->listRepository->addList($list);
-        }
-
-        // Ajouter le jeu à la liste
-        $this->listRepository->addGameToList($listId, $gameId);
-
-        echo json_encode(['status' => 'success']);
+    if (!$data || !isset($_SESSION['user'])) {
+        echo json_encode(['status' => 'error', 'message' => 'Données invalides ou utilisateur non connecté']);
+        exit;
     }
+
+    $listId = $data['id_list'] ?? null;
+    $newListName = $data['new_list_name'] ?? null;
+    $itemId = isset($data['id_item']) ? (int) $data['id_item'] : null;
+    $itemType = $data['type'] ?? null;
+
+    if (!$itemId || !$itemType) {
+        echo json_encode(['status' => 'error', 'message' => 'Aucun élément spécifié']);
+        exit;
+    }
+
+    // Si nouvelle liste
+    if ($newListName) {
+        $list = new ListEntity(null, $newListName, $_SESSION['user']);
+        $listId = $this->listRepository->addList($list);
+    }
+
+    // Ajouter dans la liste
+    $this->listRepository->addItemToList($listId, $itemType, $itemId);
+
+    echo json_encode(['status' => 'success']);
+}
+
 
     // Récupérer les listes de l'utilisateur
     public function getUserLists(): void

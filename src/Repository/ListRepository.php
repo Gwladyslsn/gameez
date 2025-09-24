@@ -30,18 +30,32 @@ class ListRepository
         return (int)$this->pdo->lastInsertId();
     }
 
-    // Ajouter un jeu à une liste
-    public function addGameToList(int $listId, int $gameId): void
-    {
+    // Ajouter un jeu OU extension à une liste
+    public function addItemToList(int $listId, string $type, int $itemId): void
+{
+    if ($type === 'game') {
         $stmt = $this->pdo->prepare("
-            INSERT INTO list_items (id_list, id_game) 
-            VALUES (:id_list, :id_game)
+            INSERT INTO list_items (id_list, id_game, id_extension)
+            VALUES (:id_list, :id_game, NULL)
         ");
         $stmt->execute([
             ':id_list' => $listId,
-            ':id_game' => $gameId
+            ':id_game' => $itemId
         ]);
+    } elseif ($type === 'extension') {
+        $stmt = $this->pdo->prepare("
+            INSERT INTO list_items (id_list, id_game, id_extension)
+            VALUES (:id_list, NULL, :id_extension)
+        ");
+        $stmt->execute([
+            ':id_list' => $listId,
+            ':id_extension' => $itemId
+        ]);
+    } else {
+        throw new \InvalidArgumentException("Type d'item invalide");
     }
+}
+
 
     // Récupérer toutes les listes d'un utilisateur
     public function getListsByUser(int $userId): array

@@ -1,40 +1,36 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // MODAL LIST
+    // --- MODAL LIST ---
     const modalList = document.getElementById("modal-add-list");
     const closeBtn = modalList.querySelector(".close");
     const validateBtn = document.getElementById("validate-add");
     const selectList = document.getElementById("select-list");
-    const newListInput = document.getElementById("new-list-name"); // si tu as un input pour nouvelle liste
+    const newListInput = document.getElementById("new-list-name");
 
-    // Ouvrir le modal via event delegation
     document.addEventListener("click", (e) => {
         if (e.target.classList.contains("btn-add-list")) {
             e.preventDefault();
             const btn = e.target;
-            const gameId = btn.getAttribute("data-game-id");
-            modalList .dataset.gameId = gameId; // stocke l'id du jeu dans le modal
-            modalList .classList.remove('hidden');
 
-            loadUserLists(); // charge les listes existantes dans le select
+            // Utiliser des data dynamiques
+            modalList.dataset.type = btn.dataset.type || "game"; 
+            modalList.dataset.itemId = btn.dataset.id; 
+
+            modalList.classList.remove('hidden');
+            loadUserLists();
         }
     });
 
-    // Fermer le modal
-    closeBtn.addEventListener("click", () => {
-        modalList .classList.add('hidden');
-    });
+    closeBtn.addEventListener("click", () => modalList.classList.add('hidden'));
 
     window.addEventListener("click", (e) => {
-        if (e.target === modalList ) modalList .classList.add('hidden');
+        if (e.target === modalList) modalList.classList.add('hidden');
     });
 
-    // Charger les listes existantes de l'utilisateur
     async function loadUserLists() {
         try {
             const response = await fetch('/getUserLists');
             const lists = await response.json();
 
-            // Vider le select avant de remplir
             selectList.innerHTML = '';
             lists.forEach(list => {
                 const option = document.createElement('option');
@@ -43,27 +39,26 @@ document.addEventListener('DOMContentLoaded', function () {
                 selectList.appendChild(option);
             });
 
-            // Ajouter une option "Nouvelle liste"
             const newOption = document.createElement('option');
             newOption.value = 'new';
             newOption.textContent = '-- Créer une nouvelle liste --';
             selectList.appendChild(newOption);
-
         } catch (err) {
             console.error('Erreur en chargeant les listes:', err);
         }
     }
 
-    // Valider l'ajout du jeu à la liste
     validateBtn.addEventListener("click", async (e) => {
         e.preventDefault();
+
         const selectedValue = selectList.value;
-        const gameId = modalList .dataset.gameId;
+        const itemId = modalList.dataset.itemId;
+        const type = modalList.dataset.type; // "game" ou "extension"
         let listId = null;
         let newListName = null;
 
-        if (!gameId) {
-            console.error("Pas d'ID de jeu trouvé sur ce bouton !");
+        if (!itemId) {
+            console.error("Pas d'ID trouvé sur ce bouton !");
             return;
         }
 
@@ -77,11 +72,11 @@ document.addEventListener('DOMContentLoaded', function () {
             listId = selectedValue;
         }
 
-        // Préparer les données
         const data = {
             id_list: listId,
             new_list_name: newListName,
-            id_game: gameId
+            type, // envoyer le type pour le backend
+            id_item: itemId // renommer pour que ce soit générique
         };
 
         try {
@@ -94,10 +89,10 @@ document.addEventListener('DOMContentLoaded', function () {
             const result = await response.json();
 
             if (result.status === 'success') {
-                alert('Jeu ajouté à la liste avec succès !');
+                alert(`${type === "game" ? "Jeu" : "Extension"} ajouté(e) à la liste avec succès !`);
                 modalList.classList.add('hidden');
-                newListInput.value = ''; // reset input nouvelle liste
-                loadUserLists(); // recharger les listes au cas où une nouvelle a été créée
+                newListInput.value = '';
+                loadUserLists();
             } else {
                 alert(result.message);
             }
@@ -107,54 +102,47 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-
-
-    // Modal avis
-
+    // --- MODAL REVIEW ---
     const modalReview = document.getElementById("modal-add-review");
     const closeBtnReview = modalReview.querySelector(".close");
     const validateBtnReview = document.getElementById("validate-add-review");
     const formReview = document.getElementById("form-review");
 
-    // Ouvrir le modal via event delegation
     document.addEventListener("click", (e) => {
         if (e.target.classList.contains("btn-add-review")) {
             e.preventDefault();
             const btn = e.target;
-            const gameId = btn.getAttribute("data-game-id");
-            modalReview .dataset.gameId = gameId; // stocke l'id du jeu dans le modal
-            modalReview .classList.remove('hidden');           
+
+            modalReview.dataset.type = btn.dataset.type || "game";
+            modalReview.dataset.itemId = btn.dataset.id;
+
+            modalReview.classList.remove('hidden');
         }
     });
 
-    // Fermer le modal
-    closeBtnReview.addEventListener("click", () => {
-        modalReview .classList.add('hidden');
-    });
-
+    closeBtnReview.addEventListener("click", () => modalReview.classList.add('hidden'));
     window.addEventListener("click", (e) => {
-        if (e.target === modalReview ) modalReview .classList.add('hidden');
+        if (e.target === modalReview) modalReview.classList.add('hidden');
     });
 
-
-    // Valider l'avis
     validateBtnReview.addEventListener("click", async (e) => {
         e.preventDefault();
+
         const rating = formReview.querySelector('input[name="review_note"]:checked')?.value;
         const comment = formReview.querySelector('textarea[name="review_comment"]').value;
-        const gameId = modalReview .dataset.gameId;
+        const itemId = modalReview.dataset.itemId;
+        const type = modalReview.dataset.type;
 
-        if (!gameId) {
-            console.error("Pas d'ID de jeu trouvé sur ce bouton !");
+        if (!itemId) {
+            console.error("Pas d'ID trouvé sur ce bouton !");
             return;
         }
 
-
-        // Préparer les données
         const data = {
             review_note: rating,
             review_comment: comment,
-            id_game: gameId
+            type,
+            id_item: itemId
         };
 
         try {
@@ -167,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const result = await response.json();
 
             if (result.status === 'success') {
-                alert('Avis ajouté avec succès ! !');
+                alert(`${type === "game" ? "Avis de jeu" : "Avis d'extension"} ajouté avec succès !`);
                 formReview.reset();
                 modalReview.classList.add('hidden');
             } else {
@@ -179,8 +167,8 @@ document.addEventListener('DOMContentLoaded', function () {
             formReview.reset();
         }
     });
-
 });
+
 
 
 

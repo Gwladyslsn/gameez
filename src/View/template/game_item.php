@@ -20,7 +20,7 @@ $imagePath = '/asset/' . htmlspecialchars($game->getImageGame());
     <p class="game-description"><?= htmlspecialchars($game->getDescriptionGame()) ?></p>
 
     <div class="btn-actions">
-        <button class="add-to-wishlist btn-add-list" data-game-id="<?= htmlspecialchars($game->getIdGame()) ?>">Ajouter à ma liste</button>
-        <button class="add-review btn-add-review" data-game-id="<?= htmlspecialchars($game->getIdGame()) ?>">Donner mon avis</button>
+        <button class="add-to-wishlist btn-add-list" data-type="game" data-id="<?= htmlspecialchars($game->getIdGame()) ?>">Ajouter à ma liste</button>
+        <button class="add-review btn-add-review" data-type="game" data-id="<?= htmlspecialchars($game->getIdGame()) ?>">Donner mon avis</button>
     </div>
 </div>

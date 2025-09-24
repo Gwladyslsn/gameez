@@ -20,6 +20,8 @@ class ExtensionController
     {
         
         $extensions = $this->extensionRepo->getAllExtensions();
+        $extensionFav = $this->extensionRepo->getFavExtension();
         require_once ROOTPATH . 'src/View/page/extensions.php';
     }
+
 }
