@@ -16,6 +16,33 @@ class ExtensionRepository
 
     // CREATE //
 
+    public function addExtension(
+    string $extensionName, 
+    string $extensionDescription, 
+    int $complexity, 
+    string $extensionImage, 
+    \DateTime $releaseDate, 
+    int $idGame
+): bool {
+    $sql = "INSERT INTO extension (extension_name, extension_description, complexity, extension_image, release_date, id_game) 
+            VALUES (:extensionName, :extensionDescription, :complexity, :extensionImage, :releaseDate, :idGame)";
+    $query = $this->pdo->prepare($sql);
+
+    $query->bindParam(':extensionName', $extensionName, PDO::PARAM_STR);
+    $query->bindParam(':extensionDescription', $extensionDescription, PDO::PARAM_STR);
+    $query->bindParam(':complexity', $complexity, PDO::PARAM_INT);
+    $query->bindParam(':extensionImage', $extensionImage, PDO::PARAM_STR);
+
+    // ✅ Convertir DateTime en string format SQL
+    $releaseDateStr = $releaseDate->format('Y-m-d');
+    $query->bindParam(':releaseDate', $releaseDateStr, PDO::PARAM_STR);
+
+    $query->bindParam(':idGame', $idGame, PDO::PARAM_INT);
+
+    return $query->execute();
+}
+
+
 
     // READ //
 

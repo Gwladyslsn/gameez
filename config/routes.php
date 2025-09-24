@@ -95,4 +95,8 @@ return [
         'controller' => App\Controller\GameController::class,
         'method' => 'addGame'
     ],
+    '/addExtension' => [
+        'controller' => App\Controller\ExtensionController::class,
+        'method' => 'addExtension'
+    ],
 ];

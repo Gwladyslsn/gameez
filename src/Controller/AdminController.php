@@ -22,6 +22,7 @@ class AdminController
         $topWishlistGames = $adminRepo->getTopWishlistGames();
         $games = $gameRepo->getGames();
         $reviews = $reviewRepo->getAllReviews();
+        $gamesBase = $gameRepo->getGamesBase();
         
 
         require ROOTPATH . 'src/View/page/admin/dashboardAdmin.php';

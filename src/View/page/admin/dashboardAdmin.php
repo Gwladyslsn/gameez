@@ -116,6 +116,10 @@ require_once ROOTPATH . 'src/View/template/headerAdmin.php';
                         <span class="icon-plus"></span>
                         Ajouter un jeu
                     </button>
+                    <button class="btn-primary" id="new-extension">
+                        <span class="icon-plus"></span>
+                        Ajouter une extension
+                    </button>
                 </div>
 
                 <!--MODAL AJOUT JEU-->
@@ -174,6 +178,56 @@ require_once ROOTPATH . 'src/View/template/headerAdmin.php';
                     </div>
                 </div>
 
+
+                <!--MODAL AJOUT Extension-->
+                <div id="modal-add-extension" class="modal modalGame hidden">
+                    <div class="modal-content-game">
+                        <span class="close">&times;</span>
+                        <h3 class="text-black text-center mb-4">Ajouter un jeu</h3>
+                        <form id="form-extension" method="post">
+
+                            <div class="mb-4">
+                                <label for="extension_name" class="text-black">Nom du jeu</label>
+                                <textarea id="extension_name" name="extension_name" rows="2"></textarea>
+                            </div>
+                            <div class="mb-4">
+                                <label for="complexity_extension" class="text-black">Complexité</label>
+                                <input type="number" id="complexity_extension" name="complexity" class="select-modal"
+                                    min="1" max="5" step="1">
+                            </div>
+                            <div class="mb-4">
+                                <label for="date" class="text-black">Date de sortie</label>
+                                <input type="date" id="release_date" name="release_date" rows="2"></input>
+                            </div>
+                            <div class="mb-4">
+                                <label for="image" class="text-black">Image</label>
+                                <img id="preview-extension" src="/asset/image/jeux/game-default.png" alt="Illustration du jeu" class="image-game">
+                                <input type="file" id="file-extension" name="image" accept="image/*" class="hidden">
+                                <button type="button" id="btn-img-extension"
+                                    class="button-image">
+                                    Choisir une image
+                                </button>
+                            </div>
+                            <div class="mb-4">
+                                <label for="extension_description" class="text-black">Description</label>
+                                <textarea id="extension_description" name="extension_description" rows="2"></textarea>
+                            </div>
+                            <div class="mb-4">
+                                <label for="id_game" class="text-black">Jeu de base</label>
+                                <select id="id_game" class="select-modal" name="id_game">
+                                    <option value="">-- Sélectionner un jeu --</option>
+                                    <?php foreach ($gamesBase as $game): ?>
+                                        <option value="<?= $game->getIdGame() ?>">
+                                            <?= $game->getNameGame() ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                            <button id="btn-add-extension">Ajouter ce jeux</button>
+                        </form>
+                    </div>
+                </div>
+
                 <div class="games-table-container">
                     <div class="table-header">
                         <h3>Jeux récents</h3>
@@ -193,7 +247,7 @@ require_once ROOTPATH . 'src/View/template/headerAdmin.php';
                         </div>
                     </div>
 
-                    <table class="games-table" >
+                    <table class="games-table">
                         <thead>
                             <tr>
                                 <th>Id</th>
@@ -235,39 +289,39 @@ require_once ROOTPATH . 'src/View/template/headerAdmin.php';
                 </div>
 
                 <?php foreach ($reviews as $review): ?>
-                <div class="review-card">
-                    <div class="review-header">
-                        <div>
-                            <h4 class="review-game-title"><?= $review['game_name']?></h4>
-                            <div class="review-meta">
-                                <span class="review-user"><?= $review['user_name']?></span>
-                                <div class="review-rating">
-                                    <span></span><i class="fa-solid fa-star" style="color: #FFD43B;"></i></span>
-                                    <span></span><i class="fa-solid fa-star" style="color: #FFD43B;"></i></span>
-                                    <span></span><i class="fa-solid fa-star" style="color: #FFD43B;"></i></span>
-                                    <span></span><i class="fa-solid fa-star" style="color: #FFD43B;"></i></span>
-                                    <span></span><i class="fa-solid fa-star" style="color: #FFD43B;"></i></span>
-                                    <span>(<?= $review['review_note']?>/5)</span>
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div>
+                                <h4 class="review-game-title"><?= $review['game_name'] ?></h4>
+                                <div class="review-meta">
+                                    <span class="review-user"><?= $review['user_name'] ?></span>
+                                    <div class="review-rating">
+                                        <span></span><i class="fa-solid fa-star" style="color: #FFD43B;"></i></span>
+                                        <span></span><i class="fa-solid fa-star" style="color: #FFD43B;"></i></span>
+                                        <span></span><i class="fa-solid fa-star" style="color: #FFD43B;"></i></span>
+                                        <span></span><i class="fa-solid fa-star" style="color: #FFD43B;"></i></span>
+                                        <span></span><i class="fa-solid fa-star" style="color: #FFD43B;"></i></span>
+                                        <span>(<?= $review['review_note'] ?>/5)</span>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="review-date">
+                                <span class="icon-clock"></span>
+                                2024-08-24
+                            </div>
                         </div>
-                        <div class="review-date">
-                            <span class="icon-clock"></span>
-                            2024-08-24
+                        <p class="review-comment"><?= $review['review_comment'] ?></p>
+                        <div class="review-actions">
+                            <button class="btn-reject">
+                                <span class="icon-x"></span>
+                                Rejeter
+                            </button>
+                            <button class="btn-approve">
+                                <span class="icon-check"></span>
+                                Approuver
+                            </button>
                         </div>
                     </div>
-                    <p class="review-comment"><?= $review['review_comment']?></p>
-                    <div class="review-actions">
-                        <button class="btn-reject">
-                            <span class="icon-x"></span>
-                            Rejeter
-                        </button>
-                        <button class="btn-approve">
-                            <span class="icon-check"></span>
-                            Approuver
-                        </button>
-                    </div>
-                </div>
                 <?php endforeach ?>
             </div>
 

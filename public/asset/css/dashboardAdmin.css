@@ -212,7 +212,7 @@ header {
 /* Games Management */
 .section-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin-bottom: 1.5rem;
     flex-wrap: wrap;

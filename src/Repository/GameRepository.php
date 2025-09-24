@@ -105,6 +105,27 @@ class GameRepository
     return $games;
 }
 
+public function getGamesBase(): array
+{
+    // On ajoute la jointure pour récupérer le nom de la catégorie
+    $sql = "SELECT * FROM game
+        ORDER BY game_name ASC
+    ";
+    $stmt = $this->pdo->query($sql);
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    $gamesBase = [];
+    foreach ($results as $row) {
+        $gameBase = new GameEntity();
+        $gameBase->setIdGame((int)$row['id_game']);
+        $gameBase->setNameGame($row['game_name']);
+
+        $gamesBase[] = $gameBase;
+    }
+
+    return $gamesBase;
+}
+
 
     public function getPopularGames(int $limit = 10, int $offset = 0): array
     {
