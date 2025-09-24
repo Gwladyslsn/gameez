@@ -31,7 +31,7 @@ class UserController extends Controller
         $reviews = $reviewRepo->getReviewByUser($_SESSION['user']);
 
         foreach ($lists as &$list) {
-        $list['games'] = $listRepository->getGamesByList($list['id_list']);
+        $list['games'] = $listRepository->getItemsByList($list['id_list']);
     }
 
         $this->render('View/page/dashboardUser', [

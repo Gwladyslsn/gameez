@@ -80,7 +80,11 @@ require_once ROOTPATH . "src/View/template/header.php";
                     <div class="wishlist-games">
                         <?php foreach ($list['games'] as $index => $game): ?>
                             <?php if ($index < 3): ?>
-                                <div class="game-preview"><?= htmlspecialchars($game['game_name']) ?></div>
+                                <?php if (!empty($game['id_game'])): ?>
+                                    <div class="game-preview"><?= htmlspecialchars($game['game_name']) ?></div>
+                                <?php elseif (!empty($game['id_extension'])): ?>
+                                    <div class="game-preview"><?= htmlspecialchars($game['extension_name']) ?></div>
+                                <?php endif ?>
                             <?php elseif ($index === 3): ?>
                                 <div class="game-preview">+<?= count($list['games']) - 3 ?> autres</div>
                             <?php endif; ?>
@@ -132,7 +136,11 @@ require_once ROOTPATH . "src/View/template/header.php";
                         <div class="review-card" data-rating="<?= $rating ?>">
                             <div class="review-header">
                                 <div class="review-game-info">
-                                    <h3 class="game-name"><?= $review['game_name'] ?></h3>
+                                    <?php if ($review['id_game']): ?>
+                                        <h3 class="game-name"><?= $review['game_name'] ?></h3>
+                                    <?php elseif ($review['id_extension']): ?>
+                                        <h3 class="game-name"><?= $review['extension_name'] ?></h3>
+                                    <?php endif ?>
                                 </div>
                                 <div class="review-rating">
                                     <div class="stars-display">

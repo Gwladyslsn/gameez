@@ -72,7 +72,7 @@ class ListController
     public function getGamesOfList(int $listId): void
     {
         header('Content-Type: application/json');
-        $games = $this->listRepository->getGamesByList($listId);
+        $games = $this->listRepository->getItemsByList($listId);
         echo json_encode($games);
     }
 }

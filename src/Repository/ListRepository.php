@@ -66,17 +66,31 @@ class ListRepository
     }
 
     // récupérer tous les jeux d'une liste
-    public function getGamesByList(int $listId): array
-    {
-        $stmt = $this->pdo->prepare("
-            SELECT g.* 
-            FROM game g
-            JOIN list_items li ON g.id_game = li.id_game
-            WHERE li.id_list = :id_list
-        ");
-        $stmt->execute([':id_list' => $listId]);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
+    public function getItemsByList(int $listId): array
+{
+    $sql = "
+        SELECT 
+            li.id_list_item,
+            li.id_list,
+            g.id_game,
+            g.game_name,
+            g.image AS game_image,
+            e.id_extension,
+            e.extension_name,
+            e.extension_image
+        FROM list_items li
+        LEFT JOIN game g ON li.id_game = g.id_game
+        LEFT JOIN extension e ON li.id_extension = e.id_extension
+        WHERE li.id_list = :id_list
+        ORDER BY li.id_list_item ASC
+    ";
+
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->execute([':id_list' => $listId]);
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
 
     public function countListByUser(int $userId)
     {

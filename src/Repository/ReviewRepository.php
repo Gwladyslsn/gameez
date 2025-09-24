@@ -71,9 +71,10 @@ class ReviewRepository
     public function getReviewByUser(int $userId) 
     {
         $sql = "SELECT r.id_review, r.id_user, r.id_game, r.review_note, r.review_comment,
-        g.game_name, g.image
+        g.game_name, g.image, e.id_extension, e.extension_name, e.extension_image
         FROM review r
-        JOIN game g ON r.id_game = g.id_game
+        LEFT JOIN game g ON r.id_game = g.id_game
+        LEFT JOIN extension e ON r.id_extension = e.id_extension
         WHERE r.id_user = :id_user
     ";
 
