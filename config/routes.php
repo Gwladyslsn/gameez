@@ -69,6 +69,10 @@ return [
         'controller' => App\Controller\MongoDbController::class,
         'method' => 'unlikePost'
     ],
+    '/countGames' => [
+        'controller' => App\Controller\PageController::class,
+        'method' => 'games'
+    ],
     
     
     

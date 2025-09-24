@@ -25,6 +25,13 @@ document.addEventListener('DOMContentLoaded', function (e) {
             .catch(error => console.error('Erreur:', error));
     });
 
+    async function updateGameCount() {
+    const query = new URLSearchParams();
+    const res = await fetch('/countGames');
+    const data = await res.json();
+    document.querySelector('.stat-number').textContent = data.nbGames;
+}
+
 
     // Barre de recherche
     const searchInput = document.getElementById("searchInput");
@@ -54,6 +61,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
         const res = await fetch(`/searchGame?${params.toString()}`);
         const games = await res.json();
+        updateGameCount();
 
         const resultsBox = document.getElementById("game-list");
 
@@ -85,6 +93,9 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
     }
 
+    
+
+
     // --- Listeners ---
     // Clic sur la loupe
     searchBtn.addEventListener('click', (e) => {
@@ -104,6 +115,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
     playersFilter.addEventListener("change", fetchGames);
     ageFilter.addEventListener("change", fetchGames);
     durationFilter.addEventListener("change", fetchGames);
+    
 
 
 

@@ -20,7 +20,7 @@ class PageController extends Controller
 
         $popularGames = $gameRepository->getPopularGames(6, 0); // seulement 3 jeux pour la section home
         $newGames = $gameRepository->getNewGames(); // 3 jeux en cours de sortie
-        $nbGames = count($gameRepository->getAllGames());
+        $nbGames = count($gameRepository->getGames());
 
         $this->render('View/page/home', [
             'popularGames' => $popularGames,

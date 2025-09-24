@@ -177,18 +177,18 @@ class GameRepository
         }
 
         if ($nbPlayer) {
-            $sql .= " AND nb_gamer = :nbPlayer";
-            $params['nbPlayer'] = $nbPlayer;
+            $sql .= " AND nb_gamer LIKE :nbPlayer";
+            $params['nbPlayer'] = "%$nbPlayer%";
         }
 
         if ($agePlayer) {
-            $sql .= " AND age_gamer = :agePlayer";
-            $params['agePlayer'] = $agePlayer;
+            $sql .= " AND age_gamer LIKE :agePlayer";
+            $params['agePlayer'] = "%$agePlayer%";
         }
 
         if ($durationGame) {
-            $sql .= " AND game_duration = :durationGame";
-            $params['durationGame'] = $durationGame;
+            $sql .= " AND game_duration LIKE :durationGame";
+            $params['durationGame'] = "%$durationGame%";
         }
 
         $stmt = $this->pdo->prepare($sql);
