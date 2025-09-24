@@ -116,6 +116,21 @@ CHANGE COLUMN id_joueur id_user INT NOT NULL;
 ALTER TABLE review 
 CHANGE COLUMN comment review_comment TEXT NOT NULL;
 
+ALTER TABLE review
+MODIFY id_game INT NULL;
+
+ALTER TABLE review
+ADD COLUMN id_extension INT NULL,
+ADD CONSTRAINT fk_extension_review FOREIGN KEY (id_extension) REFERENCES extension(id_extension);
+
+ALTER TABLE review
+ADD CONSTRAINT chk_game_or_extension_review
+CHECK (
+    (id_game IS NOT NULL AND id_extension IS NULL)
+    OR
+    (id_game IS NULL AND id_extension IS NOT NULL)
+);
+
 
 CREATE TABLE extension(
         id_extension Int AUTO_INCREMENT NOT NULL,

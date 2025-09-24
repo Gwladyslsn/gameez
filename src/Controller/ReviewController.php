@@ -16,34 +16,34 @@ class ReviewController
         $this->reviewRepository = new ReviewRepository($pdo);
     }
     public function addReview(): void
-    {
-        header('Content-Type: application/json');
+{
+    header('Content-Type: application/json');
 
-        $data = json_decode(file_get_contents('php://input'), true);
+    $data = json_decode(file_get_contents('php://input'), true);
 
-        if(!$data || !isset($_SESSION['user'])){
-            echo json_encode(['status' => 'error', 'message' => 'Données invalides ou utilisateur non connecté']);
-            exit;
-        }
-
-        $review_note = $data['review_note'] ?? null;
-        $review_comment = $data['review_comment'] ?? null;
-        $gameId = isset($data['id_game']) ? (int) $data['id_game'] : null;
-        $review_date = date('Y-m-d H:i:s');
-        $id_user = $_SESSION['user'];
-        $id_game = isset($data['id_game']) ? (int) $data['id_game'] : null;
-
-        if(!$gameId){
-            echo json_encode(['status' => 'error', 'message' => 'Aucun jeu spécifié']);
-            exit;
-        }
-
-
-        // Ajouter avis
-        $this->reviewRepository->addNewReview($review_note, $review_comment, $review_date, $id_user, $id_game);
-
-        echo json_encode(['status' => 'success']);
+    if (!$data || !isset($_SESSION['user'])) {
+        echo json_encode(['status' => 'error', 'message' => 'Données invalides ou utilisateur non connecté']);
+        exit;
     }
+
+    $review_note = $data['review_note'] ?? null;
+    $review_comment = $data['review_comment'] ?? null;
+    $itemId = isset($data['id_item']) ? (int) $data['id_item'] : null;
+    $itemType = $data['type'] ?? null; // "game" ou "extension"
+    $review_date = date('Y-m-d H:i:s');
+    $id_user = $_SESSION['user'];
+
+    if (!$itemId || !$itemType) {
+        echo json_encode(['status' => 'error', 'message' => 'Aucun élément spécifié']);
+        exit;
+    }
+
+    // Ajouter l'avis
+    $this->reviewRepository->addNewReview($review_note, $review_comment, $review_date, $id_user, $itemType, $itemId);
+
+    echo json_encode(['status' => 'success']);
+}
+
 
     /*public function loadMoreGames()
     {
