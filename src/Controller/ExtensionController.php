@@ -31,17 +31,17 @@ public function addExtension(): void
     $idGame = isset($_POST['idGame']) ? (int) $_POST['idGame'] : null;
 
     // ✅ Gestion de l'image uploadée (via FormData)
-    $imageGame = null;
-    if (isset($_FILES['fileGame']) && $_FILES['fileGame']['error'] === UPLOAD_ERR_OK) {
-        $uploadDir = ROOTPATH . 'image/jeux/';
+    $extensionImage = null;
+    if (isset($_FILES['extensionImage']) && $_FILES['extensionImage']['error'] === UPLOAD_ERR_OK) {
+        $uploadDir = ROOTPATH . 'asset/image/extensions/';
         if (!is_dir($uploadDir)) {
             mkdir($uploadDir, 0777, true);
         }
-        $fileName = basename($_FILES['fileGame']['name']);
+        $fileName = basename($_FILES['extensionImage']['name']);
         $filePath = $uploadDir . $fileName;
 
-        if (move_uploaded_file($_FILES['fileGame']['tmp_name'], $filePath)) {
-            $imageGame = 'image/jeux/' . $fileName; // Chemin que tu stockeras en BDD
+        if (move_uploaded_file($_FILES['extensionImage']['tmp_name'], $filePath)) {
+            $extensionImage = $fileName; // Chemin que tu stockeras en BDD
         }
     }
 

@@ -35,9 +35,6 @@ $imagePath = '/asset/image/extensions/' . htmlspecialchars($extensionFav['extens
                         </div>
                     </div>
                 </div>
-                <button class="featured-wishlist" onclick="addToWishlist('Pirates & Corsaires')">
-                    Ajouter à ma liste
-                </button>
             </div>
         </div>
     </div>
@@ -48,12 +45,10 @@ $imagePath = '/asset/image/extensions/' . htmlspecialchars($extensionFav['extens
             <button class="search-btn" onclick="searchExtensions()">🔍 Rechercher</button>
         </div>
         <div class="filters">
-            <button class="filter-btn active" data-category="all">🌟 Toutes</button>
-            <button class="filter-btn" data-category="strategy">♟️ Stratégie</button>
-            <button class="filter-btn" data-category="adventure">🗺️ Aventure</button>
-            <button class="filter-btn" data-category="family">👨‍👩‍👧‍👦 Famille</button>
-            <button class="filter-btn" data-category="thematic">🎭 Thématique</button>
-            <button class="filter-btn" data-category="cooperative">🤝 Coopératif</button>
+            <button class="filter-btn active" data-category="all">Toutes</button>
+            <button class="filter-btn" data-category="strategy">Récentes</button>
+            <button class="filter-btn" data-category="adventure">Complexe</button>
+            <button class="filter-btn" data-category="family">Meilleur note</button>
         </div>
     </div>
 

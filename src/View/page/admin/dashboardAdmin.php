@@ -201,8 +201,8 @@ require_once ROOTPATH . 'src/View/template/headerAdmin.php';
                             </div>
                             <div class="mb-4">
                                 <label for="image" class="text-black">Image</label>
-                                <img id="preview-extension" src="/asset/image/jeux/game-default.png" alt="Illustration du jeu" class="image-game">
-                                <input type="file" id="file-extension" name="image" accept="image/*" class="hidden">
+                                <img id="preview-extension" src="/asset/image/jeux/game-default.png" alt="Illustration de l'extension" class="image-game">
+                                <input type="file" id="file-extension" name="extension_image" accept="image/*" class="hidden">
                                 <button type="button" id="btn-img-extension"
                                     class="button-image">
                                     Choisir une image

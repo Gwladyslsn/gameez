@@ -69,7 +69,7 @@ btnAddGame.addEventListener('click', async (e) => {
     try {
         const response = await fetch('/addGame', {
             method: 'POST',
-            body: formData // 👈 pas besoin de Content-Type, c'est automatique
+            body: formData
         });
 
         const result = await response.json();
@@ -101,7 +101,7 @@ btnAddGame.addEventListener('click', async (e) => {
 
     // Ouvrir le modal
     btnNewExtension.addEventListener('click', function (e) {
-        e.preventDefault(); // <-- parenthèses !
+        e.preventDefault();
         modalAddExtension.classList.remove('hidden');
     });
 
@@ -139,7 +139,7 @@ btnAddExtension.addEventListener('click', async (e) => {
     const complexityExtension = InputComplexityExtension.value.trim();
     const extensionDescription = InputDescriptionExtension.value.trim();
     const releaseDate = ReleaseDateExtension.value.trim();
-    const fileGame = fileInputExtension.files[0];
+    const fileExtension = fileInputExtension.files[0];
     const idGame = idGameBase.value.trim();
 
 
@@ -149,13 +149,15 @@ btnAddExtension.addEventListener('click', async (e) => {
     formData.append('extensionDescription', extensionDescription);
     formData.append('complexityExtension', complexityExtension);
     formData.append('releaseDate', releaseDate);
-    formData.append('fileGame', fileGame);
+    formData.append('extensionImage', fileExtension);
     formData.append('idGame', idGame);
+
+    
 
     try {
         const response = await fetch('/addExtension', {
             method: 'POST',
-            body: formData // 👈 pas besoin de Content-Type, c'est automatique
+            body: formData
         });
 
         const result = await response.json();
