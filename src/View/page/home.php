@@ -42,10 +42,6 @@ require_once ROOTPATH . "src/View/template/header.php";
                     <span class="stat-number">15,634</span>
                     <span class="stat-label">Membres actifs</span>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-number">98%</span>
-                    <span class="stat-label">Satisfaction</span>
-                </div>
             </div>
         </div>
     </section>

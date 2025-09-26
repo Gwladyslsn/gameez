@@ -50,7 +50,13 @@ class GameRepository
         $limit = (int) $limit;
         $offset = (int) $offset;
 
-        $sql = "SELECT * FROM game ORDER BY id_game ASC LIMIT $limit OFFSET $offset";
+        $sql = "
+        SELECT g.*, c.category_name, COALESCE(AVG(r.review_note), 0) AS avg_rating
+        FROM game g
+        LEFT JOIN category c ON g.id_category = c.id_category
+        LEFT JOIN review r ON g.id_game = r.id_game
+        GROUP BY g.id_game
+        ORDER BY g.id_game ASC LIMIT $limit OFFSET $offset";
         $stmt = $this->pdo->query($sql);
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -64,6 +70,7 @@ class GameRepository
             $game->setAgeGamer((int)$row['age_gamer']);
             $game->setImageGame($row['image']);
             $game->setDescriptionGame($row['game_description'] ?? "");
+            $game->setAvgRating($row['avg_rating']);
 
             $games[] = $game;
         }
@@ -72,89 +79,125 @@ class GameRepository
     }
 
     public function getGames(): array
-{
-    // On ajoute la jointure pour récupérer le nom de la catégorie
-    $sql = "
-        SELECT g.*, c.category_name
+    {
+        // On ajoute la jointure pour récupérer le nom de la catégorie
+        $sql = "
+        SELECT g.*, c.category_name, COALESCE(AVG(r.review_note), 0) AS avg_rating
         FROM game g
         LEFT JOIN category c ON g.id_category = c.id_category
+        LEFT JOIN review r ON g.id_game = r.id_game
+        GROUP BY g.id_game
         ORDER BY g.id_game ASC
     ";
-    $stmt = $this->pdo->query($sql);
-    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt = $this->pdo->query($sql);
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    $games = [];
-    foreach ($results as $row) {
-        $game = new GameEntity();
-        $game->setIdGame((int)$row['id_game']);
-        $game->setNameGame($row['game_name']);
-        $game->setDurationGame((int)$row['game_duration']);
-        $game->setNbGamer($row['nb_gamer']);
-        $game->setAgeGamer((int)$row['age_gamer']);
-        $game->setImageGame($row['image']);
-        $game->setDescriptionGame($row['game_description'] ?? "");
+        $games = [];
+        foreach ($results as $row) {
+            $game = new GameEntity();
+            $game->setIdGame((int)$row['id_game']);
+            $game->setNameGame($row['game_name']);
+            $game->setDurationGame((int)$row['game_duration']);
+            $game->setNbGamer($row['nb_gamer']);
+            $game->setAgeGamer((int)$row['age_gamer']);
+            $game->setImageGame($row['image']);
+            $game->setDescriptionGame($row['game_description'] ?? "");
+            $game->setAvgRating($row['avg_rating']);
 
-        // ➕ On ajoute la catégorie
-        if (method_exists($game, 'setCategoryName')) {
-            $game->setCategoryName($row['category_name'] ?? null);
+            // ➕ On ajoute la catégorie
+            if (method_exists($game, 'setCategoryName')) {
+                $game->setCategoryName($row['category_name'] ?? null);
+            }
+
+            $games[] = $game;
         }
 
-        $games[] = $game;
+        return $games;
     }
 
-    return $games;
-}
-
-public function getGamesBase(): array
-{
-    // On ajoute la jointure pour récupérer le nom de la catégorie
-    $sql = "SELECT * FROM game
+    public function getGamesBase(): array
+    {
+        // On ajoute la jointure pour récupérer le nom de la catégorie
+        $sql = "SELECT * FROM game
         ORDER BY game_name ASC
     ";
-    $stmt = $this->pdo->query($sql);
-    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt = $this->pdo->query($sql);
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    $gamesBase = [];
-    foreach ($results as $row) {
-        $gameBase = new GameEntity();
-        $gameBase->setIdGame((int)$row['id_game']);
-        $gameBase->setNameGame($row['game_name']);
+        $gamesBase = [];
+        foreach ($results as $row) {
+            $gameBase = new GameEntity();
+            $gameBase->setIdGame((int)$row['id_game']);
+            $gameBase->setNameGame($row['game_name']);
 
-        $gamesBase[] = $gameBase;
+            $gamesBase[] = $gameBase;
+        }
+
+        return $gamesBase;
     }
-
-    return $gamesBase;
-}
 
 
     public function getPopularGames(int $limit = 10, int $offset = 0): array
-    {
-        $stmt = $this->pdo->prepare("SELECT * FROM game ORDER BY id_game ASC LIMIT :limit OFFSET :offset");
-        $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
-        $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
-        $stmt->execute();
-        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+{
+    $stmt = $this->pdo->prepare("
+        SELECT g.*, COALESCE(AVG(r.review_note), 0) AS avg_rating
+        FROM game g
+        LEFT JOIN review r ON g.id_game = r.id_game
+        GROUP BY g.id_game
+        ORDER BY avg_rating DESC, g.id_game DESC
+        LIMIT :limit OFFSET :offset
+    ");
+    $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+    $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+    $stmt->execute();
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        $popularGames = [];
-        foreach ($results as $row) {
-            $popularGame = new GameEntity();
-            $popularGame->setIdGame((int)$row['id_game']);
-            $popularGame->setNameGame($row['game_name']);
-            $popularGame->setDurationGame((int)$row['game_duration']);
-            $popularGame->setNbGamer($row['nb_gamer']);
-            $popularGame->setAgeGamer((int)$row['age_gamer']);
-            $popularGame->setImageGame($row['image']);
-            $popularGame->setDescriptionGame($row['game_description'] ?? "");
+    $popularGames = [];
+    foreach ($results as $row) {
+        $popularGame = new GameEntity();
+        $popularGame->setIdGame((int)$row['id_game']);
+        $popularGame->setNameGame($row['game_name']);
+        $popularGame->setDurationGame((int)$row['game_duration']);
+        $popularGame->setNbGamer($row['nb_gamer']);
+        $popularGame->setAgeGamer((int)$row['age_gamer']);
+        $popularGame->setImageGame($row['image']);
+        $popularGame->setDescriptionGame($row['game_description'] ?? "");
+        $popularGame->setAvgRating((float)$row['avg_rating']); // <- note moyenne
 
-            $popularGames[] = $popularGame;
-        }
-
-        return $popularGames;
+        $popularGames[] = $popularGame;
     }
+
+    return $popularGames;
+}
+
 
     public function getNewGames(int $limit = 3, int $offset = 0): array
     {
-        $stmt = $this->pdo->prepare("SELECT * FROM game ORDER BY id_game DESC LIMIT :limit OFFSET :offset");
+        $stmt = $this->pdo->prepare("SELECT 
+        g.id_game,
+        g.game_name,
+        g.game_duration,
+        g.nb_gamer,
+        g.age_gamer,
+        g.image,
+        g.id_category,
+        g.game_description,
+        ROUND(AVG(r.review_note), 1) AS avg_rating
+    FROM game g
+    LEFT JOIN review r ON g.id_game = r.id_game
+    GROUP BY 
+        g.id_game,
+        g.game_name,
+        g.game_duration,
+        g.nb_gamer,
+        g.age_gamer,
+        g.image,
+        g.id_category,
+        g.game_description
+    ORDER BY g.id_game DESC
+    LIMIT :limit OFFSET :offset;
+");
+
         $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
         $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
         $stmt->execute();
@@ -170,6 +213,7 @@ public function getGamesBase(): array
             $newGame->setAgeGamer((int)$row['age_gamer']);
             $newGame->setImageGame($row['image']);
             $newGame->setDescriptionGame($row['game_description'] ?? "");
+            $newGame->setAvgRating($row['avg_rating'] !== null ? (float)$row['avg_rating'] : null);
 
             $newGames[] = $newGame;
         }

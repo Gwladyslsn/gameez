@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Entity;
 
@@ -18,6 +18,7 @@ class GameEntity
     private string $descriptionGame;
 
     private string $categoryName;
+    private ?float $avgRating = null;
 
     public function __construct(
         ?int $idGame = null,
@@ -28,7 +29,8 @@ class GameEntity
         string $imageGame = '',
         int $idCategory = 0,
         ?string $descriptionGame = '',
-        string $categoryName = ''
+        string $categoryName = '',
+        ?float $avgRating = null
     ) {
         $this->idGame = $idGame;
         $this->nameGame = $nameGame;
@@ -39,6 +41,7 @@ class GameEntity
         $this->idCategory = $idCategory;
         $this->descriptionGame = $descriptionGame;
         $this->categoryName = $categoryName;
+        $this->avgRating = $avgRating;
     }
 
 
@@ -188,12 +191,22 @@ class GameEntity
     }
 
     public function getCategoryName(): ?string
-{
-    return $this->categoryName;
-}
+    {
+        return $this->categoryName;
+    }
 
-public function setCategoryName(?string $categoryName): void
-{
-    $this->categoryName = $categoryName;
-}
+    public function setCategoryName(?string $categoryName): void
+    {
+        $this->categoryName = $categoryName;
+    }
+
+    public function getAvgRating(): ?float
+    {
+        return $this->avgRating;
+    }
+
+    public function setAvgRating(?float $avgRating): void
+    {
+        $this->avgRating = $avgRating;
+    }
 }

@@ -1,25 +1,26 @@
 <?php
 $imagePath = '/asset/' . htmlspecialchars($newGame->getImageGame());
+$avg = round($newGame->getAvgRating() ?? 0);
 
 ?>
 
-<div class="game-card">
+<div class="game-card game" id="game-container">
     <div class="game-image">
         <span><img src="<?= $imagePath ?>" alt="Image du jeu" class="gameImage"></span>
     </div>
-    <div class="game-title"><?= htmlspecialchars($newGame->getNameGame()) ?></div>
+    <h3 class="game-title"><?= htmlspecialchars($newGame->getNameGame()) ?></h3>
     <div class="game-meta">
         <span class="meta-tag"><?= htmlspecialchars($newGame->getNbGamer()) ?> joueurs</span>
         <span class="meta-tag"><?= htmlspecialchars($newGame->getDurationGame()) ?> minutes</span>
-        <span class="meta-tag"><?= htmlspecialchars($newGame->getAgeGamer()) ?> ans</span>
+        <span class="meta-tag">à partir de <?= htmlspecialchars($newGame->getAgeGamer()) ?> ans</span>
     </div>
-    <div class="rating">
-        <span class="stars">★★★★☆</span>
-        <span>4.3 (892 avis)</span>
+    <div class="game-rating">
+    <div class="stars">
+        <?= str_repeat('★', $avg) ?><?= str_repeat('☆', 5 - $avg) ?>
     </div>
-    <div class="game-tags">
-        <span class="tag">Coopératif</span>
-        <span class="tag">Super-héros</span>
-        <span class="tag">Figurines</span>
+    <span class="rating-text"><?= htmlspecialchars(number_format($newGame->getAvgRating() ?? 0, 1)) ?></span>
+</div>
+    <div  class="game-description">
+    <p class="game-description"><?= htmlspecialchars($newGame->getDescriptionGame()) ?></p>
     </div>
 </div>
