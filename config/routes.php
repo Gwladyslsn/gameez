@@ -73,6 +73,10 @@ return [
         'controller' => App\Controller\PageController::class,
         'method' => 'games'
     ],
+    '/searchExtension' => [
+        'controller' => App\Controller\ExtensionController::class,
+        'method' => 'searchExtension'
+    ],
     
     
     

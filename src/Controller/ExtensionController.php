@@ -72,4 +72,16 @@ public function addExtension(): void
         require_once ROOTPATH . 'src/View/page/extensions.php';
     }
 
+    public function searchExtension()
+    {
+        header('Content-Type: application/json');
+
+        $nameExtension = $_GET['nameExtension'] ?? '';
+        $filter = $_GET['filter'] ?? 'all';
+
+        $extensionsSearch = $this->extensionRepo->searchExtension($nameExtension, $filter);
+
+        echo json_encode($extensionsSearch);
+    }
+
 }

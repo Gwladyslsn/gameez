@@ -6,7 +6,7 @@ $imagePath = '/asset/image/extensions/' . htmlspecialchars($extension->getImageE
 <div class="extension-card fade-in" data-category="strategy">
     <div class="extension-image">
         <span>
-            <img src="<?= $imagePath ?>" alt="Image du jeu" class="gameExtension">
+            <img src="<?= $imagePath ?>" alt="Image du jeu" class="extensionImage">
         </span>
     </div>
     <div class="extension-info">
@@ -21,7 +21,7 @@ $imagePath = '/asset/image/extensions/' . htmlspecialchars($extension->getImageE
     <div class="extension-details">
         <div class="detail-item">
             <span class="detail-label">Note moyenne :</span>
-            <span class="detail-value">4</span>
+            <span class="detail-value"></span>
         </div>
         <div class="detail-item">
             <span class="detail-label">Complexité :</span>

@@ -23,7 +23,7 @@ $imagePath = '/asset/image/extensions/' . htmlspecialchars($extensionFav['extens
                     <div class="featured-highlights">
                         <div class="detail-item">
                             <span class="detail-label">Note moyenne :</span>
-                            <span class="detail-value">4</span>
+                            <span class="detail-value"></span>
                         </div>
                         <div class="detail-item">
                             <span class="detail-label">Complexité :</span>
@@ -41,14 +41,14 @@ $imagePath = '/asset/image/extensions/' . htmlspecialchars($extensionFav['extens
 
     <div class="search-and-filters">
         <div class="search-bar">
-            <input type="text" class="search-input" placeholder="Rechercher une extension..." id="searchInput">
-            <button class="search-btn" onclick="searchExtensions()">🔍 Rechercher</button>
+            <input type="text" id ="searchInputExt" class="search-input" placeholder="Rechercher une extension..." id="searchInput">
+            <button id="searchExt" class="search-btn">🔍 Rechercher</button>
         </div>
         <div class="filters">
-            <button class="filter-btn active" data-category="all">Toutes</button>
-            <button class="filter-btn" data-category="strategy">Récentes</button>
-            <button class="filter-btn" data-category="adventure">Complexe</button>
-            <button class="filter-btn" data-category="family">Meilleur note</button>
+            <button class="filter-btn active" id="allExt">Toutes</button>
+            <button class="filter-btn" id="newExt">Ajouté recemment</button>
+            <button class="filter-btn" id="complexExt">Complexe</button>
+            <button class="filter-btn" id="bestExt">Meilleur note</button>
         </div>
     </div>
 
@@ -67,6 +67,7 @@ $imagePath = '/asset/image/extensions/' . htmlspecialchars($extensionFav['extens
 
 
 <script src="/asset/js/modal.js"></script>
+<script src="/asset/js/extension.js"></script>
 <?php
 $page_script = '/asset/js/header.js';
 require_once ROOTPATH . "src/View/template/footer.php"; ?>

@@ -98,8 +98,63 @@ public function getFavExtension()
     $extensionFav = $stmt->fetch(PDO::FETCH_ASSOC);
 
     return $extensionFav;
+}
 
+public function searchExtension(string $extensionName = '', string $filter = 'all'): array
+{
+    $sql = "SELECT 
+                e.id_extension,
+                e.extension_name,
+                e.extension_description,
+                e.complexity,
+                e.extension_image,
+                e.release_date,
+                e.id_game,
+                g.game_name,
+                ROUND(AVG(r.review_note), 1) AS avg_rating
+            FROM extension e
+            JOIN game g ON e.id_game = g.id_game
+            LEFT JOIN review r ON e.id_extension = r.id_extension
+            WHERE 1=1";
 
+    $params = [];
+
+    if ($extensionName) {
+        $sql .= " AND e.extension_name LIKE :extensionName";
+        $params['extensionName'] = "%$extensionName%";
+    }
+
+    // 🔑 GROUP BY avant l'ORDER BY
+    $sql .= " GROUP BY 
+                e.id_extension,
+                e.extension_name,
+                e.extension_description,
+                e.complexity,
+                e.extension_image,
+                e.release_date,
+                e.id_game,
+                g.game_name";
+
+    // 🔑 ORDER BY après le GROUP BY
+    switch ($filter) {
+        case 'new':
+            $sql .= " ORDER BY e.release_date DESC";
+            break;
+        case 'complex':
+            $sql .= " ORDER BY e.complexity DESC";
+            break;
+        case 'best':
+            $sql .= " ORDER BY avg_rating DESC"; // NULLS LAST est spécifique à PostgreSQL, MySQL les met déjà après
+            break;
+        default:
+            $sql .= " ORDER BY e.extension_name ASC";
+            break;
+    }
+
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->execute($params);
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
 
