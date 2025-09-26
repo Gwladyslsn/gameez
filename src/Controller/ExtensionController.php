@@ -33,7 +33,7 @@ public function addExtension(): void
     // ✅ Gestion de l'image uploadée (via FormData)
     $extensionImage = null;
     if (isset($_FILES['extensionImage']) && $_FILES['extensionImage']['error'] === UPLOAD_ERR_OK) {
-        $uploadDir = ROOTPATH . 'asset/image/extensions/';
+        $uploadDir = ROOTPATH . 'public/asset/image/extensions/';
         if (!is_dir($uploadDir)) {
             mkdir($uploadDir, 0777, true);
         }
