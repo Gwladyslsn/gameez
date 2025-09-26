@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', function () {
             filter // <-- on envoie le filtre sélectionné
         });
 
+        
+
         const res = await fetch(`/searchExtension?${params.toString()}`);
         const extensions = await res.json();
 

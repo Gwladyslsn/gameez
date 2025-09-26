@@ -23,7 +23,7 @@ $imagePath = '/asset/image/extensions/' . htmlspecialchars($extensionFav['extens
                     <div class="featured-highlights">
                         <div class="detail-item">
                             <span class="detail-label">Note moyenne :</span>
-                            <span class="detail-value"></span>
+                            <span class="detail-value"><?= $extensionFav['avg_rating'] ?? "—"?></span>
                         </div>
                         <div class="detail-item">
                             <span class="detail-label">Complexité :</span>
@@ -45,7 +45,7 @@ $imagePath = '/asset/image/extensions/' . htmlspecialchars($extensionFav['extens
             <button id="searchExt" class="search-btn">🔍 Rechercher</button>
         </div>
         <div class="filters">
-            <button class="filter-btn active" id="allExt">Toutes</button>
+            <button class="filter-btn" id="allExt">Toutes</button>
             <button class="filter-btn" id="newExt">Ajouté recemment</button>
             <button class="filter-btn" id="complexExt">Complexe</button>
             <button class="filter-btn" id="bestExt">Meilleur note</button>

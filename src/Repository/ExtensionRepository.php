@@ -87,9 +87,18 @@ class ExtensionRepository
 
 public function getFavExtension()
 {
-    $sql = "SELECT e.*, g.game_name
+    $sql = "SELECT e.id_extension,
+                e.extension_name,
+                e.extension_description,
+                e.complexity,
+                e.extension_image,
+                e.release_date,
+                e.id_game,
+                g.game_name,
+                ROUND(AVG(r.review_note), 1) AS avg_rating
             FROM extension e
             JOIN game g ON e.id_game = g.id_game
+            LEFT JOIN review r ON e.id_extension = r.id_extension
             WHERE e.id_extension = 2";
 
     $stmt = $this->pdo->prepare($sql);
