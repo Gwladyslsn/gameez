@@ -29,19 +29,32 @@ class GameController
     $idCategory = isset($_POST['categoryGame']) ? (int) $_POST['categoryGame'] : null;
 
     // ✅ Gestion de l'image uploadée (via FormData)
-    $imageGame = null;
     if (isset($_FILES['fileGame']) && $_FILES['fileGame']['error'] === UPLOAD_ERR_OK) {
-        $uploadDir = ROOTPATH . 'image/jeux/';
-        if (!is_dir($uploadDir)) {
-            mkdir($uploadDir, 0777, true);
-        }
-        $fileName = basename($_FILES['fileGame']['name']);
-        $filePath = $uploadDir . $fileName;
-
-        if (move_uploaded_file($_FILES['fileGame']['tmp_name'], $filePath)) {
-            $imageGame = 'image/jeux/' . $fileName; // Chemin que tu stockeras en BDD
-        }
+    $uploadDir = ROOTPATH . 'image/jeux/';
+    if (!is_dir($uploadDir)) {
+        mkdir($uploadDir, 0777, true);
     }
+
+    // ✅ Vérification sécurité
+    $allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
+    $maxSize = 2 * 1024 * 1024; // 2 Mo
+
+    if ($_FILES['fileGame']['size'] > $maxSize || !in_array(mime_content_type($_FILES['fileGame']['tmp_name']), $allowedTypes)) {
+        http_response_code(400);
+        echo json_encode(['status' => 'error', 'message' => 'Format ou taille de fichier invalide']);
+        exit;
+    }
+
+    // ✅ Renommage du fichier pour éviter les collisions et injections
+    $extension = pathinfo($_FILES['fileGame']['name'], PATHINFO_EXTENSION);
+    $fileName = uniqid('game_', true) . '.' . $extension;
+    $filePath = $uploadDir . $fileName;
+
+    if (move_uploaded_file($_FILES['fileGame']['tmp_name'], $filePath)) {
+        $imageGame = 'image/jeux/' . $fileName; // Chemin que tu stockeras en BDD
+    }
+}
+
 
     try {
         $newGame = $this->gameRepository->addGame(

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Controller;
 
@@ -12,6 +12,13 @@ class AdminController
 
     public function dashboardadmin()
     {
+        // Vérification authentification + rôle admin
+        if (!isset($_SESSION['admin'])) {
+            // Redirection vers page de connexion
+            header('Location: /login');
+            exit();
+        }
+
         $pdo = (new Database())->getConnection();
         $adminRepo = new AdminRepository($pdo);
         $gameRepo = new GameRepository($pdo);
@@ -23,12 +30,8 @@ class AdminController
         $games = $gameRepo->getGames();
         $reviews = $reviewRepo->getAllReviews();
         $gamesBase = $gameRepo->getGamesBase();
-        
+
 
         require ROOTPATH . 'src/View/page/admin/dashboardAdmin.php';
     }
-
-
-    
 }
-

@@ -1,5 +1,9 @@
 <?php
 require_once ROOTPATH . 'src/View/template/headerAdmin.php';
+
+if (isset($_SESSION['admin'])){
+    
+}
 ?>
 
 <!-- Main Content -->
